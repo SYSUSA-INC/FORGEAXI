@@ -67,6 +67,16 @@ export function reviewRows(inputs: readonly ReviewInput[]): ReviewRow[] {
   });
 }
 
+/**
+ * The choice to keep when the person picks `label` for one file. Picking
+ * what FORGE would show for it anyway is not a choice: the row goes back
+ * to following the batch, so restoring a label does not pin it.
+ */
+export function chosenLabel(inputs: readonly ReviewInput[], key: string, label: FileLabel): FileLabel | undefined {
+  const untouched = reviewRows(inputs.map((f) => (f.key === key ? { ...f, choice: { ...f.choice, label: undefined } } : f)));
+  return untouched.find((r) => r.key === key)?.label === label ? undefined : label;
+}
+
 /** Where one file of the batch stands. */
 export type ReviewFileState = "uploading" | "upload_failed" | "reading" | "read_failed" | "ready" | "filed" | "file_failed";
 

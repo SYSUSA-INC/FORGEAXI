@@ -6,7 +6,7 @@ import { Panel } from "@/components/ui/Panel";
 import { UploadQueue } from "@/components/uploads/UploadQueue";
 import { useUploadQueue } from "@/components/uploads/useUploadQueue";
 import type { ClassifiedUpload } from "@/lib/solicitation-batch";
-import { basisText, newFiles, reviewProblem, reviewRows, type ReviewChoice, type ReviewFileState } from "@/lib/solicitation-batch-review";
+import { basisText, chosenLabel, newFiles, reviewProblem, reviewRows, type ReviewChoice, type ReviewFileState, type ReviewInput } from "@/lib/solicitation-batch-review";
 import { FILE_LABELS, FILE_LABEL_NAMES, MAX_BATCH_FILES, isFileLabel, type LabelEvidence } from "@/lib/solicitation-file-classify";
 import { formatBytes } from "@/lib/upload-client-logic";
 import { acceptFor } from "@/lib/upload-policy";
@@ -67,16 +67,15 @@ export function SolicitationBatchReview({ initialFiles, maxBytes, then, onStartO
     }
   }, [queue.items, read]);
 
-  const rows = useMemo(
+  const inputs = useMemo<ReviewInput[]>(
     () =>
-      reviewRows(
-        queue.items.map((it) => {
-          const r = reads[it.id];
-          return { key: it.id, fileName: it.file.name, classification: r?.status === "read" && r.uploadId === it.uploadId ? r.file : null, choice: choices[it.id] };
-        }),
-      ),
+      queue.items.map((it) => {
+        const r = reads[it.id];
+        return { key: it.id, fileName: it.file.name, classification: r?.status === "read" && r.uploadId === it.uploadId ? r.file : null, choice: choices[it.id] };
+      }),
     [queue.items, reads, choices],
   );
+  const rows = useMemo(() => reviewRows(inputs), [inputs]);
 
   const files = queue.items.map((it, i) => {
     const r = reads[it.id];
@@ -208,7 +207,7 @@ export function SolicitationBatchReview({ initialFiles, maxBytes, then, onStartO
                         value={row.label}
                         disabled={locked}
                         onChange={(e) => {
-                          if (isFileLabel(e.target.value)) choose(item.id, { label: e.target.value });
+                          if (isFileLabel(e.target.value)) choose(item.id, { label: chosenLabel(inputs, item.id, e.target.value) });
                         }}
                       >
                         {FILE_LABELS.map((l) => (

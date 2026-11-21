@@ -3,7 +3,7 @@
  * shows, whose label wins, and when the batch may be filed. Pure.
  */
 import { describe, expect, it } from "vitest";
-import { basisText, newFiles, reviewProblem, reviewRows, type ReviewInput } from "@/lib/solicitation-batch-review";
+import { basisText, chosenLabel, newFiles, reviewProblem, reviewRows, type ReviewInput } from "@/lib/solicitation-batch-review";
 import { MAX_BATCH_FILES, type FileClassification, type FileLabel } from "@/lib/solicitation-file-classify";
 
 function read(label: FileLabel, confidence = 0.9, extra: Partial<FileClassification> = {}): FileClassification {
@@ -61,6 +61,22 @@ describe("BL-STAB-3b — review rows", () => {
 
   it("does not count choosing the suggested label as a change", () => {
     expect(reviewRows([file("a", read("base"), { label: "base" })])[0].changed).toBe(false);
+  });
+});
+
+describe("BL-STAB-3b — picking a label", () => {
+  it("does not pin a label put back to what FORGE read", () => {
+    const inputs = [file("a", read("base", 0.95), { label: "other" }), file("b", read("other", 0.3))];
+    expect(chosenLabel(inputs, "a", "base")).toBeUndefined();
+    // So marking another file as the base still moves this one aside.
+    const rows = reviewRows([file("a", read("base", 0.95), { label: chosenLabel(inputs, "a", "base") }), file("b", read("other", 0.3), { label: "base" })]);
+    expect(rows.map((r) => r.label)).toEqual(["rfp", "base"]);
+  });
+  it("keeps a real choice, including base on a file the batch moved aside", () => {
+    const inputs = [file("a", read("base", 0.7)), file("b", read("base", 0.95))];
+    expect(chosenLabel(inputs, "a", "sow")).toBe("sow");
+    expect(chosenLabel(inputs, "a", "base")).toBe("base");
+    expect(chosenLabel(inputs, "a", "rfp")).toBeUndefined();
   });
 });
 

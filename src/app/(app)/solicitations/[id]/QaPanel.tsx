@@ -160,7 +160,7 @@ export function QaPanel({
               <p className="mt-0.5 whitespace-pre-wrap font-body text-[13px] leading-relaxed text-text">{q.answer}</p>
               <div className="mt-1 flex flex-wrap items-center gap-1.5 font-mono text-[10px] uppercase tracking-widest text-subtle">
                 <span>
-                  {q.source === "attachment" ? `SAM.gov · ${q.sourceRef}` : q.source === "description" ? "SAM.gov · notice description" : `pasted${q.addedByName ? ` by ${q.addedByName}` : ""}`}
+                  {q.source === "attachment" ? `${q.uploaded ? "Uploaded file" : "SAM.gov"} · ${q.sourceRef}` : q.source === "description" ? "SAM.gov · notice description" : `pasted${q.addedByName ? ` by ${q.addedByName}` : ""}`}
                 </span>
                 {q.postedAt ? <span>· {q.postedAt.slice(0, 10)}</span> : null}
                 {q.affectedRefs.map((r) => (
