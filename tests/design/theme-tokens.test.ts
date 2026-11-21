@@ -159,6 +159,8 @@ describe("theme tokens — no literals in themed paths", () => {
     "src/app/(app)/solicitations/[id]/SolicitationDocumentsPanel.tsx",
     "src/app/(app)/solicitations/[id]/page.tsx",
     "src/app/(app)/solicitations/[id]/diff/DiffView.tsx",
+    "src/app/(app)/solicitations/new/SolicitationBatchReview.tsx",
+    "src/app/(app)/solicitations/new/UploadSolicitationForm.tsx",
     "src/app/(app)/proposals/[id]/ProposalScanPanel.tsx",
     "src/app/(app)/proposals/[id]/outcome/ProtestViabilityPanel.tsx",
     "src/app/(app)/proposals/[id]/sections/SectionsClient.tsx",
