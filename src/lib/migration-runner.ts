@@ -459,10 +459,11 @@ export async function tryAutoApplyMigrations(): Promise<AutoApplyResult> {
       // or the call fails, we LOG and continue — snapshotting is
       // best-effort, not a blocker. The user can also take a manual
       // snapshot via the Neon dashboard.
-      const { tryCreateBranchSnapshot } = await import("./neon-snapshot");
-      snapshotId = await tryCreateBranchSnapshot(
-        `auto-migrate-${new Date().toISOString().replace(/[:.]/g, "-").slice(0, 19)}`,
-      );
+      // Named after the newest pending migration, not the time: a
+      // start-up that finds the same migrations still pending reuses
+      // the snapshot instead of leaving another billed branch.
+      const { snapshotNameFor, tryCreateBranchSnapshot } = await import("./neon-snapshot");
+      snapshotId = await tryCreateBranchSnapshot(snapshotNameFor(status.pendingFiles));
 
       const result = await runMigrations(conn);
       if (!result.ok) {

@@ -191,34 +191,39 @@ the schema decision was wrong (e.g., column name mistake, wrong type).
 
 When configured (`NEON_API_KEY` + `NEON_PROJECT_ID` set in Vercel
 env), auto-apply calls `tryCreateBranchSnapshot()` before running any
-SQL. The snapshot is a Neon branch named
-`auto-migrate-<ISO timestamp>`, parented off the production branch.
+SQL. The snapshot is a Neon branch named after the newest pending
+migration, for example `auto-migrate-0181_solicitation_batch_types`,
+parented off the production branch.
 
-**Snapshots are cheap.** Neon uses copy-on-write storage; a snapshot
-of a 10 GB database costs roughly zero until the original branch
-diverges from it.
+**One snapshot per set of migrations.** If the same migration is still
+pending at the next start-up (the apply failed, ran out of time, or
+waits for a manual sync), the snapshot of that name is reused; no new
+branch is made.
+
+**Snapshots are not free.** Storage is copy-on-write, but Neon counts
+every branch, and a plan charges for each one beyond the few it
+includes. Until 2026-11 the snapshot's name carried the time of day and
+nothing was ever removed, so every cold start with a migration pending
+left another branch: the owner's project reached 820 of them and a bill
+of more than $500 before it was noticed.
 
 **Restore:**
 
 1. Neon console → Project → Branches
-2. Find the snapshot (`auto-migrate-2026-06-14T...`)
+2. Find the snapshot (`auto-migrate-0181_…`; older ones are named by date)
 3. Click the three-dot menu → **Promote to primary**
 4. Vercel will reconnect to the new primary on the next cold start
    (or trigger a redeploy to force it)
 
-**Cleanup:**
-
-Snapshots accumulate. The 7-day Neon PITR window means anything
-older than that loses most of its rollback value. To prune:
-
-- Neon console → Branches → delete branches older than 7 days
-- Or set a manual rotation policy (every Monday, delete >7-day-old
-  `auto-migrate-*` branches)
-
-A future enhancement: a weekly cron at `/api/cron/prune-snapshots`
-that calls the Neon delete-branch API for each snapshot older than
-`SNAPSHOT_RETENTION_DAYS` (env-configurable). Out of scope for the
-initial BL-QC-auto-migrate PR.
+**Cleanup is automatic.** Each time a snapshot is taken or reused, the
+`auto-migrate-` branches beyond the newest three are deleted, up to 20
+per start-up, oldest first. Only branches whose name starts with
+`auto-migrate-` are ever touched, and never the default branch or a
+protected one. More than ten snapshots logs a warning
+(`[neon-snapshot] many migration snapshots exist`). To clear a backlog
+at once, use **Clean up branches** on the Neon console's Branches page.
+A snapshot you want to keep past the next three: rename it, or mark it
+protected in Neon.
 
 ## Neon PITR (fallback when snapshots aren't configured)
 

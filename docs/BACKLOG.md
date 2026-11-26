@@ -22,7 +22,7 @@ Effort key:
 
 ## State of the backlog
 
-**As of 2026-11-26, `main` at `293d62f`, through PR #517, plus BL-BRAND-FORGEAXI's look (PR #518).** Checked
+**As of 2026-11-26, `main` at `499cbe1`, through PR #518, plus the Neon snapshot fix (PR #519).** Checked
 against the merged pull requests and the code, not against the entries'
 own wording. If the date or the sha here is old, check `git log` before
 trusting a status below, and correct this section in the same PR.
@@ -133,6 +133,15 @@ until someone says it is done.
   (`INBOUND_EMAIL_DOMAIN`, for example bids.forgeaxi.com) in Resend as a
   sending domain. Until then every real send is refused.
 - **Migrations:** sync 0151 to 0181 on `/admin/migrations`, in order.
+- **Neon (found 2026-11-26):** the project held 823 branches, all
+  `auto-migrate-…` snapshots left by the product's own start-up code
+  (fixed in PR #519). Delete them on the Neon console's Branches
+  page (**Clean up branches**; keep `main`). Also for the bill: compute
+  is fixed at 1 CU and never sleeps (set autoscaling from 0.25 with
+  scale to zero), and pull-request previews share the production
+  database (the Vercel connection is "All Environments" with no
+  preview branch): give Preview its own `DATABASE_URL` on one shared
+  `preview` branch.
 - **Phase 6 has not been exercised for real.** Nothing in it has been
   clicked through in a browser, no real email has been sent or received,
   the `delivery_reply` prompt has never run against a real model, and
@@ -9545,7 +9554,19 @@ incident class is now mechanically impossible from the UI.
 ---
 
 ### BL-QC-auto-migrate — Auto-apply migrations on deploy with rollback gates — **shipped**
-**Priority:** P0  ·  **Effort:** M  ·  **Depends on:** BL-QC  ·  **Status:** ✅ shipped
+**Priority:** P0  ·  **Effort:** M  ·  **Depends on:** BL-QC  ·  **Status:** ✅ shipped; the snapshot leak fixed in PR #519
+
+**The snapshot leak (found 2026-11-26, from the owner's Neon bill of
+more than $500).** The pre-migration snapshot was named by the time of
+day and never removed, and it was taken at every cold start while any
+migration was pending. With migrations waiting for a manual sync for
+weeks, the project reached 823 Neon branches, each billed. The fix
+names the snapshot after the newest pending migration (so the same set
+reuses one snapshot), deletes all but the newest three `auto-migrate-`
+branches (20 per start-up, never the default or a protected branch, and
+never a branch with another name), and logs a warning above ten.
+Left for the owner: delete the backlog in the Neon console, and the two
+settings under "Owner and operator steps outstanding".
 
 Surfaced after the 2026-06-14 production crash: /settings and
 /notifications/rules returned 500 because the production DB was
