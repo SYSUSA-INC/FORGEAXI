@@ -22,7 +22,7 @@ Effort key:
 
 ## State of the backlog
 
-**As of 2026-11-26, `main` at `293d62f`, through PR #517, plus BL-BRAND-FORGEAXI's look (PR for `claude/brand-forgeaxi`).** Checked
+**As of 2026-11-26, `main` at `293d62f`, through PR #517, plus BL-BRAND-FORGEAXI's look (PR #518).** Checked
 against the merged pull requests and the code, not against the entries'
 own wording. If the date or the sha here is old, check `git log` before
 trusting a status below, and correct this section in the same PR.
@@ -62,7 +62,7 @@ standing tracks: **BL-STAB** (problems the owner found in testing, P0),
 | Entry | What remains | Waits on |
 |---|---|---|
 | BL-STAB-3 | 3c: the AI check for labels the rules leave weak, and saying which labels are rule-based when AI is off. Waits on one owner answer: whether that check counts against the company's monthly AI requests. (3a, the rules and the server side, is in PR #515; 3b, the page, is in PR #516.) | Nothing; the owner's decisions are recorded (2026-10-21) |
-| BL-BRAND-FORGEAXI | The ForgeAXI rebrand (owner, 2026-11-26). The brand standard and the owner's logo artwork are in `docs/brand/` (PR #517). The look (Ice / Midnight colours, Inter, the logo in the product) is in PR for `claude/brand-forgeaxi`. Left: the name "ForgeAXI" in the product's words, emails and manuals; type sizes and labels to the standard | Three owner answers, in the entry |
+| BL-BRAND-FORGEAXI | The ForgeAXI rebrand (owner, 2026-11-26). The brand standard and the owner's logo artwork are in `docs/brand/` (PR #517). The look (Ice / Midnight colours, Inter, the logo in the product) is in PR #518. Left: the name "ForgeAXI" in the product's words, emails and manuals; type sizes and labels to the standard | Three owner answers, in the entry |
 | BL-STAB-4b | Each amendment compared with the one before it | Nothing |
 | BL-STAB-5 | Contracting officer Q&A uploaded in the format it was released | Nothing |
 | BL-STAB-8c | A verified mobile phone | The number can be captured now; the text-message step waits on the owner choosing a provider |
@@ -281,7 +281,7 @@ above.
 | 3az | **BL-STAB-6** — Several companion documents uploaded in one go, each typed from its file name, straight to storage | P0 | S | ✅ shipped (PR #369, with BL-STAB-2d-1) |
 | 3bd | **BL-PIPE-DRILL** — The pipeline's In window, Active, Win rate and Pipeline value tiles, and each funnel stage, open the opportunities behind them (owner, 2026-10-13); one rule set (`pipeline-drill.ts`: window, views, weighted value) makes the numbers and the lists, so a count equals its list, a rate its won and lost, a total its sum; the stage picked shows its count, the way back keeps the window and view | P1 | S | ✅ shipped (#387) |
 | 3be | **BL-UI-ENABLENOW** — FORGE takes the EnableNow design system's look: its colours (supporting colours included), Host Grotesk and Geist Mono, hairline cards, its buttons and radius, the diamond mark, its dark theme (owner, 2026-10-21) | P1 | M | ✅ shipped (#398) |
-| 3be-1 | **BL-BRAND-FORGEAXI** — the ForgeAXI brand replaces the EnableNow look: Ice / Midnight colours, Inter, the ForgeAXI logo, then the name in the product's words and type sizes to the standard (owner, 2026-11-26) | P1 | L | 🔄 the standard recorded (PR #517); the look in PR for `claude/brand-forgeaxi`; the name and the type sizes follow |
+| 3be-1 | **BL-BRAND-FORGEAXI** — the ForgeAXI brand replaces the EnableNow look: Ice / Midnight colours, Inter, the ForgeAXI logo, then the name in the product's words and type sizes to the standard (owner, 2026-11-26) | P1 | L | 🔄 the standard recorded (PR #517); the look in PR #518; the name and the type sizes follow |
 | 3bf | **BL-UI-UNIFORM** — One accent, readable ink and status tones, no leftover chrome; palette moved to `theme.colors` so stock Tailwind hex cannot leak (owner, 2026-10-22) | P1 | M | ✅ shipped: A (#400, #401), B (#402), C1–C10, D (emails), the manuals and the Command Center pass (#400–#417); C11 tables (#481); C12 secondary actions as links, one button scale, boxed rows onto hairlines (#482) |
 | 3bg | **BL-PIPE-FUNNEL** — The pipeline as a clickable funnel: one tapering segment per stage from Identified to Won, width = how many reached the stage, the conversion between stages, the win rate and a way into lessons from lost bids (owner, 2026-10-24) | P1 | S | ✅ shipped (#418, #419) |
 | 3bh | **BL-VISION-AUTOPILOT** — FORGE learns each customer's business and, step by step, owns more of the proposal lifecycle: scouts every publishing site, prioritises with reasons, builds a capability matrix on request, and feeds lessons from every outcome into the next proposal (owner vision, 2026-10-24) | P1 | XL | 🔄 phases 1 (BL-COMPANY-MODEL), 3 (BL-CAP-MATRIX) and 4 (BL-LESSONS-LOOP) shipped; phase 5 (BL-NEXT-ACTION) shipped; phase 2 partly delivered through the Scout work (#458 to #462, #492); connectors for other portals are BL-SCOUT-PORTALS |
@@ -5570,7 +5570,7 @@ proposal's chances. Over time FORGE owns the proposal lifecycle.
 
 ### BL-BRAND-FORGEAXI — The ForgeAXI brand: Ice / Midnight, Inter, the logo
 
-**Priority:** P1  ·  **Effort:** L (three PRs after the standard)  ·  **Status:** 🔄 the standard is recorded (PR #517); the look is in PR for `claude/brand-forgeaxi`; the name and type sizes follow
+**Priority:** P1  ·  **Effort:** L (three PRs after the standard)  ·  **Status:** 🔄 the standard is recorded (PR #517); the look is in PR #518; the name and type sizes follow
 
 **Ask (owner, 2026-11-26):** "Here is your ForgeAXI logo and brand guide,
 please update your information and follow this to rebrand the platform
@@ -5601,7 +5601,7 @@ supplied it, kept untouched.
 
 **Plan.**
 
-1. **The look (PR for `claude/brand-forgeaxi`).** The colour tokens move to Ice / Midnight in
+1. **The look (PR #518).** The colour tokens move to Ice / Midnight in
    both themes, Inter replaces Host Grotesk, and the logo replaces the
    "F" tile in the side menu, the sign-in pages, the public pages, the
    partner and reviewer pages and the browser tab. `CLAUDE.md` and
