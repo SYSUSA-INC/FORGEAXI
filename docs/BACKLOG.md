@@ -22,7 +22,7 @@ Effort key:
 
 ## State of the backlog
 
-**As of 2026-11-21, `main` at `be9dcfd`, through PR #515, plus BL-STAB-3b (PR #516).** Checked
+**As of 2026-11-26, `main` at `27784d2`, through PR #516, plus the brand standard for BL-BRAND-FORGEAXI (PR #517).** Checked
 against the merged pull requests and the code, not against the entries'
 own wording. If the date or the sha here is old, check `git log` before
 trusting a status below, and correct this section in the same PR.
@@ -62,6 +62,7 @@ standing tracks: **BL-STAB** (problems the owner found in testing, P0),
 | Entry | What remains | Waits on |
 |---|---|---|
 | BL-STAB-3 | 3c: the AI check for labels the rules leave weak, and saying which labels are rule-based when AI is off. Waits on one owner answer: whether that check counts against the company's monthly AI requests. (3a, the rules and the server side, is in PR #515; 3b, the page, is in PR #516.) | Nothing; the owner's decisions are recorded (2026-10-21) |
+| BL-BRAND-FORGEAXI | The ForgeAXI rebrand (owner, 2026-11-26). The brand standard and the owner's logo artwork are in `docs/brand/` (PR #517). Left: (1) the Ice / Midnight colours, Inter and the logo in the product; (2) the name "ForgeAXI" in the product's words, emails and manuals; (3) type sizes and labels to the standard | Nothing for (1). Three owner answers, in the entry, shape (2) and (3) |
 | BL-STAB-4b | Each amendment compared with the one before it | Nothing |
 | BL-STAB-5 | Contracting officer Q&A uploaded in the format it was released | Nothing |
 | BL-STAB-8c | A verified mobile phone | The number can be captured now; the text-message step waits on the owner choosing a provider |
@@ -187,6 +188,10 @@ before phase 7, Measure:
 **Phase 7, Measure** follows. It needs a design document for the owner's
 review before any code.
 
+**BL-BRAND-FORGEAXI** (owner, 2026-11-26: "rebrand the platform and
+introduce the logo") is being built now, ahead of BL-STAB-3c, because
+the owner asked for it directly.
+
 Also offered and not asked for: a one-line fix for the flaky
 `tests/isolation/partner-invite.test.ts:82`, as its own PR.
 
@@ -276,6 +281,7 @@ above.
 | 3az | **BL-STAB-6** — Several companion documents uploaded in one go, each typed from its file name, straight to storage | P0 | S | ✅ shipped (PR #369, with BL-STAB-2d-1) |
 | 3bd | **BL-PIPE-DRILL** — The pipeline's In window, Active, Win rate and Pipeline value tiles, and each funnel stage, open the opportunities behind them (owner, 2026-10-13); one rule set (`pipeline-drill.ts`: window, views, weighted value) makes the numbers and the lists, so a count equals its list, a rate its won and lost, a total its sum; the stage picked shows its count, the way back keeps the window and view | P1 | S | ✅ shipped (#387) |
 | 3be | **BL-UI-ENABLENOW** — FORGE takes the EnableNow design system's look: its colours (supporting colours included), Host Grotesk and Geist Mono, hairline cards, its buttons and radius, the diamond mark, its dark theme (owner, 2026-10-21) | P1 | M | ✅ shipped (#398) |
+| 3be-1 | **BL-BRAND-FORGEAXI** — the ForgeAXI brand replaces the EnableNow look: Ice / Midnight colours, Inter, the ForgeAXI logo, then the name in the product's words and type sizes to the standard (owner, 2026-11-26) | P1 | L | 🔄 the standard recorded (PR #517); the look, the name and the type sizes follow |
 | 3bf | **BL-UI-UNIFORM** — One accent, readable ink and status tones, no leftover chrome; palette moved to `theme.colors` so stock Tailwind hex cannot leak (owner, 2026-10-22) | P1 | M | ✅ shipped: A (#400, #401), B (#402), C1–C10, D (emails), the manuals and the Command Center pass (#400–#417); C11 tables (#481); C12 secondary actions as links, one button scale, boxed rows onto hairlines (#482) |
 | 3bg | **BL-PIPE-FUNNEL** — The pipeline as a clickable funnel: one tapering segment per stage from Identified to Won, width = how many reached the stage, the conversion between stages, the win rate and a way into lessons from lost bids (owner, 2026-10-24) | P1 | S | ✅ shipped (#418, #419) |
 | 3bh | **BL-VISION-AUTOPILOT** — FORGE learns each customer's business and, step by step, owns more of the proposal lifecycle: scouts every publishing site, prioritises with reasons, builds a capability matrix on request, and feeds lessons from every outcome into the next proposal (owner vision, 2026-10-24) | P1 | XL | 🔄 phases 1 (BL-COMPANY-MODEL), 3 (BL-CAP-MATRIX) and 4 (BL-LESSONS-LOOP) shipped; phase 5 (BL-NEXT-ACTION) shipped; phase 2 partly delivered through the Scout work (#458 to #462, #492); connectors for other portals are BL-SCOUT-PORTALS |
@@ -5561,6 +5567,81 @@ proposal's chances. Over time FORGE owns the proposal lifecycle.
 - **Stages:** renamed to the reference funnel's (BL-PIPE-STAGES).
 - **Autonomy:** FORGE does as much as it can, and everything needs a
   person's approval (phase 5).
+
+### BL-BRAND-FORGEAXI — The ForgeAXI brand: Ice / Midnight, Inter, the logo
+
+**Priority:** P1  ·  **Effort:** L (three PRs after the standard)  ·  **Status:** 🔄 the standard is recorded (PR #517); the product work follows
+
+**Ask (owner, 2026-11-26):** "Here is your ForgeAXI logo and brand guide,
+please update your information and follow this to rebrand the platform
+and introduce the logo."
+
+**The standard.** `docs/brand/BRAND_GUIDELINES.md` is the owner's file,
+unchanged: version 1.0, "Foundation Brand Standard". Its locked decisions
+(§16) are the brand name **ForgeAXI**, Midnight `#101D35`, Ice `#45CBE8`,
+White, Inter (Aptos in Microsoft 365), a horizontal logo with the emblem
+on the left, the line "One connected pursuit. From opportunity to
+submission." and the descriptor "Proposal Lifecycle Platform". It
+replaces the EnableNow look of BL-UI-ENABLENOW (2026-10-21).
+`docs/brand/forgeaxi-logo-source.webp` is the logo artwork as the owner
+supplied it, kept untouched.
+
+**Found in the supplied artwork, for the owner to know:**
+
+- It is a raster image (1536 × 1024, transparent), not a vector. The
+  standard's own §15 asks for vector masters (SVG, reversed, monochrome,
+  favicon set) before the identity is production-final. Until they
+  exist, the product's logo files are built from this image.
+- Its colours measure Ice `#2CB7D3` and Midnight `#0B182A`, not the
+  locked `#45CBE8` and `#101D35`. The product's files are moved onto the
+  locked values (shapes untouched), so the logo and the interface show
+  one Ice. Say so if the artwork's own colours were intended.
+- Its edges are slightly uneven at large sizes, as generated images
+  are. That goes away with a vector master.
+
+**Plan.**
+
+1. **The look (next PR).** The colour tokens move to Ice / Midnight in
+   both themes, Inter replaces Host Grotesk, and the logo replaces the
+   "F" tile in the side menu, the sign-in pages, the public pages, the
+   partner and reviewer pages and the browser tab. `CLAUDE.md` and
+   `docs/DESIGN_SYSTEM.md` are rewritten to the new palette. Choices
+   made there, each for the owner to overrule:
+   - **Ice is not text on white.** Ice on white is 1.9:1, far under the
+     4.5:1 that text needs (the standard's §14 says to validate). On the
+     light theme, links, focus rings and "in progress" use a deepened
+     Ice (`#0B728F`, 5.5:1); Ice itself is kept for fills, bars and the
+     logo. On the dark theme Ice reads 8.8:1 on Midnight and is used as
+     it is.
+   - **Primary buttons** are Midnight with white lettering on the light
+     theme and Ice with Midnight lettering on the dark theme.
+   - **The dark theme's ground** is Midnight, with Midnight 800 panels
+     (it was near-black).
+   - **Status colours** take the standard's Success, Warning and
+     Critical, each with a deeper step where it must read as text.
+     Review (indigo) and pink team (plum) have no equivalent in the
+     standard and keep their hues.
+   - **The reversed logo** (white lettering, §4.9) is made from the same
+     artwork for the dark theme, since no reversed master was supplied.
+   - **Geist Mono stays** for numbers, times and compact labels; the
+     standard names no monospace face.
+2. **The name.** "FORGE" appears in about 380 places in the product's
+   own words, in every email and throughout both manuals. They become
+   "ForgeAXI", and the expansion "Framework for Optimized Response
+   Generation & Execution" goes. Its own PR (or two, for the size).
+3. **Type to the standard.** §10 asks for 12 px at the least and Inter
+   labels of 13 to 14 px; the product's small labels are 10 px
+   monospace capitals in several hundred places. Its own PR.
+
+**Open for the owner (asked 2026-11-26):**
+
+1. **"FORGE AI"**, the assistant's name in the product: "ForgeAXI AI",
+   or another name? The standard warns against leaning on "AI" (§3.6).
+2. **Emails:** the logo at the top of every email needs a public web
+   address for the image. Use the production site's own address, or
+   keep emails to the name in type until the vector masters exist?
+3. **Vector masters:** will a designer supply the SVG set of §15, or
+   should the product stay on files built from the raster?
 
 ### BL-UI-UNIFORM — One accent, readable ink, no leftover chrome
 **Priority:** P1  ·  **Effort:** M  ·  **Status:** ✅ shipped: A, B, C1–C10, D, the manuals and the Command Center pass (#400–#417), C11 tables (#481), C12 (#482)
