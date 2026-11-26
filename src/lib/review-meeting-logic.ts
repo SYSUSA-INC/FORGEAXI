@@ -103,7 +103,7 @@ export function inviteDescription(i: Pick<ReviewInvite, "url" | "sections" | "in
   const lines = [`Join: ${i.url}`, scope];
   const charge = (i.instructions ?? "").trim();
   if (charge) lines.push(`Instructions: ${charge}`);
-  lines.push(`Review in FORGE: ${i.reviewUrl}`);
+  lines.push(`Review in ForgeAXI: ${i.reviewUrl}`);
   return lines.join("\n");
 }
 

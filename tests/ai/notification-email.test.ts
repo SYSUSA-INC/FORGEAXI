@@ -49,7 +49,7 @@ describe("buildRuleNotificationEmail", () => {
   });
 
   it("prefixes the subject and keeps it under the cap", () => {
-    expect(built.subject).toBe("[FORGE] Proposal advanced to <pink>");
+    expect(built.subject).toBe("[ForgeAXI] Proposal advanced to <pink>");
     const long = buildRuleNotificationEmail({
       subject: "x".repeat(500),
       ruleName: "r",
@@ -68,7 +68,7 @@ describe("buildRuleNotificationEmail", () => {
 
   it("links to the absolute in-app URL in both parts", () => {
     expect(built.html).toContain('href="https://forge.example.com/proposals/abc"');
-    expect(built.text).toContain("Open in FORGE: https://forge.example.com/proposals/abc");
+    expect(built.text).toContain("Open in ForgeAXI: https://forge.example.com/proposals/abc");
   });
 
   it("omits the body paragraph when there is no body", () => {
@@ -90,18 +90,18 @@ describe("buildDigestEmail", () => {
       cadence: "daily",
       appUrl: "https://forge.example.com",
     });
-    expect(one.subject).toBe("[FORGE] Daily review digest — 1 daily update");
+    expect(one.subject).toBe("[ForgeAXI] Daily review digest — 1 daily update");
     const many = buildDigestEmail({
       ruleName: "Weekly wrap",
       count: 12,
       cadence: "weekly",
       appUrl: "https://forge.example.com",
     });
-    expect(many.subject).toBe("[FORGE] Weekly wrap — 12 weekly updates");
+    expect(many.subject).toBe("[ForgeAXI] Weekly wrap — 12 weekly updates");
     expect(many.text).toContain("12 updates waiting");
   });
 
-  it("lists the reader's next actions when given, each linking into FORGE (BL-NEXT-ACTION 5b)", () => {
+  it("lists the reader's next actions when given, each linking into ForgeAXI (BL-NEXT-ACTION 5b)", () => {
     const d = buildDigestEmail({
       ruleName: "Weekly wrap",
       count: 2,

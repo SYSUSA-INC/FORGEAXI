@@ -21,6 +21,8 @@ from PIL import Image
 ROOT = Path(__file__).resolve().parent.parent
 SOURCE = ROOT / "docs/brand/forgeaxi-logo-source.webp"
 OUT = ROOT / "src/assets/brand"
+PUBLIC = ROOT / "public/brand"
+EMAIL_SIZE = (360, 76)
 APP = ROOT / "src/app"
 
 SRC_MIDNIGHT = np.array([11, 24, 42], float)
@@ -70,7 +72,15 @@ def main() -> None:
     # Next.js file conventions: the browser tab icon and the home-screen icon.
     square.resize((96, 96), Image.LANCZOS).save(APP / "icon.png", optimize=True)
     square.resize((180, 180), Image.LANCZOS).save(APP / "apple-icon.png", optimize=True)
-    print(f"lockup {light.size}, emblem {square.size}")
+    # Email: clients need a plain PNG at a fixed public address. Flattened
+    # onto white (the email card), so a client that darkens the message
+    # cannot leave Midnight lettering on a dark ground. Twice the size it
+    # is shown at (EMAIL_LOGO in src/lib/app-url.ts).
+    flat = Image.new("RGB", light.size, (255, 255, 255))
+    flat.paste(light, mask=light.getchannel("A"))
+    PUBLIC.mkdir(parents=True, exist_ok=True)
+    flat.resize(EMAIL_SIZE, Image.LANCZOS).save(PUBLIC / "forgeaxi-logo-email.png", optimize=True)
+    print(f"lockup {light.size}, emblem {square.size}, email {EMAIL_SIZE}")
 
 
 if __name__ == "__main__":

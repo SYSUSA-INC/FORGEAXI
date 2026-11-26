@@ -3,7 +3,7 @@ import "server-only";
 import { and, eq, sql } from "drizzle-orm";
 import { db } from "@/db";
 import { memberships, organizations, users } from "@/db/schema";
-import { sendEmail } from "@/lib/email";
+import { emailShell, sendEmail } from "@/lib/email";
 import { log } from "@/lib/log";
 import { EMAIL_HEX } from "@/lib/theme-colors";
 
@@ -93,15 +93,15 @@ export async function sendPaymentFailedEmail(input: {
     try {
       await sendEmail({
         to: r.email,
-        subject: `FORGE payment failed — ${amount} for ${org?.name ?? "your organization"}`,
-        html: buildHtml({
+        subject: `ForgeAXI payment failed — ${amount} for ${org?.name ?? "your organization"}`,
+        html: emailShell("Payment failed", buildHtml({
           orgName: org?.name ?? "Your organization",
           recipientName: r.name ?? null,
           amount,
           nextAttempt,
           attemptCount: input.attemptCount,
           hostedInvoiceUrl: input.hostedInvoiceUrl,
-        }),
+        })),
         text: buildText({
           orgName: org?.name ?? "Your organization",
           amount,
@@ -169,7 +169,7 @@ function buildHtml(args: {
   return /* html */ `
     <p style="margin:0 0 16px 0;">${greeting}</p>
     <p style="margin:0 0 16px 0;">
-      A recent FORGE subscription charge of <strong>${args.amount}</strong>
+      A recent ForgeAXI subscription charge of <strong>${args.amount}</strong>
       for <strong>${args.orgName}</strong> didn't go through. Stripe will
       automatically retry on <strong>${args.nextAttempt}</strong>; you don't
       need to do anything if the issue resolves itself (e.g. temporary
@@ -183,7 +183,7 @@ function buildHtml(args: {
     <p style="margin:24px 0 0 0;color:${EMAIL_HEX.muted};font-size:12px;">
       This is attempt ${args.attemptCount} of Stripe's retry sequence.
       After all retries are exhausted, your subscription will be
-      automatically cancelled and FORGE access will revert to your
+      automatically cancelled and ForgeAXI access will revert to your
       previous tier.
     </p>
   `;
@@ -197,7 +197,7 @@ function buildText(args: {
   hostedInvoiceUrl: string | null;
 }): string {
   const lines = [
-    `A FORGE subscription charge of ${args.amount} for ${args.orgName} didn't go through.`,
+    `A ForgeAXI subscription charge of ${args.amount} for ${args.orgName} didn't go through.`,
     `Stripe will retry on ${args.nextAttempt}.`,
     "",
   ];

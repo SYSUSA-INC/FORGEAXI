@@ -21,7 +21,7 @@ export function siteDomain(env: Env = process.env): string {
 
 /** The From header for FORGE's mail: `EMAIL_FROM`, else "FORGE <noreply@<site domain>>". */
 export function emailFrom(env: Env = process.env): string {
-  return (env.EMAIL_FROM ?? "").trim() || `FORGE <noreply@${siteDomain(env)}>`;
+  return (env.EMAIL_FROM ?? "").trim() || `ForgeAXI <noreply@${siteDomain(env)}>`;
 }
 
 /** The bare sender address: `EMAIL_FROM_ADDRESS`, else the address in `EMAIL_FROM`, else noreply@<site domain>. */
@@ -39,5 +39,5 @@ export function emailFromDomain(env: Env = process.env): string {
 
 /** The issuer an authenticator app shows beside the account: "FORGE (forgeaxi.com)". */
 export function mfaIssuer(env: Env = process.env): string {
-  return `FORGE (${siteDomain(env)})`;
+  return `ForgeAXI (${siteDomain(env)})`;
 }

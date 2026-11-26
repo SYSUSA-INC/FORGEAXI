@@ -37,7 +37,7 @@ function footer(ruleName: string): { html: string; text: string } {
 }
 
 function openLink(url: string): string {
-  return `<p style="margin:20px 0 0 0;"><a href="${escapeHtml(url)}" style="display:inline-block;padding:10px 16px;border-radius:3px;background:${EMAIL_HEX.accent};color:${EMAIL_HEX.onAccent};font-weight:600;text-decoration:none;font-size:14px;">Open in FORGE</a></p>`;
+  return `<p style="margin:20px 0 0 0;"><a href="${escapeHtml(url)}" style="display:inline-block;padding:10px 16px;border-radius:3px;background:${EMAIL_HEX.accent};color:${EMAIL_HEX.onAccent};font-weight:600;text-decoration:none;font-size:14px;">Open in ForgeAXI</a></p>`;
 }
 
 /** One immediate-frequency notification. */
@@ -48,7 +48,7 @@ export function buildRuleNotificationEmail(input: {
   ruleName: string;
   appUrl: string;
 }): BuiltEmail {
-  const subject = `[FORGE] ${input.subject.trim()}`.slice(0, SUBJECT_MAX);
+  const subject = `[ForgeAXI] ${input.subject.trim()}`.slice(0, SUBJECT_MAX);
   const url = joinAppUrl(input.appUrl, input.linkPath);
   const body = (input.body ?? "").trim();
   const f = footer(input.ruleName);
@@ -60,7 +60,7 @@ export function buildRuleNotificationEmail(input: {
   ]
     .filter(Boolean)
     .join("\n");
-  const text = [input.subject.trim(), body, `Open in FORGE: ${url}`, f.text]
+  const text = [input.subject.trim(), body, `Open in ForgeAXI: ${url}`, f.text]
     .filter(Boolean)
     .join("\n\n");
   return { subject, html, text };
@@ -78,7 +78,7 @@ export function buildDigestEmail(input: {
   const n = Math.max(0, Math.floor(input.count));
   const noun = n === 1 ? "update" : "updates";
   const headline = `${input.ruleName} — ${n} ${input.cadence} ${noun}`;
-  const subject = `[FORGE] ${headline}`.slice(0, SUBJECT_MAX);
+  const subject = `[ForgeAXI] ${headline}`.slice(0, SUBJECT_MAX);
   const url = joinAppUrl(input.appUrl, "/notifications");
   const f = footer(input.ruleName);
   const actions = (input.nextActions ?? []).slice(0, 5);
@@ -94,13 +94,13 @@ export function buildDigestEmail(input: {
   const actionsText = actions.length > 0 ? ["Next actions on your pursuits:", ...actions.map((a) => `- ${a.title} — ${a.pursuit}: ${joinAppUrl(input.appUrl, a.href)}`)].join("\n") : "";
   const html = [
     `<h1 style="margin:0 0 12px 0;font-size:18px;color:${EMAIL_HEX.ink};">${escapeHtml(headline)}</h1>`,
-    `<p style="margin:0;font-size:14px;line-height:1.55;color:${EMAIL_HEX.muted};">Your ${input.cadence} digest has ${n} ${noun} waiting in your FORGE inbox.</p>`,
+    `<p style="margin:0;font-size:14px;line-height:1.55;color:${EMAIL_HEX.muted};">Your ${input.cadence} digest has ${n} ${noun} waiting in your ForgeAXI inbox.</p>`,
     actionsHtml,
     openLink(url),
     f.html,
   ]
     .filter(Boolean)
     .join("\n");
-  const text = [headline, `Your ${input.cadence} digest has ${n} ${noun} waiting in your FORGE inbox.`, actionsText, `Open in FORGE: ${url}`, f.text].filter(Boolean).join("\n\n");
+  const text = [headline, `Your ${input.cadence} digest has ${n} ${noun} waiting in your ForgeAXI inbox.`, actionsText, `Open in ForgeAXI: ${url}`, f.text].filter(Boolean).join("\n\n");
   return { subject, html, text };
 }

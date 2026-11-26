@@ -16,20 +16,20 @@ describe("site domain names", () => {
   });
 
   it("names the authenticator entry after the site", () => {
-    expect(mfaIssuer(prod)).toBe("FORGE (forgeaxi.com)");
-    expect(mfaIssuer({ NEXT_PUBLIC_APP_URL: "https://www.example.org" })).toBe("FORGE (example.org)");
+    expect(mfaIssuer(prod)).toBe("ForgeAXI (forgeaxi.com)");
+    expect(mfaIssuer({ NEXT_PUBLIC_APP_URL: "https://www.example.org" })).toBe("ForgeAXI (example.org)");
   });
 
   it("sends from noreply at the site's domain unless EMAIL_FROM says otherwise", () => {
-    expect(emailFrom(prod)).toBe("FORGE <noreply@forgeaxi.com>");
+    expect(emailFrom(prod)).toBe("ForgeAXI <noreply@forgeaxi.com>");
     expect(emailFromAddress(prod)).toBe("noreply@forgeaxi.com");
     expect(emailFromDomain(prod)).toBe("forgeaxi.com");
-    const env = { ...prod, EMAIL_FROM: "FORGE <alerts@mail.forgeaxi.com>" };
-    expect(emailFrom(env)).toBe("FORGE <alerts@mail.forgeaxi.com>");
+    const env = { ...prod, EMAIL_FROM: "ForgeAXI <alerts@mail.forgeaxi.com>" };
+    expect(emailFrom(env)).toBe("ForgeAXI <alerts@mail.forgeaxi.com>");
     expect(emailFromAddress(env)).toBe("alerts@mail.forgeaxi.com");
     expect(emailFromDomain(env)).toBe("mail.forgeaxi.com");
     expect(emailFromAddress({ ...prod, EMAIL_FROM: "bids@forgeaxi.com" })).toBe("bids@forgeaxi.com");
     expect(emailFromAddress({ ...prod, EMAIL_FROM_ADDRESS: "noreply@other.com", EMAIL_FROM: "x <a@b.com>" })).toBe("noreply@other.com");
-    expect(emailFrom({ ...prod, EMAIL_FROM: "   " })).toBe("FORGE <noreply@forgeaxi.com>");
+    expect(emailFrom({ ...prod, EMAIL_FROM: "   " })).toBe("ForgeAXI <noreply@forgeaxi.com>");
   });
 });

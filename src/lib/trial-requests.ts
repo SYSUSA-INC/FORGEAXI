@@ -70,8 +70,8 @@ async function notifyPlatformAdmins(v: TrialRequestInput): Promise<void> {
     await sendEmail({
       to: a.email,
       subject: `Trial request: ${v.company} (${v.email})`,
-      html: `<p><strong>${esc(v.name)}</strong>${v.jobTitle ? `, ${esc(v.jobTitle)}` : ""} at <strong>${esc(v.company)}</strong> (${esc(v.email)}) asked for a FORGE trial.</p>${v.message ? `<blockquote>${esc(v.message)}</blockquote>` : ""}<p><a href="${url}">Approve or decline in the SuperAdmin portal</a></p>`,
-      text: `${v.name}${v.jobTitle ? `, ${v.jobTitle}` : ""} at ${v.company} (${v.email}) asked for a FORGE trial.${v.message ? `\n\n${v.message}` : ""}\n\nApprove or decline: ${url}`,
+      html: `<p><strong>${esc(v.name)}</strong>${v.jobTitle ? `, ${esc(v.jobTitle)}` : ""} at <strong>${esc(v.company)}</strong> (${esc(v.email)}) asked for a ForgeAXI trial.</p>${v.message ? `<blockquote>${esc(v.message)}</blockquote>` : ""}<p><a href="${url}">Approve or decline in the SuperAdmin portal</a></p>`,
+      text: `${v.name}${v.jobTitle ? `, ${v.jobTitle}` : ""} at ${v.company} (${v.email}) asked for a ForgeAXI trial.${v.message ? `\n\n${v.message}` : ""}\n\nApprove or decline: ${url}`,
     });
   }
 }

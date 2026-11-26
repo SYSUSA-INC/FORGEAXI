@@ -1,6 +1,6 @@
 import { Resend } from "resend";
 import { log } from "@/lib/log";
-import { appBaseUrl, inviteUrl, passwordResetUrl, verifyEmailUrl } from "@/lib/app-url";
+import { EMAIL_LOGO, appBaseUrl, emailLogoUrl, inviteUrl, passwordResetUrl, verifyEmailUrl } from "@/lib/app-url";
 import { buildDigestEmail, buildRuleNotificationEmail } from "@/lib/notification-email";
 import { EMAIL_HEX } from "@/lib/theme-colors";
 import { emailFrom, emailFromAddress } from "@/lib/site-domain";
@@ -89,7 +89,8 @@ export class EmailRefusedError extends Error {}
 // to what the email carries.
 const baseUrl = appBaseUrl;
 
-function emailShell(title: string, body: string): string {
+/** The page every email sits in: the ForgeAXI logo, the body, the descriptor. */
+export function emailShell(title: string, body: string): string {
   return `<!doctype html>
 <html>
   <head>
@@ -104,19 +105,15 @@ function emailShell(title: string, body: string): string {
           <table role="presentation" width="560" cellspacing="0" cellpadding="0" style="background:${EMAIL_HEX.card};border-radius:5px;overflow:hidden;border:1px solid ${EMAIL_HEX.line};">
             <tr>
               <td style="padding:32px 40px;">
-                <div style="display:flex;align-items:center;gap:10px;margin-bottom:24px;">
-                  <div style="width:32px;height:32px;border-radius:3px;background:${EMAIL_HEX.accent};color:${EMAIL_HEX.card};font-weight:800;display:flex;align-items:center;justify-content:center;font-size:14px;">F</div>
-                  <div>
-                    <div style="font-weight:600;font-size:14px;color:${EMAIL_HEX.ink};">FORGE</div>
-                    <div style="font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:${EMAIL_HEX.muted};">Proposal Ops</div>
-                  </div>
+                <div style="margin:0 0 28px 0;">
+                  <img src="${escapeHtml(emailLogoUrl())}" alt="ForgeAXI" width="${EMAIL_LOGO.width}" height="${EMAIL_LOGO.height}" style="display:block;border:0;outline:none;text-decoration:none;width:${EMAIL_LOGO.width}px;height:${EMAIL_LOGO.height}px;font-weight:600;font-size:16px;color:${EMAIL_HEX.ink};" />
                 </div>
                 ${body}
               </td>
             </tr>
             <tr>
               <td style="padding:16px 40px;border-top:1px solid ${EMAIL_HEX.line};font-size:11px;color:${EMAIL_HEX.muted};">
-                FORGE · Government procurement response platform
+                ForgeAXI · Proposal Lifecycle Platform
               </td>
             </tr>
           </table>
@@ -132,7 +129,7 @@ export async function sendVerificationEmail(to: string, token: string): Promise<
   const body = `
     <h1 style="font-size:20px;font-weight:600;margin:0 0 12px 0;color:${EMAIL_HEX.ink};">Verify your email</h1>
     <p style="margin:0 0 20px 0;font-size:14px;line-height:1.55;color:${EMAIL_HEX.muted};">
-      Welcome to Forge. Confirm this is your email address by clicking the button below.
+      Welcome to ForgeAXI. Confirm this is your email address by clicking the button below.
       The link expires in 24 hours.
     </p>
     <p style="margin:24px 0;">
@@ -148,9 +145,9 @@ export async function sendVerificationEmail(to: string, token: string): Promise<
   `;
   await sendEmail({
     to,
-    subject: "Verify your email for Forge",
+    subject: "Verify your email for ForgeAXI",
     html: emailShell("Verify your email", body),
-    text: `Verify your email for Forge by visiting: ${url}\n\nThis link expires in 24 hours.`,
+    text: `Verify your email for ForgeAXI by visiting: ${url}\n\nThis link expires in 24 hours.`,
   });
 }
 
@@ -159,7 +156,7 @@ export async function sendPasswordResetEmail(to: string, token: string): Promise
   const body = `
     <h1 style="font-size:20px;font-weight:600;margin:0 0 12px 0;color:${EMAIL_HEX.ink};">Reset your password</h1>
     <p style="margin:0 0 20px 0;font-size:14px;line-height:1.55;color:${EMAIL_HEX.muted};">
-      We received a request to reset your Forge password. Click the button below to choose a new one.
+      We received a request to reset your ForgeAXI password. Click the button below to choose a new one.
       The link expires in 1 hour.
     </p>
     <p style="margin:24px 0;">
@@ -175,9 +172,9 @@ export async function sendPasswordResetEmail(to: string, token: string): Promise
   `;
   await sendEmail({
     to,
-    subject: "Reset your Forge password",
+    subject: "Reset your ForgeAXI password",
     html: emailShell("Reset your password", body),
-    text: `Reset your Forge password by visiting: ${url}\n\nThis link expires in 1 hour.`,
+    text: `Reset your ForgeAXI password by visiting: ${url}\n\nThis link expires in 1 hour.`,
   });
 }
 
@@ -191,11 +188,11 @@ export async function sendInviteEmail(opts: {
 }): Promise<void> {
   const url = inviteUrl(opts.inviteId, opts.token);
   const body = `
-    <h1 style="font-size:20px;font-weight:600;margin:0 0 12px 0;color:${EMAIL_HEX.ink};">You&#39;re invited to Forge</h1>
+    <h1 style="font-size:20px;font-weight:600;margin:0 0 12px 0;color:${EMAIL_HEX.ink};">You&#39;re invited to ForgeAXI</h1>
     <p style="margin:0 0 20px 0;font-size:14px;line-height:1.55;color:${EMAIL_HEX.muted};">
       ${escapeHtml(opts.inviterName)} has invited you to join <strong style="color:${EMAIL_HEX.ink};">${escapeHtml(
         opts.organizationName,
-      )}</strong> on Forge as <strong style="color:${EMAIL_HEX.ink};">${escapeHtml(
+      )}</strong> on ForgeAXI as <strong style="color:${EMAIL_HEX.ink};">${escapeHtml(
         opts.role,
       )}</strong>. Click below to create your account.
       The link expires in 7 days.
@@ -213,9 +210,9 @@ export async function sendInviteEmail(opts: {
   `;
   await sendEmail({
     to: opts.to,
-    subject: `You're invited to ${opts.organizationName} on Forge`,
-    html: emailShell("You're invited to Forge", body),
-    text: `${opts.inviterName} has invited you to join ${opts.organizationName} on Forge.\nAccept: ${url}\n\nThis link expires in 7 days.`,
+    subject: `You're invited to ${opts.organizationName} on ForgeAXI`,
+    html: emailShell("You're invited to ForgeAXI", body),
+    text: `${opts.inviterName} has invited you to join ${opts.organizationName} on ForgeAXI.\nAccept: ${url}\n\nThis link expires in 7 days.`,
   });
 }
 
@@ -299,13 +296,13 @@ export async function sendReviewMeetingEmail(opts: {
       <a href="${escapeHtml(opts.url)}" style="display:inline-block;padding:14px 24px;border-radius:3px;background:${EMAIL_HEX.accent};color:${EMAIL_HEX.card};text-decoration:none;font-weight:700;font-size:14px;letter-spacing:0.02em;">Join the meeting</a>
     </p>
     <p style="margin:0 0 8px 0;font-size:12px;color:${EMAIL_HEX.muted};word-break:break-all;">Meeting link: ${escapeHtml(opts.url)}</p>
-    <p style="margin:0;font-size:12px;color:${EMAIL_HEX.muted};word-break:break-all;">Review in FORGE: ${escapeHtml(opts.reviewUrl)}</p>
+    <p style="margin:0;font-size:12px;color:${EMAIL_HEX.muted};word-break:break-all;">Review in ForgeAXI: ${escapeHtml(opts.reviewUrl)}</p>
   `;
   await sendEmail({
     to: opts.to,
     subject: `${heading}: ${opts.proposalTitle}`,
     html: emailShell(heading, body),
-    text: `${lead}\n${opts.proposalTitle}, ${when}.\nIn scope for you: ${scope}.\nJoin: ${opts.url}\nReview in FORGE: ${opts.reviewUrl}`,
+    text: `${lead}\n${opts.proposalTitle}, ${when}.\nIn scope for you: ${scope}.\nJoin: ${opts.url}\nReview in ForgeAXI: ${opts.reviewUrl}`,
     ...(opts.ics ? { attachments: [{ filename: "review-meeting.ics", content: Buffer.from(opts.ics, "utf8"), contentType: "text/calendar; charset=utf-8; method=PUBLISH" }] } : {}),
   });
 }
@@ -434,14 +431,14 @@ export async function sendPartnerInviteEmail(opts: {
     </p>
     <a href="${opts.url}" style="display:inline-block;padding:14px 24px;border-radius:3px;background:${EMAIL_HEX.accent};color:${EMAIL_HEX.card};text-decoration:none;font-weight:700;font-size:14px;letter-spacing:0.02em;">Answer the questions</a>
     <p style="margin:16px 0 0 0;font-size:12px;line-height:1.5;color:${EMAIL_HEX.muted};">
-      No FORGE account is needed. This link is personal to you and expires in ${opts.days} days; you can come back and change your answers until then. Only ${escapeHtml(opts.organizationName)} sees them.
+      No ForgeAXI account is needed. This link is personal to you and expires in ${opts.days} days; you can come back and change your answers until then. Only ${escapeHtml(opts.organizationName)} sees them.
     </p>
   `;
   await sendEmail({
     to: opts.to,
-    from: `"FORGE" <${emailFromAddress()}>`,
+    from: `"ForgeAXI" <${emailFromAddress()}>`,
     replyTo: opts.senderEmail || undefined,
-    subject: `[FORGE] Capability questions — ${opts.opportunityTitle}`.slice(0, 120),
+    subject: `[ForgeAXI] Capability questions — ${opts.opportunityTitle}`.slice(0, 120),
     html: emailShell(`Capability questions — ${opts.opportunityTitle}`, body),
     text:
       `${opts.senderName} from ${opts.organizationName} is considering ${opts.companyName} as a teaming partner on "${opts.opportunityTitle}" and asks how ${opts.companyName} covers each capability the work needs (Yes / Partial / No, with evidence) and which ISO, CMMI and CMMC certifications it holds.` +
@@ -550,13 +547,13 @@ export async function sendOpportunityReviewRequestEmail(opts: {
   // the body ("[Sender Name] from [Sender Company] would like..."),
   // and Reply-To routes replies to the human's real address.
   const fromAddr = emailFromAddress();
-  const platformFrom = `"FORGE" <${fromAddr}>`;
+  const platformFrom = `"ForgeAXI" <${fromAddr}>`;
 
   await sendEmail({
     to: opts.to,
     from: platformFrom,
     replyTo: opts.senderEmail || undefined,
-    subject: `[FORGE] Review request — ${opts.opportunityTitle}`.slice(0, 120),
+    subject: `[ForgeAXI] Review request — ${opts.opportunityTitle}`.slice(0, 120),
     html: emailShell(`Review request — ${opts.opportunityTitle}`, body),
     text:
       `${opts.senderName} from ${opts.organizationName} would like your quick read on "${opts.opportunityTitle}" (${opts.agency}, due ${opts.dueDate}).` +
@@ -571,7 +568,7 @@ export async function sendOpportunityReviewRequestEmail(opts: {
 export async function sendMfaResetEmail(opts: { to: string; reason: string; byEmail: string | null; byCompanyAdmin?: boolean }): Promise<void> {
   const url = `${appBaseUrl()}/sign-in`;
   // BL-MFA-ADMIN — a company admin can reset a member too.
-  const who = opts.byCompanyAdmin ? "Your company's FORGE administrator" : "A FORGE platform administrator";
+  const who = opts.byCompanyAdmin ? "Your company's ForgeAXI administrator" : "A ForgeAXI platform administrator";
   const reason = escapeHtml(opts.reason);
   const body = `
     <h1 style="font-size:20px;font-weight:600;margin:0 0 12px 0;color:${EMAIL_HEX.ink};">Your two-step sign-in was reset</h1>
@@ -580,7 +577,7 @@ export async function sendMfaResetEmail(opts: { to: string; reason: string; byEm
     </p>
     <blockquote style="margin:0 0 20px 0;padding:10px 14px;border-left:3px solid ${EMAIL_HEX.accent};font-size:14px;line-height:1.55;color:${EMAIL_HEX.ink};">${reason}</blockquote>
     <p style="margin:0 0 20px 0;font-size:14px;line-height:1.55;color:${EMAIL_HEX.muted};">
-      Your password is unchanged. The next time you sign in, FORGE asks you to set up two-step sign-in again (a passkey or an authenticator app) and gives you new recovery codes.
+      Your password is unchanged. The next time you sign in, ForgeAXI asks you to set up two-step sign-in again (a passkey or an authenticator app) and gives you new recovery codes.
     </p>
     <p style="margin:24px 0;">
       <a href="${url}" style="display:inline-block;padding:14px 24px;border-radius:3px;background:${EMAIL_HEX.accent};color:${EMAIL_HEX.card};text-decoration:none;font-weight:700;font-size:14px;letter-spacing:0.02em;">Sign in</a>
@@ -591,7 +588,7 @@ export async function sendMfaResetEmail(opts: { to: string; reason: string; byEm
   `;
   await sendEmail({
     to: opts.to,
-    subject: "Your FORGE two-step sign-in was reset",
+    subject: "Your ForgeAXI two-step sign-in was reset",
     html: emailShell("Two-step sign-in reset", body),
     text: `${who}${opts.byEmail ? ` (${opts.byEmail})` : ""} reset your two-step sign-in and signed you out everywhere.\n\nReason: ${opts.reason}\n\nYour password is unchanged. Sign in at ${url} to set it up again.\n\nDid not expect this? Contact your administrator before signing in.`,
   });
@@ -600,7 +597,7 @@ export async function sendMfaResetEmail(opts: { to: string; reason: string; byEm
 /** BL-MFA-RECOVERY — the single-use link that gets a person past the second step once. */
 export async function sendMfaRecoveryLinkEmail(opts: { to: string; url: string; minutes: number }): Promise<void> {
   const body = `
-    <h1 style="font-size:20px;font-weight:600;margin:0 0 12px 0;color:${EMAIL_HEX.ink};">Your FORGE recovery link</h1>
+    <h1 style="font-size:20px;font-weight:600;margin:0 0 12px 0;color:${EMAIL_HEX.ink};">Your ForgeAXI recovery link</h1>
     <p style="margin:0 0 12px 0;font-size:14px;line-height:1.55;color:${EMAIL_HEX.muted};">
       You asked for a way past the second step because your passkey and authenticator app can't be used. Open this link in the browser where you just entered your password. It works once, for ${opts.minutes} minutes.
     </p>
@@ -608,7 +605,7 @@ export async function sendMfaRecoveryLinkEmail(opts: { to: string; url: string; 
       <a href="${opts.url}" style="display:inline-block;padding:14px 24px;border-radius:3px;background:${EMAIL_HEX.accent};color:${EMAIL_HEX.card};text-decoration:none;font-weight:700;font-size:14px;letter-spacing:0.02em;">Continue signing in</a>
     </p>
     <p style="margin:0 0 12px 0;font-size:14px;line-height:1.55;color:${EMAIL_HEX.muted};">
-      Once you are in, FORGE takes you to Settings → Security to replace what you lost.
+      Once you are in, ForgeAXI takes you to Settings → Security to replace what you lost.
     </p>
     <p style="margin:24px 0 0 0;font-size:12px;color:${EMAIL_HEX.muted};">
       Did not ask for this? Someone has your password. Change it now, and tell your administrator.
@@ -616,7 +613,7 @@ export async function sendMfaRecoveryLinkEmail(opts: { to: string; url: string; 
   `;
   await sendEmail({
     to: opts.to,
-    subject: "Your FORGE recovery link",
+    subject: "Your ForgeAXI recovery link",
     html: emailShell("Recovery link", body),
     text: `Open this link in the browser where you just entered your password. It works once, for ${opts.minutes} minutes:\n\n${opts.url}\n\nDid not ask for this? Someone has your password: change it now and tell your administrator.`,
   });
@@ -625,7 +622,7 @@ export async function sendMfaRecoveryLinkEmail(opts: { to: string; url: string; 
 /** BL-MFA-RECOVERY — a recovery link was used: told to the person and to every platform administrator. */
 export async function sendMfaRecoveryUsedEmail(opts: { to: string; who: string; at: string; self: boolean }): Promise<void> {
   const who = escapeHtml(opts.who);
-  const lead = opts.self ? "You signed in to FORGE with a recovery link" : `${who} signed in to FORGE with a recovery link`;
+  const lead = opts.self ? "You signed in to ForgeAXI with a recovery link" : `${who} signed in to ForgeAXI with a recovery link`;
   const body = `
     <h1 style="font-size:20px;font-weight:600;margin:0 0 12px 0;color:${EMAIL_HEX.ink};">A recovery link was used</h1>
     <p style="margin:0 0 12px 0;font-size:14px;line-height:1.55;color:${EMAIL_HEX.muted};">
@@ -637,9 +634,9 @@ export async function sendMfaRecoveryUsedEmail(opts: { to: string; who: string; 
   `;
   await sendEmail({
     to: opts.to,
-    subject: opts.self ? "You used a FORGE recovery link" : `${opts.who} used a FORGE recovery link`,
+    subject: opts.self ? "You used a ForgeAXI recovery link" : `${opts.who} used a ForgeAXI recovery link`,
     html: emailShell("Recovery link used", body),
-    text: `${opts.self ? "You" : opts.who} signed in to FORGE with a recovery link at ${opts.at} (UTC). It is recorded in the Audit Log.`,
+    text: `${opts.self ? "You" : opts.who} signed in to ForgeAXI with a recovery link at ${opts.at} (UTC). It is recorded in the Audit Log.`,
   });
 }
 
@@ -649,7 +646,7 @@ export async function sendEmailChangeConfirmEmail(opts: { to: string; token: str
   const body = `
     <h1 style="font-size:20px;font-weight:600;margin:0 0 12px 0;color:${EMAIL_HEX.ink};">Confirm your new email address</h1>
     <p style="margin:0 0 20px 0;font-size:14px;line-height:1.55;color:${EMAIL_HEX.muted};">
-      The FORGE account for <strong style="color:${EMAIL_HEX.ink};">${escapeHtml(opts.currentEmail)}</strong> asked to move to this address. Click the button to confirm. Nothing changes until you do; the link expires in 24 hours.
+      The ForgeAXI account for <strong style="color:${EMAIL_HEX.ink};">${escapeHtml(opts.currentEmail)}</strong> asked to move to this address. Click the button to confirm. Nothing changes until you do; the link expires in 24 hours.
     </p>
     <p style="margin:24px 0;">
       <a href="${url}" style="display:inline-block;padding:14px 24px;border-radius:3px;background:${EMAIL_HEX.accent};color:${EMAIL_HEX.card};text-decoration:none;font-weight:700;font-size:14px;letter-spacing:0.02em;">Confirm new address</a>
@@ -664,19 +661,19 @@ export async function sendEmailChangeConfirmEmail(opts: { to: string; token: str
   `;
   await sendEmail({
     to: opts.to,
-    subject: "Confirm your new FORGE email address",
+    subject: "Confirm your new ForgeAXI email address",
     html: emailShell("Confirm your new email address", body),
-    text: `The FORGE account for ${opts.currentEmail} asked to move to this address. Confirm by visiting: ${url}\n\nNothing changes until you do; the link expires in 24 hours. If you didn't ask for this, ignore this email.`,
+    text: `The ForgeAXI account for ${opts.currentEmail} asked to move to this address. Confirm by visiting: ${url}\n\nNothing changes until you do; the link expires in 24 hours. If you didn't ask for this, ignore this email.`,
   });
 }
 
 /** BL-STAB-8b-3 — the old address is told: a change was requested, or it went through. */
 export async function sendEmailChangeNoticeEmail(opts: { to: string; newEmail: string; confirmed: boolean }): Promise<void> {
   const url = `${appBaseUrl()}/settings/security`;
-  const headline = opts.confirmed ? "Your FORGE email address changed" : "A change of email address was requested";
+  const headline = opts.confirmed ? "Your ForgeAXI email address changed" : "A change of email address was requested";
   const line = opts.confirmed
-    ? `Your FORGE account now signs in as <strong style="color:${EMAIL_HEX.ink};">${escapeHtml(opts.newEmail)}</strong>, and every open session was signed out. This address no longer opens the account.`
-    : `Someone signed in to your FORGE account and asked to move it to <strong style="color:${EMAIL_HEX.ink};">${escapeHtml(opts.newEmail)}</strong>. Nothing changes until that inbox confirms within 24 hours. If this was you, there is nothing to do.`;
+    ? `Your ForgeAXI account now signs in as <strong style="color:${EMAIL_HEX.ink};">${escapeHtml(opts.newEmail)}</strong>, and every open session was signed out. This address no longer opens the account.`
+    : `Someone signed in to your ForgeAXI account and asked to move it to <strong style="color:${EMAIL_HEX.ink};">${escapeHtml(opts.newEmail)}</strong>. Nothing changes until that inbox confirms within 24 hours. If this was you, there is nothing to do.`;
   const action = opts.confirmed
     ? "If this was not you, contact your administrator at once: they can reset your two-step sign-in and your password."
     : `If this was not you, cancel it under Settings → Security (${url}) and change your password.`;
@@ -712,7 +709,7 @@ export async function sendCrossDomainApprovalEmail(opts: {
   const url = `${baseUrl()}/admin`;
   const home = opts.homeOrganizationName
     ? `their email domain belongs to <strong style="color:${EMAIL_HEX.ink};">${escapeHtml(opts.homeOrganizationName)}</strong>`
-    : "their email domain is not owned by any tenant on Forge";
+    : "their email domain is not owned by any tenant on ForgeAXI";
   const body = `
     <h1 style="font-size:20px;font-weight:600;margin:0 0 12px 0;color:${EMAIL_HEX.ink};">Approval needed: cross-domain invitation</h1>
     <p style="margin:0 0 20px 0;font-size:14px;line-height:1.55;color:${EMAIL_HEX.muted};">

@@ -48,7 +48,7 @@ async function addRender(t: TenantFixture, bytes: Uint8Array): Promise<string> {
   return row!.id;
 }
 
-describe("BL-NAV-LIFECYCLE 6b — Send from FORGE", () => {
+describe("BL-NAV-LIFECYCLE 6b — Send from ForgeAXI", () => {
   let fx: TwoTenantFixture;
   let renderA = "";
   const domainBefore = process.env.INBOUND_EMAIL_DOMAIN;
@@ -134,7 +134,7 @@ describe("BL-NAV-LIFECYCLE 6b — Send from FORGE", () => {
     await handleSubmissionSend(job(res.submissionId));
     expect(mocks.sendEmailTracked).toHaveBeenCalledTimes(1);
     const sent = mocks.sendEmailTracked.mock.calls[0]![0] as { from: string; replyTo: string; to: string[]; cc: string[]; idempotencyKey: string; attachments: { filename: string; content: Buffer }[] };
-    expect(sent.from).toMatch(new RegExp(`^".+ via FORGE" <${address}>$`));
+    expect(sent.from).toMatch(new RegExp(`^".+ via ForgeAXI" <${address}>$`));
     expect(sent).toMatchObject({ replyTo: address, to: ["co@agency.gov"], cc: ["specialist@agency.gov", "lead@test.example"], idempotencyKey: `submission-send/${res.submissionId}` });
     expect(sent.attachments).toHaveLength(1);
     expect(sent.attachments[0]!.filename).toBe("Volume I - Technical.pdf");

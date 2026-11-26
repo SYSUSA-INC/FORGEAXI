@@ -17,6 +17,19 @@ export function appBaseUrl(env: Record<string, string | undefined> = process.env
   return "https://www.forgeaxi.com";
 }
 
+/**
+ * BL-BRAND-FORGEAXI — the logo at the top of every email. Mail clients
+ * load images by absolute https address and do not read SVG, so the
+ * light lockup is a PNG in public/brand (built by
+ * scripts/build-brand-assets.py at twice this size). 180 px wide: the
+ * brand standard's minimum for the lockup is 160.
+ */
+export const EMAIL_LOGO = { path: "/brand/forgeaxi-logo-email.png", width: 180, height: 38 } as const;
+
+export function emailLogoUrl(env: Record<string, string | undefined> = process.env): string {
+  return `${appBaseUrl(env)}${EMAIL_LOGO.path}`;
+}
+
 /** The sign-up page pre-filled from an invite; consumed by /api/register. */
 export function inviteUrl(
   inviteId: string,

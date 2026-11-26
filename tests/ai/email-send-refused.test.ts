@@ -27,7 +27,7 @@ describe("sendEmail", () => {
     send.mockResolvedValue({ data: { id: "e1" }, error: null });
     const { sendEmail } = await load();
     await sendEmail({ to: "a@b.com", subject: "Hi", html: "<p>Hi</p>" });
-    expect(send).toHaveBeenCalledWith(expect.objectContaining({ from: expect.stringMatching(/^FORGE <noreply@[a-z0-9.-]+>$/) }));
+    expect(send).toHaveBeenCalledWith(expect.objectContaining({ from: expect.stringMatching(/^ForgeAXI <noreply@[a-z0-9.-]+>$/) }));
   });
 
   it("throws when Resend refuses, naming an unverified domain", async () => {

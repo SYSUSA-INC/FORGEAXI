@@ -150,7 +150,7 @@ describe("the inputs of Record submission", () => {
   });
 });
 
-describe("6b — the rules of Send from FORGE", () => {
+describe("6b — the rules of Send from ForgeAXI", () => {
   it("warns above 20 MB and refuses above 35 MB", () => {
     expect(sendSize(0)).toBe("ok");
     expect(sendSize(SEND_WARN_BYTES)).toBe("ok");
@@ -170,9 +170,9 @@ describe("6b — the rules of Send from FORGE", () => {
   });
 
   it("writes the From header with the company's name, and nothing that could break it", () => {
-    expect(sendFromHeader("Acme Federal, Inc.", "sub-k3q9x7m2pa@bids.forgeaxi.com")).toBe('"Acme Federal, Inc. via FORGE" <sub-k3q9x7m2pa@bids.forgeaxi.com>');
-    expect(sendFromHeader('Evil" <x@y.z>\r\nBcc: a@b.c', "sub-a@d.com")).toBe('"Evil x@y.z Bcc: a@b.c via FORGE" <sub-a@d.com>');
-    expect(sendFromHeader("", "sub-a@d.com")).toBe('"FORGE" <sub-a@d.com>');
+    expect(sendFromHeader("Acme Federal, Inc.", "sub-k3q9x7m2pa@bids.forgeaxi.com")).toBe('"Acme Federal, Inc. via ForgeAXI" <sub-k3q9x7m2pa@bids.forgeaxi.com>');
+    expect(sendFromHeader('Evil" <x@y.z>\r\nBcc: a@b.c', "sub-a@d.com")).toBe('"Evil x@y.z Bcc: a@b.c via ForgeAXI" <sub-a@d.com>');
+    expect(sendFromHeader("", "sub-a@d.com")).toBe('"ForgeAXI" <sub-a@d.com>');
   });
 
   it("starts the subject with the solicitation number", () => {

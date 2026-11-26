@@ -119,7 +119,7 @@ export const RECORD_METHODS = ["own_email", "government_portal", "other"] as con
 export type RecordMethod = (typeof RECORD_METHODS)[number];
 
 export const SUBMISSION_METHOD_LABELS: Record<"portal_email" | RecordMethod, string> = {
-  portal_email: "Sent from FORGE",
+  portal_email: "Sent from ForgeAXI",
   own_email: "Sent from our own email",
   government_portal: "Uploaded to a government portal",
   other: "Another way",
@@ -190,7 +190,7 @@ export function deliveryLocalPart(random: Uint8Array): string {
 /** The From header: `"{Company name} via FORGE" <sub-…@domain>` (decision 4). */
 export function sendFromHeader(companyName: string, address: string): string {
   const name = String(companyName ?? "").replace(/["<>\\\r\n]+/g, " ").replace(/\s+/g, " ").trim().slice(0, 100);
-  return `"${name ? `${name} via FORGE` : "FORGE"}" <${address}>`;
+  return `"${name ? `${name} via ForgeAXI` : "ForgeAXI"}" <${address}>`;
 }
 
 /** The subject the form starts with: the solicitation number, the proposal's title and the company's name. */
