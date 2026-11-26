@@ -40,7 +40,7 @@ export function UserMenu({ user }: { user: UserLike | null }) {
         />
       ) : (
         <span
-          className="aur-brand-mark grid h-7 w-7 place-items-center rounded-full font-mono text-[10px] font-medium text-white"
+          className="aur-brand-mark grid h-7 w-7 place-items-center rounded-full font-mono text-[10px] font-medium text-on-action"
         >
           {initials}
         </span>

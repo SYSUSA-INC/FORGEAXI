@@ -1,5 +1,6 @@
 import { loadPartnerMatrixAction } from "./actions";
 import { PartnerMatrixClient } from "./PartnerMatrixClient";
+import { Logo } from "@/components/brand/Logo";
 
 export const dynamic = "force-dynamic";
 
@@ -14,11 +15,8 @@ export default async function PartnerMatrixPage({ params }: { params: { token: s
     <main className="min-h-screen bg-canvas text-text">
       <div className="mx-auto max-w-3xl p-6 sm:p-8">
         <div className="flex items-center gap-3">
-          <div className="aur-brand-mark grid h-10 w-10 place-items-center rounded-lg font-display text-lg font-medium text-white">F</div>
-          <div>
-            <div className="font-display text-base font-semibold text-text">FORGE</div>
-            <div className="font-mono text-[10px] uppercase tracking-label text-muted">Capability questions</div>
-          </div>
+          <Logo height={34} priority />
+          <div className="font-mono text-[10px] uppercase tracking-label text-muted">Capability questions</div>
         </div>
         {res.ok ? (
           <PartnerMatrixClient token={params.token} view={res.view} />

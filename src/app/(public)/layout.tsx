@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { auth } from "@/auth";
 import { ThemeToggle } from "@/components/shell/ThemeToggle";
+import { Logo } from "@/components/brand/Logo";
 
 export default async function PublicLayout({
   children,
@@ -14,17 +15,8 @@ export default async function PublicLayout({
     <div className="aur-topline relative min-h-screen overflow-hidden bg-canvas text-text">
       <header className="relative z-10 flex items-center justify-between px-6 py-5 md:px-10">
         <Link href="/" className="flex items-center gap-3">
-          <div className="aur-brand-mark grid h-8 w-8 place-items-center rounded-lg font-display text-sm font-bold text-white shadow-glow">
-            F
-          </div>
-          <div className="leading-none">
-            <div className="font-display text-[15px] font-semibold tracking-tight text-text">
-              FORGE
-            </div>
-            <div className="mt-0.5 font-mono text-[10px] uppercase tracking-label text-muted">
-              Proposal Ops
-            </div>
-          </div>
+          <Logo height={34} priority />
+          <span className="hidden font-mono text-[10px] uppercase tracking-label text-muted sm:inline">Proposal Lifecycle Platform</span>
         </Link>
         <nav className="flex items-center gap-3">
           <ThemeToggle />
@@ -58,7 +50,7 @@ export default async function PublicLayout({
       </header>
       <main className="relative z-10 px-4 pb-20">{children}</main>
       <footer className="relative z-10 border-t border-layer/5 px-6 py-6 text-center font-mono text-[10px] uppercase tracking-widest text-muted md:px-10">
-        © {new Date().getFullYear()} FORGE · Proposal Ops for federal & commercial procurement
+        © {new Date().getFullYear()} ForgeAXI · Proposal Lifecycle Platform
       </footer>
     </div>
   );

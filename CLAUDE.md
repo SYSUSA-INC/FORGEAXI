@@ -2,47 +2,75 @@
 
 Read `AGENTS.md` first: it holds the agent guidelines, the conventions
 and the pointers to `docs/ENGINEERING_STANDARDS.md`. This file adds the
-brand palette so it is in front of you whenever you touch the UI.
+brand so it is in front of you whenever you touch the UI.
 
 @AGENTS.md
 
-## Brand palette (EnableNow, owner 2026-10-21)
+## The ForgeAXI brand (owner, 2026-11-26)
 
-FORGE follows the EnableNow design system. These are its colours as the
-owner gave them. In components, never write the hex: use the FORGE
-token on the right (a Tailwind class, or `THEME.*` in JavaScript). The
-rules and the full token list are in `docs/DESIGN_SYSTEM.md`.
+The product is **ForgeAXI**, a proposal lifecycle platform. The owner's
+brand standard is `docs/brand/BRAND_GUIDELINES.md`: read its §16 (locked
+decisions) and §17 (instructions for AI systems) before any brand, logo
+or copy work. It replaces the EnableNow palette of 2026-10-21. If a
+request conflicts with the standard, say so; do not quietly change it.
 
-**Core brand colours**
+- **Name:** always **ForgeAXI**, capitalised exactly so. Descriptor:
+  "Proposal Lifecycle Platform". Brand line: "One connected pursuit.
+  From opportunity to submission."
+- **Logo:** artwork only, never typed and never redrawn. Use
+  `<Logo />` or `<LogoEmblem />` from `src/components/brand/Logo.tsx`.
+  The lockup is at least 160 px wide, the emblem at least 24 px, each
+  with clear space around it. The files are built from the owner's
+  artwork by `scripts/build-brand-assets.py`.
+- **Type:** Inter (400, 500, 600, 700). Geist Mono for numbers, times
+  and compact labels.
+- **Voice:** clear, confident, human, about outcomes. No "revolutionary",
+  "game-changing", "effortless", "AI-powered", sparkles or robots.
+
+## Brand palette
+
+These are the standard's colours. In components, never write the hex:
+use the FORGE token on the right (a Tailwind class, or `THEME.*` in
+JavaScript). The token names are older than the brand (the Ice family is
+still called `cobalt`); the names stay so no component has to change.
+The rules and the full token list are in `docs/DESIGN_SYSTEM.md`.
+
+**Primary brand colours**
 
 | Colour | Hex | FORGE token |
 |---|---|---|
-| Brand Blue | `#2953D7` | `action`, `accent` (light), `cobalt` / `cobalt-500` (light) |
-| Deep Blue | `#06268F` | `cobalt-200`, `cobalt-700` (light): blue text on a pale tint |
-| Navy | `#0C1F59` | `layer` (light): hairlines and washes as `border-layer/10`, `bg-layer/5` |
-| Night Blue | `#030C22` | not a token (the dark ground is slate-950 `#050608`) |
-| Bright Blue | `#4583FF` | `cobalt-400` (dark) |
+| Midnight | `#101D35` | `text`, `layer`, `action` (light); `canvas` (dark); `on-action` (dark) |
+| Ice | `#45CBE8` | `cobalt-400` (light): fills, bars, chart marks; `cobalt` / `cobalt-500`, `accent`, `action` (dark) |
+| White | `#FFFFFF` | `canvas`, `paper`, `on-action` (light); `text` (dark) |
 
-**Light backgrounds**
+Ice on white is 1.9:1, so on the light theme it is never text, a link, a
+focus ring or a thin mark. The readable Ice there is `cobalt` /
+`cobalt-500` and `accent`: a deepened Ice, `#0B728F` (5.5:1), which is
+FORGE's own extension of the standard.
 
-| Colour | Hex | FORGE token |
-|---|---|---|
-| White | `#FFFFFF` | `canvas`, `paper` (light) |
-| Slate 25 | `#F6F7FA` | `bone` (light): quiet panels |
-| Slate 50 | `#EEF1F7` | `concrete` (light): cool panels |
-| Blue 50 | `#EEF3FF` | `cobalt-200` (dark) |
-| Blue 100 | `#DCE5FF` | `cobalt-300` (dark) |
-| Blue 200 | `#B8C9FF` | `accent`, `cobalt` / `cobalt-500` (dark) |
-
-**Supporting colours** — used selectively, not on every screen.
+**Supporting neutrals**
 
 | Colour | Hex | FORGE token |
 |---|---|---|
-| Teal | `#096F64` | `green` / `green-500` (light), `signal-live` (light): success, done, won |
-| Indigo | `#254AC4` | not a token: too close to Brand Blue to read as a separate status; FORGE's `indigo` family (analysis, review) is its own |
-| Spark Blue | `#1D52F9` | not a token: one blue carries action and emphasis |
-| Signal Light Green | `#E5FFE8` | `signal-soft`, `green-200` (dark) |
-| Signal Green | `#A7E7B5` | `signal-live` (dark), `green-300` (dark) |
+| Midnight 800 | `#182943` | `paper` (dark), `action-hover` (light) |
+| Slate 700 | `#34465D` | `muted` (light) |
+| Slate 500 | `#69798D` | `faint` (dark); on light `subtle` is a step deeper, `#5A6A7E`, to reach 4.5:1 |
+| Slate 300 | `#B6C0CC` | `faint` (light), `muted` (dark) |
+| Slate 200 | `#D6DDE5` | not a token: `border-layer/15` lands on it |
+| Slate 100 | `#EDF1F5` | `concrete` (light) |
+| Slate 50 | `#F7F9FB` | `bone` (light) |
+
+**Functional colours** — for state only, never as a second brand colour.
+
+| Colour | Hex | FORGE token |
+|---|---|---|
+| Success | `#16865C` | `green-400` (light), `green-700` (dark); `green` / `green-500` is a deeper step for text |
+| Warning | `#D98B16` | `brass-400` (light), `brass-600` (dark); `brass` / `brass-500` is a deeper step for text (the brand value is 2.7:1 on white) |
+| Critical | `#C83E4D` | `red-400` (light), `red-600` (dark); `red` / `red-500` is a deeper step for text |
+| Information | `#45CBE8` | the Ice family (`cobalt`) |
+
+Review (`indigo`) and pink team (`plum`) have no colour in the standard
+and keep FORGE's own hues.
 
 Light and dark use the same names. Where a row says "(light)" or
 "(dark)", that theme's `globals.css` block holds the value. The other
@@ -50,15 +78,18 @@ theme holds the matching colour for its ground.
 
 **The rules that make it read as one system** (`docs/DESIGN_SYSTEM.md` §4):
 
-- **One accent.** Blue means action, selection and emphasis. Everything
-  else is ink, slate and paper.
+- **Midnight carries the authority, Ice is the signature.** Ink,
+  headings and primary buttons are Midnight (on the dark theme the
+  ground is Midnight and primary buttons are Ice). Ice marks selection,
+  focus and what is live, and stays scarce: never a wash, never
+  decoration.
 - **Hairlines, not boxes.** A card is paper with a 1px hairline. Only
   menus and dialogs float with a shadow.
 - **Status means the same thing everywhere.**
   - green: done or won;
   - red: blocked, lost or mandatory;
   - brass: attention or partial;
-  - cobalt: in progress;
+  - cobalt (the Ice family): in progress;
   - indigo: analysis or review;
   - plum: pink team;
   - muted: not started.

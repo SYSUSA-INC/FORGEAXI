@@ -49,16 +49,25 @@ describe("theme tokens — CSS", () => {
 
   it("the two themes actually differ where they should", () => {
     expect(LIGHT.get("canvas")).not.toBe(DARK.get("canvas"));
-    // BL-UI-ENABLENOW: hairlines in EnableNow navy (blue-900); the brand
-    // blue (blue-600) on paper, Bright Blue (blue-400) on the dark ground; the
-    // text accent on dark is blue-200 (--c-accent).
-    expect(LIGHT.get("layer")).toBe("12 31 89");
+    // BL-BRAND-FORGEAXI (docs/brand/BRAND_GUIDELINES.md §16): hairlines
+    // and ink in Midnight #101D35; Ice #45CBE8 is the accent and the
+    // readable Ice on the Midnight ground, and a fill (cobalt-400) on
+    // paper, where a deepened Ice carries text. Primary buttons are
+    // Midnight with white lettering on paper, Ice with Midnight
+    // lettering on Midnight.
+    const MIDNIGHT = "16 29 53";
+    const ICE = "69 203 232";
+    expect(LIGHT.get("layer")).toBe(MIDNIGHT);
+    expect(LIGHT.get("text")).toBe(MIDNIGHT);
+    expect(DARK.get("canvas")).toBe(MIDNIGHT);
     expect(DARK.get("layer")).toBe("255 255 255");
-    expect(LIGHT.get("cobalt-500")).toBe("41 83 215");
-    expect(DARK.get("cobalt-500")).toBe("69 131 255");
-    expect(LIGHT.get("accent")).toBe("41 83 215");
-    expect(DARK.get("accent")).toBe("184 201 255");
-    expect(LIGHT.get("action")).toBe(DARK.get("action"));
+    expect(LIGHT.get("cobalt-400")).toBe(ICE);
+    expect(LIGHT.get("cobalt-500")).toBe("11 114 143");
+    expect(DARK.get("cobalt-500")).toBe(ICE);
+    expect(LIGHT.get("accent")).toBe(LIGHT.get("cobalt-500"));
+    expect(DARK.get("accent")).toBe(ICE);
+    expect([LIGHT.get("action"), LIGHT.get("on-action")]).toEqual([MIDNIGHT, "255 255 255"]);
+    expect([DARK.get("action"), DARK.get("on-action")]).toEqual([ICE, MIDNIGHT]);
   });
 });
 

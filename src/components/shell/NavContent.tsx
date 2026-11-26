@@ -14,6 +14,7 @@ import {
   type WorkspaceNavGroup,
   type WorkspaceNavItem,
 } from "@/lib/nav-workspaces";
+import { Logo, LogoEmblem } from "@/components/brand/Logo";
 
 type NavUser = {
   name: string | null;
@@ -292,9 +293,7 @@ export function NavContent({
     return (
       <>
         <div className="flex h-14 items-center justify-center border-b border-layer/10">
-          <div className="aur-brand-mark grid h-8 w-8 place-items-center rounded-lg font-display text-sm font-bold text-white shadow-glow">
-            F
-          </div>
+          <LogoEmblem size={32} />
         </div>
 
         {workspaces.length > 1 ? (
@@ -410,16 +409,8 @@ export function NavContent({
   return (
     <>
       <div className="flex h-14 items-center gap-3 border-b border-layer/10 px-5">
-        <div className="aur-brand-mark grid h-8 w-8 place-items-center rounded-lg font-display text-sm font-bold text-white shadow-glow">
-          F
-        </div>
-        <div className="flex-1 leading-none">
-          <div className="font-display text-[15px] font-semibold tracking-tight">
-            FORGE
-          </div>
-          <div className="mt-0.5 font-mono text-[10px] uppercase tracking-label text-muted">
-            {meta.subtitle}
-          </div>
+        <div className="flex-1">
+          <Logo height={34} priority />
         </div>
         {!hideRailToggle && (
           <button
@@ -433,6 +424,8 @@ export function NavContent({
           </button>
         )}
       </div>
+      {/* The workspace's name sits under the logo, outside its clear space: nothing is typed into the lockup. */}
+      <div className="px-5 pt-3 font-mono text-[10px] uppercase tracking-label text-muted">{meta.subtitle}</div>
 
       {workspaces.length > 1 ? (
         <div className="border-b border-layer/10 px-3 py-2">
@@ -639,7 +632,7 @@ function UserAvatar({
             referrerPolicy="no-referrer"
           />
         ) : (
-          <span className="aur-brand-mark grid h-9 w-9 place-items-center rounded-full font-mono text-[11px] font-bold text-white">
+          <span className="aur-brand-mark grid h-9 w-9 place-items-center rounded-full font-mono text-[11px] font-bold text-on-action">
             {initials}
           </span>
         )}
@@ -663,7 +656,7 @@ function UserAvatar({
             referrerPolicy="no-referrer"
           />
         ) : (
-          <span className="aur-brand-mark grid h-9 w-9 place-items-center rounded-full font-mono text-[11px] font-bold text-white">
+          <span className="aur-brand-mark grid h-9 w-9 place-items-center rounded-full font-mono text-[11px] font-bold text-on-action">
             {initials}
           </span>
         )}
