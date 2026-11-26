@@ -13,7 +13,7 @@ export const maxDuration = 300;
  * Wired in vercel.json:
  *   { "path": "/api/cron/proposal-scan", "schedule": "every-5-minutes" }
  *
- * Fires every 5 minutes. Finds proposals that have been dirty for ≥ 5
+ * Fires every 15 minutes (five until 2026-11). Finds proposals that have been dirty for ≥ 5
  * minutes (generous window avoids racing with the 65s client-side
  * debounce) and runs up to 5 scans per invocation. Oldest-dirty-first
  * so no proposal is perpetually starved when the batch cap is hit.

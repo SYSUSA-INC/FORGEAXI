@@ -3,7 +3,7 @@
  * collector that reads them.
  *
  * `queueAiBatch` submits one tenant's requests and stores the batch.
- * `collectAiBatches` runs from the jobs cron every five minutes: it asks
+ * `collectAiBatches` runs from the jobs cron every fifteen minutes: it asks
  * the provider where each open batch stands, claims an ended one (so two
  * ticks never read it twice), logs and meters every outcome like a live
  * call, and hands each validated result to the feature's handler under

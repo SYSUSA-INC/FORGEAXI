@@ -12,7 +12,7 @@ import { probeCorsForOrigin, probeStorage, uploadOrigins, type CorsProbe, type S
 /**
  * BL-AIP-4c — run one jobs-cron tick on demand from the admin page
  * (preview deployments have no Vercel Cron; production operators can
- * drain the queue without waiting five minutes). Platform-wide by
+ * drain the queue without waiting fifteen minutes). Platform-wide by
  * design; the audit row lands on the superadmin's current org.
  */
 export async function runJobsNowAction(): Promise<

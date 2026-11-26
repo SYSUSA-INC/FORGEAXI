@@ -22,7 +22,7 @@ Effort key:
 
 ## State of the backlog
 
-**As of 2026-11-26, `main` at `499cbe1`, through PR #518, plus the Neon snapshot fix (PR #519).** Checked
+**As of 2026-11-26, `main` at `cb10c7f`, through PR #519, plus the scheduled-jobs change (PR #520).** Checked
 against the merged pull requests and the code, not against the entries'
 own wording. If the date or the sha here is old, check `git log` before
 trusting a status below, and correct this section in the same PR.
@@ -133,6 +133,13 @@ until someone says it is done.
   (`INBOUND_EMAIL_DOMAIN`, for example bids.forgeaxi.com) in Resend as a
   sending domain. Until then every real send is refused.
 - **Migrations:** sync 0151 to 0181 on `/admin/migrations`, in order.
+- **Neon's free plan (owner, 2026-11-26):** the owner deleted the
+  snapshot branches and moved the project to the free plan, which
+  suspends the database when its monthly compute runs out. PR #520
+  makes the frequent jobs fire together every 15 minutes so the
+  database can sleep; watch the usage meter on Neon's Billing page for
+  the first weeks, and move to the paid minimum before real customers
+  (the free plan keeps only hours of restore history).
 - **Neon (found 2026-11-26):** the project held 823 branches, all
   `auto-migrate-…` snapshots left by the product's own start-up code
   (fixed in PR #519). Delete them on the Neon console's Branches

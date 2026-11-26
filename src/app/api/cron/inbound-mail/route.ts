@@ -9,8 +9,9 @@ export const maxDuration = 300;
 /**
  * BL-SCOUT-INBOX — Vercel Cron handler that reads FORGE's shared Exchange
  * mailbox (Microsoft Graph) for the emails portals send to companies' bid
- * addresses. Wired in vercel.json at "/api/cron/inbound-mail", every two
- * minutes. Does nothing until the Graph settings are set (ADMIN_MANUAL §3.7).
+ * addresses. Wired in vercel.json at "/api/cron/inbound-mail", every 15
+ * minutes (it was two until 2026-11: see docs/ADMIN_MANUAL.md §8, "Why
+ * the frequent jobs share one quarter-hour"). Does nothing until the Graph settings are set (ADMIN_MANUAL §3.7).
  *
  * Auth: Bearer ${CRON_SECRET} — same pattern as all other cron routes.
  */
