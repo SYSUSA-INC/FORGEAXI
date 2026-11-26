@@ -622,7 +622,7 @@ function MembersPanel({
                 />
               ) : (
                 <span
-                  className="aur-brand-mark grid h-9 w-9 place-items-center rounded-full font-mono text-[11px] font-medium text-white"
+                  className="aur-brand-mark grid h-9 w-9 place-items-center rounded-full font-mono text-[11px] font-medium text-on-action"
                 >
                   {initials}
                 </span>

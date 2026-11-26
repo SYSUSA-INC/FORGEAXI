@@ -35,6 +35,7 @@ This manual covers what each role can do and where to find the trail FORGE leave
 
 A short tour of what arrived recently; each line points to the section that explains it.
 
+- **FORGE is now ForgeAXI: a new logo and a new look** — the ForgeAXI logo is in the side menu, on the sign-in pages and in the browser tab. The colours are Midnight (a deep navy) and Ice (a bright cyan), the text is set in Inter, and dark mode has a Midnight ground instead of black. Nothing moved and nothing works differently. The name in the product's own words still reads "FORGE" in most places; that changes next (§2.0).
 - **Drop a whole solicitation package at once** — on **Create → Start from a document**, select or drop several files together: FORGE says what each one is (the solicitation, an amendment, Q&A, a PWS or other attachment, a pricing sheet, a form) and shows the lines it went by; you check the labels and file them all with one button (§5.3, Create).
 - **Companion documents: Q&A, pricing sheets and forms** — three new types in a solicitation's **Companion documents** panel. A **Q&A** file's answers are read into **Q&A from the contracting officer** and leave with the file; a **Pricing sheet** or a **Form** is kept and readable but not read for requirements (§6.3, Compliance).
 - **Pipeline → Deliver: what is ready and what was delivered** — the Deliver stage page now has two lists: **Ready to deliver**, with each proposal's sign-off line and due date, and **Delivered**, with how and when each proposal went, to whom, the newest reply and how many replies came since your last message (§2.1, The lifecycle).
@@ -207,22 +208,22 @@ FORGE asks for a second step at every sign-in: after your password (or Google / 
 
 ### 2.0 Look and feel
 
-FORGE follows the EnableNow design system. A few conventions hold on every page, in light and dark mode (the moon button in the top bar switches):
+The product is **ForgeAXI** (it was FORGE), and it wears the ForgeAXI brand: the logo at the top of the side menu (the emblem alone when the menu is collapsed), Midnight and Ice for colour, Inter for text. A few conventions hold on every page, in light and dark mode (the moon button in the top bar switches):
 
-- **One accent.** Blue marks actions, links and where you are. A small **blue diamond** marks the current sidebar item, the current tab and the page's label above its title.
-- **Status colours mean one thing.** Green is done or won; red is blocked, lost or mandatory; amber/brass is attention or partial; blue is in progress; indigo is analysis or review; grey is not started. They are used for status only.
+- **Midnight and Ice.** In light mode the page is white, the text and the main buttons are Midnight (a deep navy), and Ice (a bright cyan) appears sparingly; links and the marks that show where you are use a deeper shade of Ice so they stay readable on white. In dark mode the page is Midnight, the text is white, and Ice is the colour of links, marks and the main buttons. A small **diamond** in that accent marks the current sidebar item, the current tab and the page's label above its title.
+- **Status colours mean one thing.** Green is done or won; red is blocked, lost or mandatory; amber is attention or partial; Ice (the accent) is in progress; indigo is analysis or review; grey is not started. They are used for status only.
 - **Tags are neutral.** Colour-team and stage tags (Pink, Red, Gold, White Gloves, S1–S6) are an ink label with a small diamond in the team's colour. Compliance categories (Section L, M, C, FAR), evidence kinds, knowledge kinds, company relationships and key-date types are plain grey labels. On a solicitation's key dates, the colour shows how close a date is: grey for past, amber within 7 days, ink otherwise.
 - **Tabs** are plain text; the diamond shows on the current tab and on the one under your cursor. The sidebar's group headers are small mono labels with a **+** or **−**.
 - **Page titles** sit on one line at any width, at a regular weight; a long title ends in "…" and shows in full when you hover over it.
 - **Figures and lists.** The tiles under a page title are ink figures on a thin line (only error counts use red). Lists and tables are open rows with a hairline between them, and hover shades a row. The same holds for the rows inside a panel that carry their own controls (a teammate with its remove button, a reviewer with its checkbox, a setting with its toggle) and for a form that opens inside a panel: a hairline above, no box around it.
-- **Buttons and secondary links.** Every button is the same size, in one of three looks: solid blue for the main action, a light button for the others, and plain text for quiet toolbar actions. The action beside a main button that only steps back ("Cancel", "Close", "Dismiss", "Done", "Back", "Open …") is a text link in ink, blue when you hover, not a button.
+- **Buttons and secondary links.** Every button is the same size, in one of three looks: solid for the main action (Midnight in light mode, Ice in dark mode), a light button for the others, and plain text for quiet toolbar actions. The action beside a main button that only steps back ("Cancel", "Close", "Dismiss", "Done", "Back", "Open …") is a text link in ink, the accent colour when you hover, not a button.
 - **Text.** Running sentences are set in the body font; mono is for labels, numbers and identifiers.
 
 After signing in you'll see the main **app shell**:
 
 ![App shell](docs/images/app-shell.png)
 
-- **Left sidebar** — collapsible navigation with a wide mode (full labels + mono group headers with **+/−**, the current page marked with a blue diamond) and an icon-rail mode (icons only, hover to see labels). Click the chevron at the top to toggle. Groups: Command Center, Operations, Opportunities, Customer Relations, Platform Intelligence, Help, and Platform Administration (superadmin only). Operations + sub-pages are gated to org admins. Sub-items render with tree-connector lines so the hierarchy stays visually obvious. See §2.2 for the full nav structure.
+- **Left sidebar** — collapsible navigation with a wide mode (full labels + mono group headers with **+/−**, the current page marked with a diamond) and an icon-rail mode (icons only, hover to see labels). Click the chevron at the top to toggle. Groups: Command Center, Operations, Opportunities, Customer Relations, Platform Intelligence, Help, and Platform Administration (superadmin only). Operations + sub-pages are gated to org admins. Sub-items render with tree-connector lines so the hierarchy stays visually obvious. See §2.2 for the full nav structure.
 - **Top bar** — the mobile hamburger, the **⌘K search box** (find a page or a record, or ask the Brain — see §2.1.1), live session clock, Settings shortcut, and your avatar
 - **Content area** — changes with the page you're on
 - **User identity card** — pinned at the bottom of the sidebar. Shows your name, email, and active org. Click your avatar in the top bar (or the identity card directly) to open the user menu.

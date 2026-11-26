@@ -14,7 +14,8 @@ import type { Config } from "tailwindcss";
  * and numbered stops, so both `text-emerald` and `text-emerald-300`
  * resolve.
  *
- * BL-UI-ENABLENOW — the values behind the variables follow the EnableNow
+ * BL-BRAND-FORGEAXI — the values behind the variables follow the ForgeAXI
+ * brand standard (docs/brand/BRAND_GUIDELINES.md). BL-UI-ENABLENOW set the
  * design system (see globals.css); this file only names them. The radius
  * scale below is EnableNow's too (3 / 5 / 9 / 14 px), so `rounded-lg`
  * on a card renders the 5px corner without touching the component.
@@ -70,10 +71,12 @@ const config: Config = {
       // light one. `bg-layer/5`, `border-layer/10` replace the old
       // white-alpha layer classes so depth reads in both themes.
       layer: v("layer"),
-      // The primary-button fill (EnableNow blue-600 on every ground) and
+      // The primary-button fill (Midnight on light, Ice on dark) and
       // the live signal green (the office clocks).
       action: v("action"),
-      // Labels, links, focus and the diamond: blue-600 on paper, blue-200 on dark.
+      // Lettering on the action fill: white on Midnight (light), Midnight on Ice (dark).
+      "on-action": v("on-action"),
+      // Links, focus and the diamond: deepened Ice on paper, Ice on dark.
       accent: v("accent"),
       signal: { ...green, live: v("signal"), soft: v("signal-soft") },
 
@@ -100,13 +103,14 @@ const config: Config = {
       fontFamily: {
         display: [
           "var(--font-display)",
-          "Host Grotesk",
+          "Inter",
+          "Segoe UI",
           "Arial",
           "ui-sans-serif",
           "system-ui",
           "sans-serif",
         ],
-        stencil: ["var(--font-stencil)", "Host Grotesk", "Arial", "sans-serif"],
+        stencil: ["var(--font-stencil)", "Inter", "Segoe UI", "Arial", "sans-serif"],
         mono: [
           "var(--font-mono)",
           "Geist Mono",
@@ -117,20 +121,21 @@ const config: Config = {
         ],
         body: [
           "var(--font-body)",
-          "Host Grotesk",
+          "Inter",
+          "Segoe UI",
           "Arial",
           "ui-sans-serif",
           "system-ui",
           "sans-serif",
         ],
       },
-      // EnableNow sets three weights: 300 signs, 400 text and headings,
-      // 500 small titles and UI. 600 and heavier fold into 500 everywhere.
+      // Inter in four weights (brand standard §9.2): 400, 500, 600 and
+      // 700. Nothing heavier than Bold.
       fontWeight: {
-        semibold: "500",
-        bold: "500",
-        extrabold: "500",
-        black: "500",
+        semibold: "600",
+        bold: "700",
+        extrabold: "700",
+        black: "700",
       },
       // EnableNow radii: s 3px (controls), m 5px (cards), glass 9px, l 14px.
       borderRadius: {

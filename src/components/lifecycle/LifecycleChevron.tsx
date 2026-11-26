@@ -17,7 +17,7 @@ export function LifecycleChevron({ current, className = "" }: { current: Lifecyc
         {LIFECYCLE.map((stage, i) => {
           const here = i === at;
           const done = i < at;
-          const tone = here ? "bg-action text-white" : done ? "bg-cobalt/20 text-text hover:bg-cobalt/30" : "bg-layer/5 text-muted hover:bg-layer/10";
+          const tone = here ? "bg-action text-on-action" : done ? "bg-cobalt/20 text-text hover:bg-cobalt/30" : "bg-layer/5 text-muted hover:bg-layer/10";
           const shape =
             i === 0
               ? "polygon(0 0, calc(100% - 12px) 0, 100% 50%, calc(100% - 12px) 100%, 0 100%)"

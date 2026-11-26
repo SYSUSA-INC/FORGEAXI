@@ -29,21 +29,7 @@ export default async function SignInPage({
     <div className="grid min-h-[calc(100vh-3.5rem)] place-items-center px-4 py-12">
       <div className="aur-card w-full max-w-md overflow-hidden">
         <div className="px-8 py-10">
-          <div className="flex items-center gap-3">
-            <div
-              className="aur-brand-mark grid h-9 w-9 place-items-center rounded-lg font-display text-sm font-medium text-white"
-            >
-              F
-            </div>
-            <div>
-              <div className="font-display text-[15px] font-semibold tracking-tight text-text">
-                FORGE
-              </div>
-              <div className="font-mono text-[10px] uppercase tracking-label text-muted">
-                Proposal Ops
-              </div>
-            </div>
-          </div>
+          <div className="font-mono text-[10px] uppercase tracking-label text-muted">Proposal Lifecycle Platform</div>
 
           <h1 className="mt-8 font-display text-2xl font-semibold tracking-tight text-text">
             Sign in to Forge
@@ -87,7 +73,7 @@ export default async function SignInPage({
           </div>
 
           <p className="mt-8 text-center text-[11px] text-subtle">
-            By signing in you agree to the FORGE terms of service.
+            By signing in you agree to the ForgeAXI terms of service.
           </p>
         </div>
       </div>

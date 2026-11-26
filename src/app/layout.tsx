@@ -16,14 +16,14 @@ import "./globals.css";
 // Keep these calls below the globals.css import so the generated
 // `.variable` classes come after the `:root` fallbacks in the cascade.
 
-// BL-UI-ENABLENOW — the EnableNow design system's two families: Host
-// Grotesk carries every word (one variable file, wght 300–800, serves
+// BL-BRAND-FORGEAXI — Inter is ForgeAXI's typeface (brand standard §9):
+// it carries every word (one variable file, wght 100–900, serves
 // display, body and stencil: globals.css aliases --font-body and
-// --font-stencil to --font-display); Geist Mono carries labels, numbers,
-// times and metadata, Regular only as EnableNow ships it.
+// --font-stencil to --font-display). Geist Mono stays for numbers,
+// times and compact metadata, Regular only.
 const sans = localFont({
-  src: "./fonts/host-grotesk-latin-wght.woff2",
-  weight: "300 800",
+  src: "./fonts/inter-latin-wght.woff2",
+  weight: "100 900",
   style: "normal",
   display: "swap",
   variable: "--font-display",
@@ -38,9 +38,9 @@ const mono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "FORGE — Proposal Ops",
+  title: "ForgeAXI — Proposal Lifecycle Platform",
   description:
-    "Framework for Optimized Response Generation & Execution — capture, compliance, and proposal collaboration for federal and commercial procurement.",
+    "One connected pursuit. From opportunity to submission. ForgeAXI connects opportunity capture, pursuit management, response development, review, approval and submission.",
 };
 
 // BL-UI-THEME — apply the viewer's saved theme before first paint. Light

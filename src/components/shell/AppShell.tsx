@@ -79,8 +79,8 @@ export async function AppShell({ children }: { children: React.ReactNode }) {
 
           <div className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-label text-muted">
             <span className="h-1.5 w-1.5 animate-pulseSoft rotate-45 bg-signal-live" aria-hidden />
-            <span className="hidden sm:inline">FORGE · Live</span>
-            <span className="sm:hidden">FORGE</span>
+            <span className="hidden sm:inline">ForgeAXI · Live</span>
+            <span className="sm:hidden">Live</span>
           </div>
 
           {/* BL-NAV-WORKSPACES — search box in everyday work; a console badge otherwise. */}
@@ -114,7 +114,7 @@ export async function AppShell({ children }: { children: React.ReactNode }) {
           <footer className="mt-16 border-t border-layer/10 pt-4">
             <div className="flex flex-wrap items-center justify-between gap-3 font-mono text-[10px] uppercase tracking-label text-subtle">
               <span>
-                FORGE · Framework for Optimized Response Generation &amp; Execution
+                ForgeAXI · Proposal Lifecycle Platform
               </span>
               <span>Docs · System status · API</span>
               <span>

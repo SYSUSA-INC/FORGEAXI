@@ -14,9 +14,9 @@ const FONTS_DIR = path.resolve(__dirname, "../../src/app/fonts");
 
 const MANIFEST = [
   {
-    file: "host-grotesk-latin-wght.woff2",
-    bytes: 20296,
-    sha256: "ce9c9db8a488852eb7e4a52f51fd8ce0c93ef61a8d3bfa054b509ec92958dcfe",
+    file: "inter-latin-wght.woff2",
+    bytes: 48256,
+    sha256: "3100e775e8616cd2611beecfa23a4263d7037586789b43f035236a2e6fbd4c62",
   },
   {
     file: "geist-mono-latin-400.woff2",
@@ -36,7 +36,7 @@ describe("vendored fonts (src/app/fonts)", () => {
   }
 
   it("ships the OFL licence text for each family", () => {
-    for (const name of ["OFL-HostGrotesk.txt", "OFL-GeistMono.txt"]) {
+    for (const name of ["OFL-Inter.txt", "OFL-GeistMono.txt"]) {
       const text = readFileSync(path.join(FONTS_DIR, name), "utf-8");
       expect(text).toContain("SIL Open Font License");
     }

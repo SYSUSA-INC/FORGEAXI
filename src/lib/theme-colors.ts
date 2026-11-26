@@ -1,6 +1,6 @@
 /**
- * BL-UI-THEME — the FORGE palette for JavaScript (BL-UI-ENABLENOW: the
- * EnableNow design system's values; see src/app/globals.css).
+ * BL-UI-THEME — the palette for JavaScript (BL-BRAND-FORGEAXI: the
+ * ForgeAXI brand standard's values; see src/app/globals.css).
  *
  * Two exports, two jobs:
  *
@@ -74,46 +74,46 @@ export const PRINT_HEX = {
 } as const;
 
 /**
- * Email colours (EnableNow, light). Email clients cannot read CSS
+ * Email colours (ForgeAXI, light). Email clients cannot read CSS
  * variables or follow a theme, so mail uses these literals: white card on
- * the slate-25 wash, ink and slate text, the brand blue for the button.
+ * the Slate 50 wash, Midnight ink and slate text, a Midnight button.
  */
 export const EMAIL_HEX = {
-  page: "#F6F7FA",
+  page: "#F7F9FB",
   card: "#FFFFFF",
-  ink: "#181B23",
-  muted: "#626B7D",
-  line: "#E4E8F1",
-  accent: "#2953D7",
+  ink: "#101D35",
+  muted: "#5A6A7E",
+  line: "#D6DDE5",
+  accent: "#101D35",
   onAccent: "#FFFFFF",
-  tint: "#EEF3FF",
-  brass: "#785A1C",
-  green: "#096F64",
+  tint: "#EDF1F5",
+  brass: "#855409",
+  green: "#11704D",
 } as const;
 
 /** Literal hex (dark-theme values) for emails, PDFs and stored data. */
 export const THEME_HEX: Record<ThemeColor, string> = {
-  canvas: "#050608",
-  paper: "#0B1019",
-  bone: "#121722",
-  concrete: "#1C2638",
+  canvas: "#101D35",
+  paper: "#182943",
+  bone: "#1F324F",
+  concrete: "#293C5A",
   layer: "#FFFFFF",
   text: "#FFFFFF",
-  muted: "#8F9BB0",
-  subtle: "#768094",
-  faint: "#40506B",
-  cobalt: "#4583FF",
-  cobaltLight: "#A3BFF9",
-  cobaltDeep: "#2E5CE9",
-  brass: "#D3A84C",
-  brassLight: "#DDB864",
-  brassDeep: "#B98C36",
-  green: "#5FC584",
-  greenLight: "#86D9A0",
-  greenDeep: "#2F9E66",
-  red: "#E0606E",
-  redLight: "#E77D89",
-  redDeep: "#C24957",
+  muted: "#B6C0CC",
+  subtle: "#8A98AA",
+  faint: "#69798D",
+  cobalt: "#45CBE8",
+  cobaltLight: "#7DDBF0",
+  cobaltDeep: "#26A6C4",
+  brass: "#E8A43D",
+  brassLight: "#ECAF50",
+  brassDeep: "#D98B16",
+  green: "#3EB886",
+  greenLight: "#62CD9E",
+  greenDeep: "#1E9669",
+  red: "#EE707E",
+  redLight: "#F18692",
+  redDeep: "#C83E4D",
   indigo: "#8090E8",
   indigoLight: "#98A5EF",
   plum: "#B984CC",

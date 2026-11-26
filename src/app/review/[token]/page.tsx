@@ -1,5 +1,6 @@
 import { getReviewRequestByTokenAction } from "@/app/(app)/opportunities/[id]/review/actions";
 import { ReviewClient } from "./ReviewClient";
+import { Logo } from "@/components/brand/Logo";
 
 export const dynamic = "force-dynamic";
 
@@ -48,17 +49,8 @@ export default async function PublicReviewPage({
 function Brand() {
   return (
     <div className="flex items-center gap-3">
-      <div
-        className="aur-brand-mark grid h-10 w-10 place-items-center rounded-lg font-display text-lg font-medium text-white"
-      >
-        F
-      </div>
-      <div>
-        <div className="font-display text-base font-semibold text-text">FORGE</div>
-        <div className="font-mono text-[10px] uppercase tracking-label text-muted">
-          Opportunity review
-        </div>
-      </div>
+      <Logo height={34} priority />
+      <div className="font-mono text-[10px] uppercase tracking-label text-muted">Opportunity review</div>
     </div>
   );
 }

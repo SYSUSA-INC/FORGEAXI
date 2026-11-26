@@ -3,13 +3,14 @@
 @tailwind utilities;
 
 /*
-  BL-UI-THEME — the FORGE palette. BL-UI-ENABLENOW (2026-10-21): the
-  owner asked for FORGE to look like the EnableNow site and its design
-  system (enablenow-website.vercel.app/design-system), using its
-  colours, supporting colours included. Surfaces, type, the primary blue
-  and success come straight from EnableNow's scales (noted per value);
-  attention, danger, review and pink team have no EnableNow equivalent
-  and keep FORGE's own hues.
+  BL-BRAND-FORGEAXI (2026-11-26) — the ForgeAXI palette: Ice / Midnight.
+  The owner's brand standard is docs/brand/BRAND_GUIDELINES.md; its locked
+  colours are Midnight, Ice and White, with a neutral slate scale and
+  three functional colours (Success, Warning, Critical); the hex values
+  are in the standard, §5 to §7, and are not repeated here (the token
+  test refuses a hex in this file). It replaces the EnableNow palette of
+  BL-UI-ENABLENOW. Review (indigo) and pink team (plum) have no brand
+  equivalent and keep FORGE's own hues.
 
   Every colour the UI uses is declared here as an RGB triplet and
   consumed by tailwind.config.ts as `rgb(var(--c-x) / <alpha>)`, so
@@ -19,27 +20,34 @@
   variables.
 
   Two themes share one set of variable names:
-    :root                      light — white paper, slate ink, one blue
-    :root[data-theme="dark"]   dark  — EnableNow's dark theme: cinema
-                               black, navy-black panels, pale blue
-                               accents; chosen from the header toggle
+    :root                      light — white paper, Midnight ink and
+                               actions, Ice kept scarce
+    :root[data-theme="dark"]   dark  — Midnight ground, Midnight 800
+                               panels, white ink, Ice accents and
+                               actions; chosen from the header toggle
                                and kept in localStorage ("forge.theme").
 
   Numbered stops are ROLES, not lightness:
     200 / 300  text on a tinted background   (dark on light, light on dark)
-    400        solid mid tone / gradient start
+    400        solid mid tone / gradient start (the brand value itself)
     500        DEFAULT — readable solid on the canvas
     600 / 700  deep
 
-  `--c-layer` is the ink colour for translucent layers: white on the
-  dark theme, EnableNow navy (blue-900) on the light one, so
-  `border-layer/10` lands on EnableNow's hairline (slate-100) and
-  `border-layer/15` on its strong hairline (slate-200).
+  Ice is 1.9:1 on white, so it is never text or a thin mark
+  on a light surface (brand standard §14). On light, the readable
+  member of the Ice family is cobalt-500, a deepened Ice (5.5:1); Ice
+  itself is cobalt-400, for fills, bars and chart marks. On dark, Ice
+  reads 8.8:1 on Midnight and is cobalt-500 and the accent.
 
-  Families:  cobalt = primary (actions, focus, links, in-progress)
-             brass  = attention (warnings, highlights in review)
-             green  = success / won;  red = danger / lost
+  `--c-layer` is the ink colour for translucent layers: white on the
+  dark theme, Midnight on the light one, so `border-layer/10` and
+  `border-layer/15` land near Slate 100 and Slate 200.
+
+  Families:  cobalt = Ice: selection, focus, links, in-progress
+             brass  = Warning: attention, partial
+             green  = Success: done, won;  red = Critical: blocked, lost
              indigo / plum = analysis / review, pink team
+  (The family names are kept from BL-UI-THEME so no component changes.)
 */
 /* Font fallbacks only. next/font/local binds the self-hosted files to
    these names through a class on <html>; `:where()` keeps this block at
@@ -47,68 +55,69 @@
    plain :root rule it tied with the class and, in dev, won, which left
    every page on the fallback). */
 :where(:root) {
-  --font-display: "Host Grotesk", Arial, ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Inter", "Segoe UI", Arial, ui-sans-serif, system-ui, sans-serif;
   --font-mono: "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
 }
 
 :root {
   /* BL-QC-fonts: body and stencil use the display family. Alias them so
-     the single self-hosted Host Grotesk @font-face (bound to
-     --font-display by next/font/local in layout.tsx) serves all three. */
+     the single self-hosted Inter @font-face (bound to --font-display by
+     next/font/local in layout.tsx) serves all three. */
   --font-stencil: var(--font-display);
   --font-body: var(--font-display);
 
   color-scheme: light;
   --scheme: light;
 
-  /* Surfaces (EnableNow: white paper, slate-25 wash, slate-50 cool) */
+  /* Surfaces: White paper, Slate 50 wash, Slate 100 secondary */
   --c-canvas: 255 255 255;
   --c-paper: 255 255 255;
-  --c-bone: 246 247 250;
-  --c-concrete: 238 241 247;
-  --c-layer: 12 31 89;
-  --c-shadow: 12 31 89;
+  --c-bone: 247 249 251;
+  --c-concrete: 237 241 245;
+  --c-layer: 16 29 53;
+  --c-shadow: 16 29 53;
   --shadow-a: 0.06;
   --shadow-a-lg: 0.14;
-  /* Type (EnableNow ink slate-800; muted slate-600 (chips on a tint stay AA), subtle slate-500; slate-300 faint) */
-  --c-text: 24 27 35;
-  --c-muted: 64 80 107;
-  --c-subtle: 98 107 125;
-  --c-faint: 170 180 200;
-  /* Cobalt — primary: EnableNow's brand blue scale (500 = blue-600) */
-  --c-cobalt-200: 6 38 143;
-  --c-cobalt-300: 25 65 190;
-  --c-cobalt-400: 46 92 233;
-  --c-cobalt-500: 41 83 215;
-  --c-cobalt-600: 25 65 190;
-  --c-cobalt-700: 6 38 143;
-  /* The action colour for primary buttons: blue-600, hover blue-700, in both themes. */
-  --c-action: 41 83 215;
-  --c-action-hover: 25 65 190;
-  /* The accent for labels, links, focus and the diamond (EnableNow --color-accent). */
-  --c-accent: 41 83 215;
-  /* Brass — attention (FORGE's own; EnableNow has no amber). Deep enough to read as text (6.4:1). */
-  --c-brass-200: 88 66 18;
-  --c-brass-300: 104 78 22;
-  --c-brass-400: 211 168 76;
-  --c-brass-500: 120 90 28;
-  --c-brass-600: 104 78 22;
-  --c-brass-700: 88 66 18;
-  /* Green — success: EnableNow's supporting teal-700 (500), deepened for text on a tint */
-  --c-green-200: 5 70 64;
-  --c-green-300: 7 90 81;
-  --c-green-400: 42 157 143;
-  --c-green-500: 9 111 100;
-  --c-green-600: 7 90 81;
-  --c-green-700: 5 70 64;
-  /* Red — danger (FORGE's own) */
-  --c-red-200: 126 46 56;
-  --c-red-300: 158 58 70;
-  --c-red-400: 224 96 110;
-  --c-red-500: 158 58 70;
-  --c-red-600: 126 46 56;
-  --c-red-700: 100 36 45;
-  /* Indigo — analysis / review (FORGE's own: EnableNow's indigo-600 is too close to the brand blue to tell apart) */
+  /* Type: Midnight ink; Slate 700 muted; subtle a step deeper than Slate 500 (which is 4.45:1 on white) so it reads at 5.5:1; Slate 300 faint */
+  --c-text: 16 29 53;
+  --c-muted: 52 70 93;
+  --c-subtle: 90 106 126;
+  --c-faint: 182 192 204;
+  /* Cobalt — the Ice family. 400 is Ice itself; 500 and deeper are Ice deepened until it reads as text on white. */
+  --c-cobalt-200: 9 76 97;
+  --c-cobalt-300: 10 94 119;
+  --c-cobalt-400: 69 203 232;
+  --c-cobalt-500: 11 114 143;
+  --c-cobalt-600: 10 94 119;
+  --c-cobalt-700: 9 76 97;
+  /* Primary buttons: Midnight with white lettering, Midnight 800 on hover. */
+  --c-action: 16 29 53;
+  --c-action-hover: 24 41 67;
+  --c-on-action: 255 255 255;
+  /* The accent for links, focus and the selected mark: deepened Ice (Ice itself fails on white). */
+  --c-accent: 11 114 143;
+  /* Brass — Warning. 400 is the brand value (2.7:1, fills only); 500 is deep enough to read as text (6.4:1). */
+  --c-brass-200: 92 58 6;
+  --c-brass-300: 112 71 8;
+  --c-brass-400: 217 139 22;
+  --c-brass-500: 133 84 9;
+  --c-brass-600: 112 71 8;
+  --c-brass-700: 92 58 6;
+  /* Green — Success. 400 is the brand value; 500 is deepened for text on a tint (6.1:1). */
+  --c-green-200: 10 74 51;
+  --c-green-300: 13 92 63;
+  --c-green-400: 22 134 92;
+  --c-green-500: 17 112 77;
+  --c-green-600: 13 92 63;
+  --c-green-700: 10 74 51;
+  /* Red — Critical. 400 is the brand value; 500 is deepened for text on a tint (6.7:1). */
+  --c-red-200: 110 30 40;
+  --c-red-300: 138 38 50;
+  --c-red-400: 200 62 77;
+  --c-red-500: 168 46 60;
+  --c-red-600: 138 38 50;
+  --c-red-700: 110 30 40;
+  /* Indigo — analysis / review (FORGE's own; the brand standard has no equivalent) */
   --c-indigo-200: 60 70 140;
   --c-indigo-300: 75 88 175;
   --c-indigo-400: 128 144 232;
@@ -120,74 +129,78 @@
   --c-plum-400: 185 132 204;
   --c-plum-500: 111 74 126;
   --c-plum-600: 88 59 100;
-  /* Live signal: EnableNow teal-700 on paper (signal-300 vanishes on white); signal-100 */
-  --c-signal: 9 111 100;
-  --c-signal-soft: 229 255 232;
+  /* Live signal: Success on paper, with its pale tint */
+  --c-signal: 17 112 77;
+  --c-signal-soft: 224 244 235;
 
   /* Gradients — referenced from inline styles as var(--g-*) so no
-     component carries palette numbers. --g-brand is EnableNow's
-     branded banner ground; the bar runs brand blue into its pale band. */
-  --g-brand: linear-gradient(108deg, rgb(15 75 194) 10%, rgb(207 218 254) 100%);
-  --g-brand-bar: linear-gradient(90deg, rgb(var(--c-cobalt-500)), rgb(163 191 249));
+     component carries palette numbers. --g-brand is the masthead
+     ground: Midnight into Midnight 800 (dark, so white lettering sits
+     on it in both themes); the bar runs deepened Ice into Ice. */
+  --g-brand: linear-gradient(108deg, rgb(16 29 53) 10%, rgb(24 41 67) 100%);
+  --g-brand-bar: linear-gradient(90deg, rgb(var(--c-cobalt-500)), rgb(var(--c-cobalt-400)));
   --g-success: linear-gradient(90deg, rgb(var(--c-green-400)), rgb(var(--c-cobalt-400)));
   --g-danger: linear-gradient(90deg, rgb(var(--c-red-500)), rgb(var(--c-plum-500)));
-  /* EnableNow's float shadow, for things that lift off the page (menus, dialogs). */
-  --shadow-float: 0 1px 2px rgb(12 31 89 / 0.06), 0 12px 28px -12px rgb(12 31 89 / 0.22), 0 40px 72px -36px rgb(6 38 143 / 0.38);
+  /* The float shadow, for things that lift off the page (menus, dialogs). */
+  --shadow-float: 0 1px 2px rgb(16 29 53 / 0.06), 0 12px 28px -12px rgb(16 29 53 / 0.22), 0 40px 72px -36px rgb(16 29 53 / 0.34);
 }
 
 :root[data-theme="dark"] {
   color-scheme: dark;
   --scheme: dark;
 
-  /* EnableNow dark theme: dark-ground, dark-wash, dark-cool, slate-700 raised */
-  --c-canvas: 5 6 8;
-  --c-paper: 11 16 25;
-  --c-bone: 18 23 34;
-  --c-concrete: 28 38 56;
+  /* Midnight ground, Midnight 800 panels, two raised steps toward Slate 700 */
+  --c-canvas: 16 29 53;
+  --c-paper: 24 41 67;
+  --c-bone: 31 50 79;
+  --c-concrete: 41 60 90;
   --c-layer: 255 255 255;
-  --c-shadow: 0 0 0;
+  --c-shadow: 5 10 20;
   --shadow-a: 0.35;
   --shadow-a-lg: 0.45;
 
-  /* White ink; slate-400 muted; a tier between slate-400 and -500 that still reads (4.8:1); slate-600 faint */
+  /* White ink; Slate 300 muted; a tier between Slate 300 and 500 that still reads (5.0:1 on a panel); Slate 500 faint */
   --c-text: 255 255 255;
-  --c-muted: 143 155 176;
-  --c-subtle: 118 128 148;
-  --c-faint: 64 80 107;
+  --c-muted: 182 192 204;
+  --c-subtle: 138 152 170;
+  --c-faint: 105 121 141;
 
-  /* The cobalt scale stays saturated on dark (500 = Bright Blue); text accents use
-     --c-accent, EnableNow's blue-200 dark accent. */
-  --c-cobalt-200: 220 229 255;
-  --c-cobalt-300: 184 201 255;
-  --c-cobalt-400: 163 191 249;
-  --c-cobalt-500: 69 131 255;
-  --c-cobalt-600: 46 92 233;
-  --c-cobalt-700: 41 83 215;
-  --c-action: 41 83 215;
-  --c-action-hover: 25 65 190;
-  --c-accent: 184 201 255;
+  /* The Ice family on Midnight: 500 is Ice itself (8.8:1). */
+  --c-cobalt-200: 214 244 250;
+  --c-cobalt-300: 168 231 245;
+  --c-cobalt-400: 125 219 240;
+  --c-cobalt-500: 69 203 232;
+  --c-cobalt-600: 38 166 196;
+  --c-cobalt-700: 22 128 156;
+  /* Primary buttons on Midnight: Ice with Midnight lettering (8.8:1). */
+  --c-action: 69 203 232;
+  --c-action-hover: 125 219 240;
+  --c-on-action: 16 29 53;
+  --c-accent: 69 203 232;
 
-  --c-brass-200: 240 221 170;
-  --c-brass-300: 230 201 126;
-  --c-brass-400: 221 184 100;
-  --c-brass-500: 211 168 76;
-  --c-brass-600: 185 140 54;
-  --c-brass-700: 148 112 42;
+  /* Warning, lifted to read on Midnight */
+  --c-brass-200: 250 229 190;
+  --c-brass-300: 244 204 130;
+  --c-brass-400: 236 175 80;
+  --c-brass-500: 232 164 61;
+  --c-brass-600: 217 139 22;
+  --c-brass-700: 170 108 16;
 
-  /* Success on dark: EnableNow signal-100 / signal-300, into teal-700 */
-  --c-green-200: 229 255 232;
-  --c-green-300: 167 231 181;
-  --c-green-400: 134 217 160;
-  --c-green-500: 95 197 132;
-  --c-green-600: 47 158 102;
-  --c-green-700: 9 111 100;
+  /* Success, lifted to read on Midnight */
+  --c-green-200: 209 245 229;
+  --c-green-300: 150 226 190;
+  --c-green-400: 98 205 158;
+  --c-green-500: 62 184 134;
+  --c-green-600: 30 150 105;
+  --c-green-700: 22 134 92;
 
-  --c-red-200: 245 195 201;
-  --c-red-300: 238 155 164;
-  --c-red-400: 231 125 137;
-  --c-red-500: 224 96 110;
-  --c-red-600: 194 73 87;
-  --c-red-700: 158 58 70;
+  /* Critical, lifted to read on Midnight */
+  --c-red-200: 248 205 210;
+  --c-red-300: 244 160 170;
+  --c-red-400: 241 134 146;
+  --c-red-500: 238 112 126;
+  --c-red-600: 200 62 77;
+  --c-red-700: 160 48 60;
 
   --c-indigo-200: 205 211 249;
   --c-indigo-300: 179 188 245;
@@ -201,12 +214,12 @@
   --c-plum-500: 185 132 204;
   --c-plum-600: 157 106 176;
 
-  --c-signal: 167 231 181;
-  --c-signal-soft: 229 255 232;
+  --c-signal: 98 205 158;
+  --c-signal-soft: 209 245 229;
 
-  /* The resource masthead ground (blue-900 → blue-800 → blue-600) reads on black. */
-  --g-brand: linear-gradient(112deg, rgb(12 31 89), rgb(6 38 143) 52%, rgb(41 83 215));
-  --g-brand-bar: linear-gradient(90deg, rgb(var(--c-cobalt-500)), rgb(var(--c-cobalt-300)));
+  /* The masthead ground on Midnight: one step up, toward Slate 700. */
+  --g-brand: linear-gradient(112deg, rgb(24 41 67), rgb(41 60 90));
+  --g-brand-bar: linear-gradient(90deg, rgb(var(--c-cobalt-600)), rgb(var(--c-cobalt-400)));
   --shadow-float: 0 1px 2px rgb(0 0 0 / 0.4), 0 12px 28px -12px rgb(0 0 0 / 0.6), 0 40px 72px -36px rgb(0 0 0 / 0.7);
 }
 
@@ -225,22 +238,23 @@
     position: relative;
   }
 
-  /* EnableNow: the page at rest is plain paper. Structure comes from
+  /* The page at rest is plain paper. Structure comes from
      hairlines, not from washes or texture behind the content. */
 
   ::selection {
-    background: rgb(220 229 255);
-    color: rgb(12 31 89);
-  }
-
-  /* Headings are Host Grotesk Regular with EnableNow's tight tracking;
-     weight comes from size, not boldness. */
-  h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-display);
-    font-weight: 400;
-    letter-spacing: -0.032em;
+    background: rgb(var(--c-cobalt-400) / 0.35);
     color: rgb(var(--c-text));
   }
+
+  /* Headings are Inter: Bold for h1, SemiBold below it, tightened a
+     little (brand standard §10, §11.4). */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    color: rgb(var(--c-text));
+  }
+  h1 { font-weight: 700; }
 
   *:focus-visible {
     outline: 2px solid rgb(var(--c-accent));
@@ -254,7 +268,7 @@
 }
 
 @layer components {
-  /* Cards: paper with a hairline and EnableNow's 5px radius; no shadow. */
+  /* Cards: paper with a hairline and a 5px radius; no shadow. */
   .aur-card {
     @apply relative border border-layer/10 bg-paper;
     border-radius: 5px;
@@ -286,7 +300,7 @@
     border-radius: 5px;
   }
 
-  /* Three buttons, as EnableNow has: primary (solid blue), light (wash),
+  /* Three buttons: primary (solid Midnight, Ice on dark), light (wash),
      ghost (text). Square-ish 3px corners; a 2px lift on hover. */
   .aur-btn {
     @apply inline-flex items-center justify-center gap-2 border border-layer/15 bg-bone px-3.5 py-1.5 font-display text-sm font-medium text-text transition-all;
@@ -294,7 +308,8 @@
   }
 
   .aur-btn-primary {
-    @apply inline-flex items-center justify-center gap-2 border px-3.5 py-1.5 font-display text-sm font-medium text-white transition-all;
+    @apply inline-flex items-center justify-center gap-2 border px-3.5 py-1.5 font-display text-sm font-medium transition-all;
+    color: rgb(var(--c-on-action));
     background: rgb(var(--c-action));
     border-color: rgb(var(--c-action));
     border-radius: 3px;
@@ -304,7 +319,7 @@
     border-color: rgb(var(--c-action-hover));
   }
 
-  /* One table style: open hairline rows, mono column heads (EnableNow). */
+  /* One table style: open hairline rows, mono column heads. */
   .aur-table {
     @apply w-full text-left font-body text-[13px];
   }
@@ -318,7 +333,7 @@
     @apply py-2 pr-3;
   }
 
-  /* A secondary action as a text link (EnableNow): ink, blue on hover.
+  /* A secondary action as a text link: ink, the accent on hover.
      Cancel, Close, Dismiss, Back and Open beside a primary button. */
   .aur-link {
     @apply inline-flex items-center gap-2 py-1.5 font-display text-[15px] font-medium text-text transition-colors hover:text-cobalt;
@@ -344,7 +359,7 @@
   .aur-btn-primary:not(:disabled):hover {
     transform: translateY(-2px);
   }
-  /* A button carrying both classes ("aur-btn aur-btn-primary") stays blue on
+  /* A button carrying both classes ("aur-btn aur-btn-primary") keeps its fill on
      hover: the light button's hover above would otherwise paint it paper,
      white text on white (BL-SCOUT-ONEPAGE, found on Add to pipeline). */
   .aur-btn.aur-btn-primary:not(:disabled):hover {
@@ -368,7 +383,7 @@
     border-radius: 3px;
   }
 
-  /* Fields: Host Grotesk on paper, EnableNow's strong hairline. */
+  /* Fields: Inter on paper, the strong hairline. */
   .aur-input {
     @apply w-full border border-layer/15 bg-paper px-3 py-2 font-body text-sm text-text placeholder:text-subtle focus:border-cobalt/70 outline-none;
     border-radius: 3px;
@@ -404,17 +419,21 @@
   }
   .brut-divider { @apply aur-divider; }
 
-  /* Brand mark: the "F" tile in the nav and on the auth screens, solid
-     brand blue (EnableNow keeps its logo colour off the interface; this
-     is FORGE's own mark in the interface blue). */
-  .aur-brand-mark { background: rgb(var(--c-action)); }
+  /* The older "F" tile, kept for any place not yet moved to the ForgeAXI
+     logo (src/components/brand/Logo.tsx). */
+  .aur-brand-mark { background: rgb(var(--c-action)); color: rgb(var(--c-on-action)); }
+  /* The ForgeAXI logo: the Midnight lockup on light surfaces, the
+     reversed (white lettering) lockup on Midnight (brand standard §4.8, §4.9). */
+  .brand-logo-reversed { display: none; }
+  :root[data-theme="dark"] .brand-logo-light { display: none; }
+  :root[data-theme="dark"] .brand-logo-reversed { display: block; }
   .aur-brand-dot { background: var(--g-brand-bar); }
   /* The top chrome sits on a plain hairline (no coloured top line). */
   .aur-topline {
     box-shadow: none;
   }
 
-  /* The diamond: EnableNow's one recurring mark, for "this one is on"
+  /* The diamond: the one recurring mark, for "this one is on"
      (the current nav item, the selected tab). */
   .aur-diamond {
     @apply inline-block h-1.5 w-1.5 flex-none rotate-45 bg-accent;
@@ -427,7 +446,7 @@
   }
 
   /* A tab: sans text, the diamond marks the current one and appears on
-     hover (EnableNow). No underline, no box. */
+     hover. No underline, no box. */
   .aur-tab {
     @apply inline-flex items-center gap-2 px-3 py-2 font-display text-[15px] font-medium text-muted transition-colors hover:text-text;
   }
@@ -507,15 +526,15 @@ mark {
 .tiptap-prose p:last-child { margin-bottom: 0; }
 .tiptap-prose h1 {
   font-size: 1.4rem; font-weight: 500; margin: 1em 0 0.4em 0;
-  color: rgb(var(--c-text)); font-family: var(--font-display), "Host Grotesk", sans-serif;
+  color: rgb(var(--c-text)); font-family: var(--font-display), "Inter", sans-serif;
 }
 .tiptap-prose h2 {
   font-size: 1.2rem; font-weight: 500; margin: 0.9em 0 0.3em 0;
-  color: rgb(var(--c-text)); font-family: var(--font-display), "Host Grotesk", sans-serif;
+  color: rgb(var(--c-text)); font-family: var(--font-display), "Inter", sans-serif;
 }
 .tiptap-prose h3 {
   font-size: 1.05rem; font-weight: 500; margin: 0.8em 0 0.25em 0;
-  color: rgb(var(--c-text)); font-family: var(--font-display), "Host Grotesk", sans-serif;
+  color: rgb(var(--c-text)); font-family: var(--font-display), "Inter", sans-serif;
 }
 .tiptap-prose ul, .tiptap-prose ol { padding-left: 1.4em; margin: 0 0 0.75em 0; }
 .tiptap-prose ul { list-style: disc; }
