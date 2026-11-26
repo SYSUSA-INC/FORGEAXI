@@ -20,7 +20,7 @@ export default async function TrialRequestsPage() {
       <PageHeader
         eyebrow="Platform admin · Trials"
         title="Trial requests"
-        subtitle={`People who asked to try FORGE from the public Request-a-trial page (company email only). Approve to create their workspace, invite them as its admin and start a ${TRIAL_DAYS}-day trial; when it ends, editing carries on and AI pauses until they choose a plan.`}
+        subtitle={`People who asked to try ForgeAXI from the public Request-a-trial page (company email only). Approve to create their workspace, invite them as its admin and start a ${TRIAL_DAYS}-day trial; when it ends, editing carries on and AI pauses until they choose a plan.`}
         actions={
           <Link href="/admin" className="aur-link">
             ← SuperAdmin portal

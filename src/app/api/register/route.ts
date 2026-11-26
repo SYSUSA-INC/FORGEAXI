@@ -234,7 +234,7 @@ export async function POST(req: Request) {
       return NextResponse.json(
         {
           ok: false,
-          error: `Your organization (${homeOrganization.name}) is already on FORGE. Ask its admin to invite you instead of creating a new workspace.`,
+          error: `Your organization (${homeOrganization.name}) is already on ForgeAXI. Ask its admin to invite you instead of creating a new workspace.`,
         },
         { status: 403 },
       );

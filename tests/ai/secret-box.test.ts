@@ -122,7 +122,7 @@ describe("BL-STAB-7b — a company's SAM.gov key: shape and save outcomes", () =
     for (const cls of ["key_invalid", "key_forbidden", "timeout", "network", "upstream", "bad_response", "not_found"] as const) {
       expect(saveOutcome({ ok: false, cls })).toEqual({ save: false, cls });
     }
-    expect(savedMessage("ok", "wxyz")).toBe("Saved. SAM.gov accepted the key (••••wxyz); FORGE uses it for your company from now on.");
+    expect(savedMessage("ok", "wxyz")).toBe("Saved. SAM.gov accepted the key (••••wxyz); ForgeAXI uses it for your company from now on.");
     expect(refusedMessage("key_invalid", "abcd")).toBe(
       "SAM.gov rejected this key: it is invalid, expired or not yet active. Nothing was saved. Your current key (••••abcd) is still in use.",
     );

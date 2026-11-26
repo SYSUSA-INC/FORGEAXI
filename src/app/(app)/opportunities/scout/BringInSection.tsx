@@ -55,9 +55,9 @@ export async function SourcePanel({ organizationId, source, isAdmin }: { organiz
         <div className="flex flex-col gap-4">
           <BidEmailPanel address={inbound?.address ?? null} configured={receivingConfigured()} canEdit={isAdmin} />
           <BidInbox isAdmin={isAdmin} />
-          <Panel title="A portal FORGE should read for you" eyebrow="Ask for it">
+          <Panel title="A portal ForgeAXI should read for you" eyebrow="Ask for it">
             <p className="font-body text-[13px] leading-[1.5] text-muted">
-              FORGE reads every bid alert with its AI. A portal you rely on can also get a dedicated reader: name it and how its alerts look, and each request decides which comes first.
+              ForgeAXI reads every bid alert with its AI. A portal you rely on can also get a dedicated reader: name it and how its alerts look, and each request decides which comes first.
             </p>
           </Panel>
           <SourceRequestPanel initialOwnRequests={ownRequests} />
@@ -67,7 +67,7 @@ export async function SourcePanel({ organizationId, source, isAdmin }: { organiz
         <>
           <Panel title={`${source.label}: coming`} eyebrow="Not connected yet">
             <p className="font-body text-[13px] leading-[1.5] text-muted">
-              FORGE will bring in task orders from the contract vehicles you hold (OASIS+, Alliant, SEWP, Polaris and others) here.{" "}
+              ForgeAXI will bring in task orders from the contract vehicles you hold (OASIS+, Alliant, SEWP, Polaris and others) here.{" "}
               Tell us which ones you use and how their notices reach you today: each request is counted and decides what comes first. Until then, paste a notice under GSA email or add it by hand under Create.
             </p>
           </Panel>

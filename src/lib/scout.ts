@@ -539,7 +539,7 @@ export async function runScoutForOrganization(input: {
             }
           }
           if (unsettled > 0) {
-            notes.push(`${unsettled} notice${unsettled === 1 ? "" : "s"} couldn't be checked for the keywords (description too long for FORGE's copy, only a link, or newer than it) within this run's ${DESCRIPTION_READS[sam.cred.source]} SAM.gov reads; the next run tries again while ${unsettled === 1 ? "it is" : "they are"} in the look-back window.`);
+            notes.push(`${unsettled} notice${unsettled === 1 ? "" : "s"} couldn't be checked for the keywords (description too long for ForgeAXI's copy, only a link, or newer than it) within this run's ${DESCRIPTION_READS[sam.cred.source]} SAM.gov reads; the next run tries again while ${unsettled === 1 ? "it is" : "they are"} in the look-back window.`);
           }
         }
         gone.expired += overdue;
@@ -856,7 +856,7 @@ export async function runScoutForOrganization(input: {
     const allowed = await triageAllowance(organizationId, Math.min(maxTriage, ranked.length));
     const queue = ranked.slice(0, allowed);
     if (allowed < Math.min(maxTriage, ranked.length)) {
-      notes.push(`AI review held to ${allowed} find${allowed === 1 ? "" : "s"} this run, so a fifth of this month's AI requests stays for the rest of FORGE; the others wait for next month or a larger allowance.`);
+      notes.push(`AI review held to ${allowed} find${allowed === 1 ? "" : "s"} this run, so a fifth of this month's AI requests stays for the rest of ForgeAXI; the others wait for next month or a larger allowance.`);
     }
     const history = await learningHistory(organizationId);
     const track = await getScoutTrack({ organizationId });
@@ -1537,7 +1537,7 @@ async function clearStaleFinds(organizationId: string, rules: { codes: string[];
   const stored = rules.query ? await (await noticeStore()).lookup(waiting.filter((w) => !w.description).map((w) => w.noticeId)) : new Map();
   const descOf = (w: (typeof waiting)[number]): DescriptionState | null =>
     w.description
-      ? // Saved as readable text, cut at SCOUT_DESCRIPTION_CHARS (or by FORGE's copy, ending "..."): a cut one may hold more.
+      ? // Saved as readable text, cut at SCOUT_DESCRIPTION_CHARS (or by ForgeAXI's copy, ending "..."): a cut one may hold more.
         { text: escapeHtml(w.description), ...(w.description.length >= SCOUT_DESCRIPTION_CHARS || /\.\.\.\s*$/.test(w.description) ? { partial: true as const } : {}) }
       : asDescription(stored.get(w.noticeId.toLowerCase()));
   const stale = waiting.filter((w) => !keep.has(w.noticeId) && staleReason(w, rules, descOf(w)) !== null).map((w) => w.id);

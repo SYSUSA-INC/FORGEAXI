@@ -56,7 +56,7 @@ export function GoldReviewClient({
       try {
         res = await fn();
       } catch {
-        res = { ok: false, error: "FORGE didn't answer. Reload the page to see what was saved." };
+        res = { ok: false, error: "ForgeAXI didn't answer. Reload the page to see what was saved." };
       }
       if (!res.ok) {
         setError(res.error ?? "Something went wrong.");

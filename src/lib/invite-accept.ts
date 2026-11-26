@@ -186,7 +186,7 @@ export async function acceptInvite(opts: {
     return {
       ok: false,
       code: "existing_account",
-      error: "This email already has a FORGE account. Sign in with it (use Forgot password if you need to), and the invitation is accepted automatically.",
+      error: "This email already has a ForgeAXI account. Sign in with it (use Forgot password if you need to), and the invitation is accepted automatically.",
       status: 409,
     };
   }

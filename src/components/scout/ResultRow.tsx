@@ -101,7 +101,7 @@ export function ResultRow({
         <div className="col-span-2 flex flex-wrap items-center gap-x-4 gap-y-1 font-mono text-[11px] md:contents">
           <span className="text-muted md:truncate">{source}</span>
           <span className={dueSoon ? "text-rose-300" : "text-muted"}>{due ?? "—"}</span>
-          <span className="text-text" title="FORGE's fit score, from the reasons shown">{fit === null || fit === undefined ? "—" : fit}</span>
+          <span className="text-text" title="ForgeAXI's fit score, from the reasons shown">{fit === null || fit === undefined ? "—" : fit}</span>
           <div className="flex flex-wrap items-center gap-2 md:justify-end">{actions}</div>
         </div>
       </div>

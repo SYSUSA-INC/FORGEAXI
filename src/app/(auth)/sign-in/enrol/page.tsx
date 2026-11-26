@@ -29,7 +29,7 @@ export default async function EnrolPage({ searchParams }: { searchParams: { call
     <div className="mx-auto w-full max-w-5xl px-2 py-8">
       <h1 className="font-display text-2xl font-semibold tracking-tight text-text">Set up two-step sign-in</h1>
       <p className="mt-2 max-w-2xl text-sm text-muted">
-        FORGE now asks for a second step at every sign-in. {both ? `Add ${missing.map((m) => MFA_METHOD_LABELS[m]).join(" and ")} (platform administrators keep both, so one that stops working never locks you out)` : "Add a passkey or an authenticator app"} for <span className="text-text">{session.user.email}</span>, save the recovery codes it comes with, and you are in. This takes about a minute.
+        ForgeAXI now asks for a second step at every sign-in. {both ? `Add ${missing.map((m) => MFA_METHOD_LABELS[m]).join(" and ")} (platform administrators keep both, so one that stops working never locks you out)` : "Add a passkey or an authenticator app"} for <span className="text-text">{session.user.email}</span>, save the recovery codes it comes with, and you are in. This takes about a minute.
       </p>
       <div className="mt-6">
         <SecurityPanel

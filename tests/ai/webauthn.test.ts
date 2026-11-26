@@ -5,7 +5,7 @@ import { allowedHosts, expectedOrigins, passkeyUsableAt, WEBAUTHN_CHALLENGE_MS, 
 describe("webauthnConfig", () => {
   it("takes the app's origin and its host as the relying party", () => {
     const cfg = webauthnConfig({ NEXT_PUBLIC_APP_URL: "https://www.forgeaxi.com/" });
-    expect(cfg).toEqual({ rpID: "www.forgeaxi.com", rpName: "FORGE", origin: "https://www.forgeaxi.com" });
+    expect(cfg).toEqual({ rpID: "www.forgeaxi.com", rpName: "ForgeAXI", origin: "https://www.forgeaxi.com" });
   });
 
   it("prefers an explicit origin and relying-party id (previews on a parent domain)", () => {
@@ -38,7 +38,7 @@ describe("webauthnConfigFor", () => {
   const prod = { VERCEL_ENV: "production", VERCEL_PROJECT_PRODUCTION_URL: "www.forgeaxi.com" };
 
   it("uses the address in the browser when it is one of the site's own", () => {
-    expect(webauthnConfigFor("www.forgeaxi.com", prod)).toEqual({ rpID: "www.forgeaxi.com", rpName: "FORGE", origin: "https://www.forgeaxi.com" });
+    expect(webauthnConfigFor("www.forgeaxi.com", prod)).toEqual({ rpID: "www.forgeaxi.com", rpName: "ForgeAXI", origin: "https://www.forgeaxi.com" });
     // The bare twin of an allowed host is allowed too.
     expect(webauthnConfigFor("forgeaxi.com", prod).rpID).toBe("forgeaxi.com");
   });
@@ -58,7 +58,7 @@ describe("webauthnConfigFor", () => {
 
   it("serves a preview at its own Vercel URL and a local run on its port", () => {
     expect(webauthnConfigFor("forge-git-x.vercel.app", { VERCEL_ENV: "preview", VERCEL_URL: "forge-abc.vercel.app", VERCEL_BRANCH_URL: "forge-git-x.vercel.app" }).origin).toBe("https://forge-git-x.vercel.app");
-    expect(webauthnConfigFor("localhost:3100", {})).toEqual({ rpID: "localhost", rpName: "FORGE", origin: "http://localhost:3100" });
+    expect(webauthnConfigFor("localhost:3100", {})).toEqual({ rpID: "localhost", rpName: "ForgeAXI", origin: "http://localhost:3100" });
   });
 
   it("keeps a shared parent domain as the id for the hosts under it", () => {

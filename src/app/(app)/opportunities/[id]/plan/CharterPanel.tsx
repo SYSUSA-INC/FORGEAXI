@@ -56,7 +56,7 @@ export function CharterPanel({ opportunityId, view }: { opportunityId: string; v
       {error ? <p className="mb-2 font-body text-[12px] text-red">{error}</p> : null}
       {note ? <p className="mb-2 font-body text-[12px] text-muted">{note}</p> : null}
       <p className="mb-3 font-body text-[13px] leading-[1.5] text-muted">
-        How the team means to win, in one place. FORGE AI can draft it from the decision, the capability matrix and the partners&apos; answers, citing each; you edit it and sign it. A signed charter is one of the gates to Develop, and changing it withdraws the signature.
+        How the team means to win, in one place. ForgeAXI can draft it from the decision, the capability matrix and the partners&apos; answers, citing each; you edit it and sign it. A signed charter is one of the gates to Develop, and changing it withdraws the signature.
       </p>
       <fieldset disabled={pending || signed} className="grid gap-3">
         <label className="grid gap-1 font-mono text-[10px] uppercase tracking-widest text-muted">
@@ -122,7 +122,7 @@ export function CharterPanel({ opportunityId, view }: { opportunityId: string; v
               Save
             </button>
             <button type="button" className="aur-link font-mono text-[10px] uppercase tracking-widest" disabled={pending} onClick={() => run(() => draftCharterAction({ opportunityId }))}>
-              {pending ? "Working…" : "Draft with FORGE AI"}
+              {pending ? "Working…" : "Draft with ForgeAXI"}
             </button>
           </>
         )}

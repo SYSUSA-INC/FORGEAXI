@@ -164,7 +164,7 @@ export function AutoDraftButton({ proposalId }: { proposalId: string }) {
             )}
 
             <div className="mt-4 rounded-md border border-layer/10 bg-layer/[0.02] px-3 py-2 font-mono text-[11px] text-muted">
-              Drafts land in <em>in progress</em> and queue a background health scan. Over existing text they arrive as FORGE AI
+              Drafts land in <em>in progress</em> and queue a background health scan. Over existing text they arrive as ForgeAXI
               suggestions, with a snapshot of the old text kept in version history. A draft that stopped at the length limit ends
               with a [CONTINUE] marker.
             </div>

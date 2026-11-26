@@ -38,7 +38,7 @@ export default async function ApiAccessPage() {
       <PageHeader
         eyebrow="Settings · API access"
         title="API access"
-        subtitle="Read-only API tokens for connecting FORGE to your CRM, BI dashboards or internal tools."
+        subtitle="Read-only API tokens for connecting ForgeAXI to your CRM, BI dashboards or internal tools."
         meta={[
           { label: "Plan", value: refusal ? "Not included" : "Included", accent: refusal ? "rose" : "emerald" },
           { label: "Active tokens", value: String(active) },

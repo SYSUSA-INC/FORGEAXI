@@ -99,7 +99,7 @@ export function SourceRequestPanel({
       }
     >
       <p className="font-body text-[13px] leading-relaxed text-muted">
-        FORGE supports SAM.gov, eBuy, and forwarded GSA emails today. If your
+        ForgeAXI supports SAM.gov, eBuy, and forwarded GSA emails today. If your
         team gets opportunities from somewhere else — a state procurement
         portal, GovWin, agency-specific feeds, etc. — let us know. We use
         these requests to shape what we build next.
@@ -196,7 +196,7 @@ export function SourceRequestPanel({
                   {r.platformNotes ? (
                     <div className="mt-1 rounded border border-layer/10 bg-layer/[0.02] px-2 py-1 font-mono text-[10px] leading-relaxed text-text">
                       <span className="font-mono text-[10px] uppercase tracking-widest text-teal">
-                        FORGE team:
+                        ForgeAXI team:
                       </span>{" "}
                       {r.platformNotes}
                     </div>

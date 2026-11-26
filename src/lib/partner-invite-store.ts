@@ -126,7 +126,7 @@ export async function invitePartner(input: { organizationId: string; opportunity
         to: email,
         contactName,
         companyName: row.company,
-        senderName: sender?.name || input.actor.email || "A FORGE user",
+        senderName: sender?.name || input.actor.email || "A ForgeAXI user",
         senderEmail: input.actor.email ?? "",
         organizationName: row.orgName,
         opportunityTitle: row.opportunityTitle,

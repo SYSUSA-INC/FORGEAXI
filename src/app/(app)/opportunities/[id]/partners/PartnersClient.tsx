@@ -110,7 +110,7 @@ export function PartnersClient(props: {
           {error ? <p className="mb-2 font-body text-[12px] text-red">{error}</p> : null}
           {props.partners.length === 0 ? (
             <p className="font-body text-[13px] leading-[1.5] text-muted">
-              {props.decision === "partner" ? "No partner considered yet. Add one from FORGE's suggestions or your Companies." : "No partner needed for a GO, but you can still add one."}
+              {props.decision === "partner" ? "No partner considered yet. Add one from ForgeAXI's suggestions or your Companies." : "No partner needed for a GO, but you can still add one."}
             </p>
           ) : (
             <ul className="flex flex-col divide-y divide-layer/10">
@@ -262,7 +262,7 @@ export function PartnersClient(props: {
           <p className="font-body text-[13px] leading-[1.5] text-muted">{props.blocker}</p>
         ) : (
           <>
-            <p className="mb-3 font-body text-[13px] leading-[1.5] text-muted">The pursuit moves to Plan (stage Captured): the team, the RACI and the schedule.{props.decision === "partner" ? " The teaming agreement stays to do until agreements arrive in FORGE." : ""}</p>
+            <p className="mb-3 font-body text-[13px] leading-[1.5] text-muted">The pursuit moves to Plan (stage Captured): the team, the RACI and the schedule.{props.decision === "partner" ? " The teaming agreement stays to do until agreements arrive in ForgeAXI." : ""}</p>
             <button type="button" className="aur-btn aur-btn-primary" disabled={pending} onClick={() => run(() => moveToPlanAction({ opportunityId: props.opportunityId }))}>
               {pending ? "Moving…" : "Move to Plan"}
             </button>

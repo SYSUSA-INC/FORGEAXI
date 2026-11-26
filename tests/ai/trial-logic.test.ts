@@ -71,8 +71,8 @@ describe("wording", () => {
     expect(trialBannerText({ kind: "none" })).toBeNull();
     expect(trialBannerText(trialState("trial", at(10), now))).toEqual({ tone: "info", text: "Trial: 10 days left (ends Oct 14, 2026)." });
     expect(trialBannerText(trialState("trial", at(1), now))).toEqual({ tone: "warn", text: "Trial: 1 day left (ends Oct 5, 2026)." });
-    expect(trialBannerText(trialState("trial", null, now))).toEqual({ tone: "info", text: "You're on a FORGE trial." });
+    expect(trialBannerText(trialState("trial", null, now))).toEqual({ tone: "info", text: "You're on a ForgeAXI trial." });
     expect(trialBannerText(trialState("trial", at(-1), now))?.tone).toBe("ended");
-    expect(trialExpiredMessage(new Date("2026-10-18T00:00:00Z"))).toMatch(/^Your FORGE trial ended on Oct 18, 2026\. Editing carries on as usual; AI features are paused .*Settings → Billing\.$/);
+    expect(trialExpiredMessage(new Date("2026-10-18T00:00:00Z"))).toMatch(/^Your ForgeAXI trial ended on Oct 18, 2026\. Editing carries on as usual; AI features are paused .*Settings → Billing\.$/);
   });
 });

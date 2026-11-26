@@ -51,7 +51,7 @@ export default async function OpportunityAnalysisPage({ params }: { params: { id
         <AnalysisReportView body={body} />
       ) : (
         <p className="font-body text-[13px] leading-[1.5] text-muted">
-          FORGE scores the win probability with its factors, reuses or writes the AI pursuit brief, and writes a short report tying them, the capability matrix and the competitors together: the call and why, fit, competition, risks, and what would raise PWin. Each run is kept as a dated version.
+          ForgeAXI scores the win probability with its factors, reuses or writes the AI pursuit brief, and writes a short report tying them, the capability matrix and the competitors together: the call and why, fit, competition, risks, and what would raise PWin. Each run is kept as a dated version.
         </p>
       )}
     </Panel>

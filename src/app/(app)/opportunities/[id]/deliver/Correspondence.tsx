@@ -60,7 +60,7 @@ export function Correspondence({ view }: { view: DeliverView }) {
     <Panel title="Correspondence" eyebrow={view.replies.length === 0 ? "No replies yet" : `${view.replies.length} repl${view.replies.length === 1 ? "y" : "ies"}`}>
       {view.replies.length === 0 ? (
         <p className="font-body text-[13px] leading-[1.5] text-muted">
-          Replies to a proposal sent from FORGE come back to this opportunity and are listed here: an acknowledgement, a question, an out-of-office notice, a message that could not be delivered.
+          Replies to a proposal sent from ForgeAXI come back to this opportunity and are listed here: an acknowledgement, a question, an out-of-office notice, a message that could not be delivered.
         </p>
       ) : (
         <ul className="flex flex-col divide-y divide-layer/10">
@@ -77,7 +77,7 @@ export function Correspondence({ view }: { view: DeliverView }) {
                   {e.submission.inReplyToEmailId && e.submission.cc.length > 0 ? ` · Cc ${e.submission.cc.join(", ")}` : ""}
                 </span>
                 {e.submission.inReplyToEmailId && e.submission.status === "failed" ? (
-                  <span role="alert" className="font-body text-[13px] text-red">Not sent: {e.submission.error || "the mail service gave no reason"}. Nothing left FORGE; reply again.</span>
+                  <span role="alert" className="font-body text-[13px] text-red">Not sent: {e.submission.error || "the mail service gave no reason"}. Nothing left ForgeAXI; reply again.</span>
                 ) : null}
                 {e.submission.inReplyToEmailId
                   ? e.submission.files.map((f, i) => (
@@ -107,7 +107,7 @@ export function Correspondence({ view }: { view: DeliverView }) {
                 {open[e.reply.id] ? (
                   <>
                     <pre className="mt-1 max-h-96 overflow-auto whitespace-pre-wrap break-words border-l border-layer/10 pl-3 font-body text-[13px] leading-[1.5] text-text">{open[e.reply.id]!.text || "This message has no text."}</pre>
-                    {open[e.reply.id]!.truncated ? <span className="font-body text-[13px] text-muted">The message is longer than FORGE shows here.</span> : null}
+                    {open[e.reply.id]!.truncated ? <span className="font-body text-[13px] text-muted">The message is longer than ForgeAXI shows here.</span> : null}
                   </>
                 ) : null}
                 {e.reply.attachments.map((a, i) => (

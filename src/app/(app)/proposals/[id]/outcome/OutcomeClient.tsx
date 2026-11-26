@@ -744,7 +744,7 @@ function SidebarPanel({
           />
         </div>
       </Panel>
-      <Panel title="Why this exists" eyebrow="FORGE process note">
+      <Panel title="Why this exists" eyebrow="ForgeAXI process note">
         <p className="font-body text-[12px] leading-relaxed text-muted">
           The Outcome tab is the closing record on a proposal. The outcome
           summary, lessons learned, and follow-up actions become part of the

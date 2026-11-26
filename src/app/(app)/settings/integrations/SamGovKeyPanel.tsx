@@ -37,7 +37,7 @@ export function SamGovKeyPanel({ view, canEdit, isImpersonating }: { view: SamKe
         const res = await action();
         setStatus(res.ok ? { kind: "ok", message: res.message } : { kind: "err", message: res.error });
       } catch {
-        setStatus({ kind: "err", message: "FORGE didn't answer. Check your connection and try again." });
+        setStatus({ kind: "err", message: "ForgeAXI didn't answer. Check your connection and try again." });
       } finally {
         setKey("");
         setShown(false);
@@ -47,12 +47,12 @@ export function SamGovKeyPanel({ view, canEdit, isImpersonating }: { view: SamKe
 
   function remove() {
     if (!company) return;
-    const after = view.platformConfigured ? "FORGE will use its shared key for your company until a new key is added." : "SAM.gov features will stop until a new key is added.";
+    const after = view.platformConfigured ? "ForgeAXI will use its shared key for your company until a new key is added." : "SAM.gov features will stop until a new key is added.";
     if (!window.confirm(`Remove your company's SAM.gov key (${maskLast4(company.last4)})? ${after}`)) return;
     run(() => removeCompanySamKeyAction());
   }
 
-  const eyebrow = view.inUse === "company" ? `Your company's key${company ? ` ${maskLast4(company.last4)}` : ""}` : view.inUse === "platform" ? "FORGE's shared key" : "Not connected";
+  const eyebrow = view.inUse === "company" ? `Your company's key${company ? ` ${maskLast4(company.last4)}` : ""}` : view.inUse === "platform" ? "ForgeAXI's shared key" : "Not connected";
 
   if (!canEdit) {
     return (
@@ -61,7 +61,7 @@ export function SamGovKeyPanel({ view, canEdit, isImpersonating }: { view: SamKe
           {view.inUse === "company"
             ? "SAM.gov: connected with your company's key."
             : view.inUse === "platform"
-              ? "SAM.gov: connected with FORGE's shared key."
+              ? "SAM.gov: connected with ForgeAXI's shared key."
               : "SAM.gov: not connected."}{" "}
           {isImpersonating ? "Read-only while impersonating." : "Company admins manage this key."}
         </p>
@@ -73,16 +73,16 @@ export function SamGovKeyPanel({ view, canEdit, isImpersonating }: { view: SamKe
   return (
     <Panel title="SAM.gov API key" eyebrow={eyebrow} accent="cobalt" className="mb-4">
       <p className="font-body text-[12px] leading-relaxed text-muted">
-        FORGE uses this key for Import from SAM.gov, company search and sync, Getting started, the scout, the daily Q&amp;A check and Check SAM.gov now. Without it, FORGE&apos;s shared key is used when available. Get a free key on SAM.gov: sign in, open Account Details and request a Public API Key.
+        ForgeAXI uses this key for Import from SAM.gov, company search and sync, Getting started, the scout, the daily Q&amp;A check and Check SAM.gov now. Without it, ForgeAXI&apos;s shared key is used when available. Get a free key on SAM.gov: sign in, open Account Details and request a Public API Key.
       </p>
 
       <p className="mt-3 font-body text-[13px] leading-[1.5] text-text">
         {company && company.readable
           ? `${maskLast4(company.last4)} · added${company.setByName ? ` by ${company.setByName}` : ""} on ${day(company.setAt)}${company.verifiedAt ? ` · SAM.gov accepted it on ${day(company.verifiedAt)}` : ""}`
           : company
-            ? `This key (${maskLast4(company.last4)}) can't be read on this FORGE server, so ${view.platformConfigured ? "FORGE's shared key is used" : "SAM.gov features are off"}. ${view.canSave ? "Re-enter it to use it here." : "It will work again once FORGE support restores key encryption on this server; there is no need to remove it."}`
+            ? `This key (${maskLast4(company.last4)}) can't be read on this ForgeAXI server, so ${view.platformConfigured ? "ForgeAXI's shared key is used" : "SAM.gov features are off"}. ${view.canSave ? "Re-enter it to use it here." : "It will work again once ForgeAXI support restores key encryption on this server; there is no need to remove it."}`
             : view.platformConfigured
-              ? `Using FORGE's shared SAM.gov key.${view.canSave ? " Add your company's own key so your searches don't share a daily limit with other companies." : ""}`
+              ? `Using ForgeAXI's shared SAM.gov key.${view.canSave ? " Add your company's own key so your searches don't share a daily limit with other companies." : ""}`
               : "No SAM.gov key. Import, company search, the scout and Q&A checks are off until a company admin adds one."}
       </p>
       {/* BL-STAB-7d — what SAM.gov last said, for the key in use (an unreadable key isn't used). */}
@@ -133,7 +133,7 @@ export function SamGovKeyPanel({ view, canEdit, isImpersonating }: { view: SamKe
         <p className="mt-3 font-mono text-[11px] text-gold">{view.dbReady ? KEYRING_UNAVAILABLE_MESSAGE : DATABASE_PENDING_MESSAGE}</p>
       )}
       <p className="mt-2 font-body text-[13px] leading-[1.5] text-subtle">
-        FORGE encrypts the key and only ever sends it to SAM.gov. It can&apos;t be shown again — not to you, your team or FORGE support.
+        ForgeAXI encrypts the key and only ever sends it to SAM.gov. It can&apos;t be shown again — not to you, your team or ForgeAXI support.
       </p>
       {company ? (
         <button type="button" disabled={pending} onClick={remove} className="mt-2 font-mono text-[10px] text-rose underline disabled:opacity-40">

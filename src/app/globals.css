@@ -10,7 +10,7 @@
   are in the standard, §5 to §7, and are not repeated here (the token
   test refuses a hex in this file). It replaces the EnableNow palette of
   BL-UI-ENABLENOW. Review (indigo) and pink team (plum) have no brand
-  equivalent and keep FORGE's own hues.
+  equivalent and keep ForgeAXI's own hues.
 
   Every colour the UI uses is declared here as an RGB triplet and
   consumed by tailwind.config.ts as `rgb(var(--c-x) / <alpha>)`, so

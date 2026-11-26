@@ -93,7 +93,7 @@ export default async function BillingPage({
       <PageHeader
         eyebrow="Account · Billing"
         title="Billing &amp; subscription"
-        subtitle="Manage your FORGE plan. Upgrades take effect immediately; downgrades and cancellations apply at the end of the current period."
+        subtitle="Manage your ForgeAXI plan. Upgrades take effect immediately; downgrades and cancellations apply at the end of the current period."
         actions={
           <Link href="/pricing" className="aur-btn aur-btn-ghost">
             See all plans →

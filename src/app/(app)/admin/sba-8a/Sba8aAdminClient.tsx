@@ -177,7 +177,7 @@ export function Sba8aAdminClient({
       try {
         res = await importSba8aCsvAction(csv);
       } catch {
-        setCsvError("FORGE didn't answer. Check the import runs below before importing again.");
+        setCsvError("ForgeAXI didn't answer. Check the import runs below before importing again.");
         return;
       }
       if (!res.ok) {

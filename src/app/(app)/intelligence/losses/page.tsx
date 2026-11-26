@@ -48,7 +48,7 @@ export default async function LossIntelligencePage() {
         subtitle="What your debriefs and outcomes say together that none of them says alone."
         actions={
           <Link href="/intelligence" className="aur-link">
-            ← FORGE Brain
+            ← ForgeAXI Brain
           </Link>
         }
         meta={[

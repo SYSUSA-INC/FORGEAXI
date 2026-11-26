@@ -25,7 +25,7 @@ export default async function PublicReviewPage({
             </p>
             <p className="mt-4 font-body text-[13px] leading-[1.5] text-muted">
               If this is unexpected, ask the sender to resend the request — or
-              sign in to FORGE if you have an account.
+              sign in to ForgeAXI if you have an account.
             </p>
           </div>
         </div>

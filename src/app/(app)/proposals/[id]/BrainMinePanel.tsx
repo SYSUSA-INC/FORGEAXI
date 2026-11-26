@@ -115,7 +115,7 @@ export function BrainMinePanel({
       }
     >
       <p className="font-body text-[12px] leading-relaxed text-muted">
-        FORGE&apos;s Brain learns from your past proposals. Mining indexes
+        ForgeAXI&apos;s Brain learns from your past proposals. Mining indexes
         this proposal&apos;s sections so future section drafts and Brain
         Suggest can retrieve from actual content you&apos;ve already
         delivered — not generic prose. Outcome-tagged content (won /

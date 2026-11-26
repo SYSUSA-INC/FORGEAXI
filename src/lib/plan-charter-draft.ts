@@ -78,7 +78,7 @@ export async function draftCharter(input: { organizationId: string; opportunityI
     if (res.stubbed) return fail("AI provider is in stub mode. Configure a provider to draft the charter.");
     if (!res.data) {
       log.warn("[plan-charter-draft]", "structured parse failed", { parseError: res.parseError, viaTool: res.viaTool });
-      return fail("FORGE AI returned an unexpected format. Try again.");
+      return fail("ForgeAXI returned an unexpected format. Try again.");
     }
     const { charter, dropped } = validateCharterDraft(res.data, facts, new Date());
     await recordRead({
@@ -89,12 +89,12 @@ export async function draftCharter(input: { organizationId: string; opportunityI
       resourceId: opportunityId,
       metadata: { facts: facts.length, dropped, kept: charter.sources?.length ?? 0 },
     });
-    if (!charter.strategy && !charter.pricingPosture && !(charter.discriminators ?? []).length) return fail("FORGE AI's draft didn't rest on the records, so none of it was kept. Try again.");
+    if (!charter.strategy && !charter.pricingPosture && !(charter.discriminators ?? []).length) return fail("ForgeAXI's draft didn't rest on the records, so none of it was kept. Try again.");
     const saved = await storeCharterDraft({ organizationId, opportunityId, draft: charter, actor: input.actor, dropped });
     if (!saved.ok) return fail(saved.error);
     return { ok: true, dropped, sources: charter.sources?.length ?? 0 };
   } catch (err) {
     log.error("[plan-charter-draft]", "failed", { opportunityId, error: err });
-    return fail(err instanceof Error ? err.message : "FORGE AI couldn't draft the charter.");
+    return fail(err instanceof Error ? err.message : "ForgeAXI couldn't draft the charter.");
   }
 }

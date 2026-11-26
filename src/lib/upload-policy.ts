@@ -195,7 +195,7 @@ export function validateUploadRequest(input: {
   if (!kind.ok) {
     return kind.code === "legacy_office"
       ? { ok: false, code: "legacy_office", error: "This is an older Office format. Save it as .docx, .xlsx or .pptx and upload that." }
-      : { ok: false, code: "unsupported", error: `"${displayName}" is not a file type FORGE reads.` };
+      : { ok: false, code: "unsupported", error: `"${displayName}" is not a file type ForgeAXI reads.` };
   }
   if (!policy.formats.includes(kind.format)) {
     return { ok: false, code: "format_not_allowed", error: `${kind.ext.toUpperCase()} files can't be uploaded here.` };
@@ -269,7 +269,7 @@ export function tooLargeToReadMessage(bytes: number, budget: number, format?: Up
     format === "image"
       ? "save it smaller (a lower resolution or a JPEG) and upload that to have it read"
       : "split it (for example by volume) and upload the parts to have it read";
-  return `Stored (${size}). FORGE reads files of this type up to ${limit} automatically; ${advice}.`;
+  return `Stored (${size}). ForgeAXI reads files of this type up to ${limit} automatically; ${advice}.`;
 }
 
 /** A size limit as the upload errors state it ("500 MB"), for labels. */

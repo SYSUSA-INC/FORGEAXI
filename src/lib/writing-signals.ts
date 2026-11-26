@@ -124,7 +124,7 @@ async function loadReviewComments(
     return rows.map((r) => ({
       color: r.color,
       body: r.body.replace(/\s+/g, " ").trim().slice(0, CLIP),
-      reviewer: r.userId ? null : "FORGE AI",
+      reviewer: r.userId ? null : "ForgeAXI",
     }));
   } catch (err) {
     log.warn("[writing-signals]", "review comments load failed", { error: err });

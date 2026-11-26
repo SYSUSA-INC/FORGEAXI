@@ -50,7 +50,7 @@ export default function AppError({
         This page hit an unexpected error.
       </h1>
       <p className="mt-2 font-body text-[13px] leading-relaxed text-muted">
-        It has been logged for the team to investigate. The rest of FORGE is
+        It has been logged for the team to investigate. The rest of ForgeAXI is
         still available from the menu; you can also retry this page.
       </p>
       {error.digest ? (

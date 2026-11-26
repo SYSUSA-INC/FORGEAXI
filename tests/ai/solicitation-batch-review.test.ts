@@ -14,7 +14,7 @@ function file(key: string, classification: FileClassification | null, choice?: R
 }
 
 describe("BL-STAB-3b — review rows", () => {
-  it("shows what FORGE read, and nothing for a file not read yet", () => {
+  it("shows what ForgeAXI read, and nothing for a file not read yet", () => {
     const rows = reviewRows([file("a", read("base")), file("b", read("amendment", 0.8, { amendmentNumber: "0002" })), file("c", null)]);
     expect(rows.map((r) => r.label)).toEqual(["base", "amendment", null]);
     expect(rows[1].amendmentNumber).toBe("0002");
@@ -65,7 +65,7 @@ describe("BL-STAB-3b — review rows", () => {
 });
 
 describe("BL-STAB-3b — picking a label", () => {
-  it("does not pin a label put back to what FORGE read", () => {
+  it("does not pin a label put back to what ForgeAXI read", () => {
     const inputs = [file("a", read("base", 0.95), { label: "other" }), file("b", read("other", 0.3))];
     expect(chosenLabel(inputs, "a", "base")).toBeUndefined();
     // So marking another file as the base still moves this one aside.
@@ -114,9 +114,9 @@ describe("BL-STAB-3b — wording and picked files", () => {
     const [row] = reviewRows([file("a", read("base", 0.9, { basis: "ai" }))]);
     expect(basisText(row)).toBe("AI check · 90% confidence");
   });
-  it("says what FORGE read when the person chose otherwise", () => {
+  it("says what ForgeAXI read when the person chose otherwise", () => {
     const [row] = reviewRows([file("a", read("pws", 0.5), { label: "sow" })]);
-    expect(basisText(row)).toBe("Chosen by you · FORGE read it as PWS (rule-based, 50%)");
+    expect(basisText(row)).toBe("Chosen by you · ForgeAXI read it as PWS (rule-based, 50%)");
   });
   it("is empty until the file is read", () => {
     expect(basisText(reviewRows([file("a", null)])[0])).toBe("");

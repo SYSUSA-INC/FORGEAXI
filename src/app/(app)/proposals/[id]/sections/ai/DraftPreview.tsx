@@ -77,7 +77,7 @@ export function DraftPreview({
       )}
       <div className="flex flex-wrap items-center justify-between gap-2 pt-1">
         <span className="font-body text-[11px] text-muted">
-          Ticked paragraphs land as tracked changes by FORGE AI; accept or reject each change in Track changes, then save.
+          Ticked paragraphs land as tracked changes by ForgeAXI; accept or reject each change in Track changes, then save.
         </span>
         <button
           type="button"

@@ -63,7 +63,7 @@ const OPTIONAL: EnvSpec[] = [
   },
   {
     name: "FORGE_SECRET_KEYS",
-    purpose: "encrypts secrets companies give FORGE (their SAM.gov API keys); without it companies can't save their own key. Never on preview deployments",
+    purpose: "encrypts secrets companies give ForgeAXI (their SAM.gov API keys); without it companies can't save their own key. Never on preview deployments",
   },
   {
     name: "SAMGOV_API_KEY",

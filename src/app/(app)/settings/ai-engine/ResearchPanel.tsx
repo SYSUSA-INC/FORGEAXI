@@ -76,7 +76,7 @@ export function ResearchPanel(p: ResearchPanelProps) {
       <label className="flex items-start gap-3 font-body text-[13px] leading-[1.5] text-text">
         <input type="checkbox" className="mt-1" checked={on} disabled={locked} onChange={(e) => setOn(e.target.checked)} />
         <span>
-          Let FORGE research the open web before it drafts a proposal. It searches for public facts about the customer and the requirement (strategy, budget, recent awards), keeps the pages it cites as numbered sources with their web address and the date, and the drafter cites them by address. Your own claims never come from the web, and page text is treated as untrusted. Each search counts against your allowance below. Off until you switch it on.
+          Let ForgeAXI research the open web before it drafts a proposal. It searches for public facts about the customer and the requirement (strategy, budget, recent awards), keeps the pages it cites as numbered sources with their web address and the date, and the drafter cites them by address. Your own claims never come from the web, and page text is treated as untrusted. Each search counts against your allowance below. Off until you switch it on.
         </span>
       </label>
 
@@ -99,7 +99,7 @@ export function ResearchPanel(p: ResearchPanelProps) {
         <div className="mt-1 font-mono text-[10px] text-subtle">
           {p.planAllowance > 0
             ? `Included with your plan: ${n(p.planAllowance)} per month${p.monthlyCap !== null ? ` · your cap ${n(p.monthlyCap)}` : ""}. Resets on the 1st (UTC).`
-            : "No web searches are included with your plan; ask your FORGE administrator to add an allowance."}
+            : "No web searches are included with your plan; ask your ForgeAXI administrator to add an allowance."}
           {p.trialEnded ? " Your trial has ended, so research is paused." : ""}
           {p.packBalance > 0
             ? ` Pack searches: ${n(p.packBalance)} left. They are used only after this month's included searches, do not expire, and are not limited by your cap.`

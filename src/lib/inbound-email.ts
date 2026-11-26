@@ -167,7 +167,7 @@ export async function getInboundAddress(organizationId: string): Promise<Inbound
 /** Create the company's address (once): its name and four random characters, on FORGE's domain. */
 export async function createInboundAddress(input: { organizationId: string; actor: { userId: string; email?: string | null } }): Promise<{ ok: true; address: InboundAddressView } | { ok: false; error: string }> {
   const { organizationId } = input;
-  if (!receivingConfigured()) return { ok: false, error: "Receiving email isn't set up on this FORGE yet: a platform admin connects FORGE's Exchange mailbox (ADMIN_MANUAL §3.7)." };
+  if (!receivingConfigured()) return { ok: false, error: "Receiving email isn't set up on this ForgeAXI yet: a platform admin connects ForgeAXI's Exchange mailbox (ADMIN_MANUAL §3.7)." };
   const existing = await getInboundAddress(organizationId);
   if (existing) return { ok: true, address: existing };
   const [org] = await db.select({ name: organizations.name }).from(organizations).where(eq(organizations.id, organizationId)).limit(1);

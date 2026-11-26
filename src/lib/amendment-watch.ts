@@ -373,7 +373,7 @@ async function ensureDefaultRule(organizationId: string): Promise<void> {
     organizationId,
     name: "Default: Solicitation amended",
     description:
-      "When SAM.gov posts an amendment or a new document for an opportunity you are pursuing, FORGE files it on the opportunity and tells the owner and everyone assigned to its proposals and reviews.",
+      "When SAM.gov posts an amendment or a new document for an opportunity you are pursuing, ForgeAXI files it on the opportunity and tells the owner and everyone assigned to its proposals and reviews.",
     triggerEventKind: "solicitation_amended",
     recipientStrategy: "mentioned_in_payload",
     channels: ["in_app", "email"],

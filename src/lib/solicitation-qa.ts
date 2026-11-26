@@ -192,7 +192,7 @@ export async function addQaFromDocument(input: {
   if (pairs.length === 0) {
     return {
       ok: false,
-      error: 'No question/answer pairs found in this file. FORGE reads lines like "Q: …" and "A: …" (or Question / Answer, Government Response); paste the answers in the Q&A panel if the file lays them out another way.',
+      error: 'No question/answer pairs found in this file. ForgeAXI reads lines like "Q: …" and "A: …" (or Question / Answer, Government Response); paste the answers in the Q&A panel if the file lays them out another way.',
     };
   }
   const res = await storePairs({

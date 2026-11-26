@@ -58,7 +58,7 @@ export async function recordAiDraftSnapshot(input: {
     bodyDoc,
     wordCount: countWords(bodyDoc),
     createdByUserId: input.requestedByUserId,
-    createdByNameSnapshot: "FORGE AI",
+    createdByNameSnapshot: "ForgeAXI",
   });
 }
 

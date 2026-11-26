@@ -343,7 +343,7 @@ export const NEXT_ACTION_RULES: Rule[] = [
     priority: "this_week",
     holds: (s) =>
       CLOSED.includes(s.stage) && s.proposedLessons > 0
-        ? { title: `Confirm the ${n(s.proposedLessons, "proposed lesson")}`, reason: "FORGE drafted lessons from this outcome; nothing reads one until a Capture or Admin user confirms it.", href: "/intelligence/lessons", evidence: ["lessons:proposed"] }
+        ? { title: `Confirm the ${n(s.proposedLessons, "proposed lesson")}`, reason: "ForgeAXI drafted lessons from this outcome; nothing reads one until a Capture or Admin user confirms it.", href: "/intelligence/lessons", evidence: ["lessons:proposed"] }
         : null,
     done: (s) => s.proposedLessons === 0,
   },
@@ -487,14 +487,14 @@ export function preparedSummary(p: PreparedRecord | null | undefined): string | 
   const n = (c: number | undefined, w: string) => `${c ?? 0} ${w}${(c ?? 0) === 1 ? "" : "s"}`;
   switch (p.kind) {
     case "outline":
-      return `FORGE built the outline overnight (${n(p.sections, "section")}); review it.`;
+      return `ForgeAXI built the outline overnight (${n(p.sections, "section")}); review it.`;
     case "questionnaire":
-      return `FORGE built the questionnaire overnight (${n(p.questions, "question")}${p.suggested ? `, ${n(p.suggested, "suggested answer")}` : ""}); confirm the answers.`;
+      return `ForgeAXI built the questionnaire overnight (${n(p.questions, "question")}${p.suggested ? `, ${n(p.suggested, "suggested answer")}` : ""}); confirm the answers.`;
     case "compliance":
-      return `FORGE mapped ${n(p.applied, "requirement")} overnight; check the matrix.`;
+      return `ForgeAXI mapped ${n(p.applied, "requirement")} overnight; check the matrix.`;
     case "drafts":
-      return `FORGE drafted ${n(p.sections, "section")} overnight as tracked insertions; accept or reject them in the editor${p.truncated ? ` (${p.truncated} cut off at the output limit)` : ""}.`;
+      return `ForgeAXI drafted ${n(p.sections, "section")} overnight as tracked insertions; accept or reject them in the editor${p.truncated ? ` (${p.truncated} cut off at the output limit)` : ""}.`;
     case "scan":
-      return "FORGE queued the health scan overnight; its findings are on the overview.";
+      return "ForgeAXI queued the health scan overnight; its findings are on the overview.";
   }
 }

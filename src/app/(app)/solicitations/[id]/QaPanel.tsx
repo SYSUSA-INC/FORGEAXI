@@ -70,7 +70,7 @@ export function QaPanel({
       try {
         res = await addManualQaAction(solicitationId, text);
       } catch {
-        setError("FORGE didn't answer. Check the Q&A list before pasting again.");
+        setError("ForgeAXI didn't answer. Check the Q&A list before pasting again.");
         return;
       }
       if (!res.ok) {
@@ -144,7 +144,7 @@ export function QaPanel({
       {initial.length === 0 ? (
         <p className="font-mono text-[11px] text-muted">
           {noticeId
-            ? "No answers yet. FORGE checks the notice daily; Check SAM.gov now reads it on demand."
+            ? "No answers yet. ForgeAXI checks the notice daily; Check SAM.gov now reads it on demand."
             : "No answers yet. Add a SAM.gov notice ID to poll the notice, or paste the Q&A."}
         </p>
       ) : (

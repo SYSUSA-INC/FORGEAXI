@@ -22,7 +22,7 @@ describe("BL-STAB-2f — server action request bodies", () => {
 
   it("refuses pasted text the server won't read or the request can't carry, saying what to do", () => {
     expect(pasteRefusal("short", 200_000, "Trim it.")).toBeNull();
-    expect(pasteRefusal("x".repeat(200_001), 200_000, "Trim it.")).toBe("This is 200,001 characters; FORGE reads up to 200,000 at a time. Trim it.");
+    expect(pasteRefusal("x".repeat(200_001), 200_000, "Trim it.")).toBe("This is 200,001 characters; ForgeAXI reads up to 200,000 at a time. Trim it.");
     // Within the character limit, but control characters escape six-fold.
     expect(pasteRefusal("\u0001".repeat(160_000), 2_000_000, "Split it.")).toBe("This text is too large to send at once. Split it.");
   });

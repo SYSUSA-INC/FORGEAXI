@@ -89,7 +89,7 @@ export async function CreateSection({
         <Panel title="Reading the document…" eyebrow={doc.fileName || "Document"}>
           <ParseWaiter />
           <p className="font-body text-[13px] leading-[1.5] text-muted">
-            FORGE is reading it for the title, agency, solicitation number, NAICS, set-aside and due date, and for its requirements and Sections L and M. The form opens filled in when it is done; a large document can take a few minutes.
+            ForgeAXI is reading it for the title, agency, solicitation number, NAICS, set-aside and due date, and for its requirements and Sections L and M. The form opens filled in when it is done; a large document can take a few minutes.
           </p>
           <Link href={`/pipeline/identify?tab=create&from=${doc.id}&wait=0`} className="aur-link mt-3">
             Don&apos;t wait: fill in the rest by hand
@@ -111,12 +111,12 @@ export async function CreateSection({
       stage: "identified",
     };
     return (
-      <Panel title="Check what FORGE read, then add it" eyebrow={doc.fileName || "Document"}>
+      <Panel title="Check what ForgeAXI read, then add it" eyebrow={doc.fileName || "Document"}>
         <p className="mb-4 font-body text-[13px] leading-[1.5] text-muted">
           {doc.parseStatus === "parsed"
             ? "Filled in from the document. Correct anything that is off; saving adds the opportunity to the pipeline with the document linked, so its requirements and Sections L and M are already there for Evaluate."
             : doc.parseStatus === "failed"
-              ? `FORGE could not read the document${doc.parseError ? ` (${doc.parseError})` : ""}. Fill in the fields; the document is still linked when you save.`
+              ? `ForgeAXI could not read the document${doc.parseError ? ` (${doc.parseError})` : ""}. Fill in the fields; the document is still linked when you save.`
               : "Still reading the document. Fill in what you know; the document is linked when you save, and its reading finishes on the opportunity."}
         </p>
         <OpportunityForm mode="create" owners={owners} defaultOwnerUserId={userId} afterCreate={afterCreate} initial={initial} solicitationId={doc.id} />
@@ -129,7 +129,7 @@ export async function CreateSection({
     <>
       <Panel title="Start from a document" eyebrow="RFP · RFI · RFQ · Sources Sought">
         <p className="mb-3 font-body text-[13px] leading-[1.5] text-muted">
-          Drop the solicitation. FORGE reads it, fills in the opportunity for you to check, and keeps the document on it, with its requirements and Sections L and M.
+          Drop the solicitation. ForgeAXI reads it, fills in the opportunity for you to check, and keeps the document on it, with its requirements and Sections L and M.
         </p>
         <UploadSolicitationForm maxBytes={maxBytes} then="create" />
       </Panel>

@@ -36,6 +36,9 @@ describe("parseReviewBody", () => {
       text: "Please cite the PWS paragraph.",
     });
     expect(parseReviewBody("[Not the AI] something").ai).toBe(false);
+    // Comments saved before the product was named ForgeAXI keep the old prefix.
+    expect(AI_REVIEW_PREFIX).toBe("[ForgeAXI pre-review");
+    expect(parseReviewBody("[FORGE AI pre-review · low] Tighten the opening.")).toEqual({ ai: true, severity: "low", text: "Tighten the opening." });
   });
 });
 
@@ -56,7 +59,7 @@ describe("grouping and labels", () => {
     expect(describeOpenComments([])).toBe("");
     expect(describeOpenComments([{ authorName: "Ann" }])).toBe("1 open review comment");
     expect(describeOpenComments([{ authorName: null }, { authorName: "Ann" }])).toBe(
-      "2 open review comments · 1 from FORGE AI",
+      "2 open review comments · 1 from ForgeAXI",
     );
     expect(REVIEW_COLOR_LABELS.white_gloves).toBe("White Gloves");
   });

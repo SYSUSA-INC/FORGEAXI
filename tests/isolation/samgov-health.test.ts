@@ -67,7 +67,7 @@ describe("BL-STAB-10b — the public health probe is capped", () => {
 
   it("a counter that failed open is not a turn: no live probe", async () => {
     vi.spyOn(rateLimit, "enforceRateLimit").mockResolvedValue({ ok: true, remaining: 1, resetIn: 1800 });
-    expect(await samHealth()).toMatchObject({ keyConfigured: true, apiReachable: null, cached: true, message: "Live check skipped: FORGE couldn't reach its own database." });
+    expect(await samHealth()).toMatchObject({ keyConfigured: true, apiReachable: null, cached: true, message: "Live check skipped: ForgeAXI couldn't reach its own database." });
     expect(calls).toHaveLength(0);
   });
 });

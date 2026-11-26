@@ -94,7 +94,7 @@ export async function rankPartners(input: {
     if (res.stubbed) return fail("AI provider is in stub mode. Configure a provider to rank partners.");
     if (!res.data) {
       log.warn("[partner-rank]", "structured parse failed", { parseError: res.parseError, viaTool: res.viaTool });
-      return fail("FORGE AI returned an unexpected format. Try again.");
+      return fail("ForgeAXI returned an unexpected format. Try again.");
     }
 
     const { ranked, dropped } = validateRanking(res.data, candidates, search.criteria);
@@ -111,10 +111,10 @@ export async function rankPartners(input: {
       resourceId: opportunityId,
       metadata: { widened: search.criteria.widened, gaps: gaps.length, candidates: candidates.length, ranked: withHits.length, dropped },
     });
-    if (withHits.length === 0) return fail("FORGE AI's reasons didn't rest on facts from the search, so none were kept. Try again, or use the plain list.");
+    if (withHits.length === 0) return fail("ForgeAXI's reasons didn't rest on facts from the search, so none were kept. Try again, or use the plain list.");
     return { ok: true, ranked: withHits, hits: search.hits, notes: search.notes, criteria: search.criteria, dropped };
   } catch (err) {
     log.error("[partner-rank]", "failed", { opportunityId, error: err });
-    return fail(err instanceof Error ? err.message : "FORGE AI couldn't rank the partners.");
+    return fail(err instanceof Error ? err.message : "ForgeAXI couldn't rank the partners.");
   }
 }

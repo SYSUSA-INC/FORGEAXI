@@ -79,7 +79,7 @@ export function RetrievalEvalPanel({
       }
     >
       <p className="mb-3 font-body text-[13px] leading-[1.5] text-muted">
-        Each case is a section of a proposal you won that is already in the Brain. FORGE searches for
+        Each case is a section of a proposal you won that is already in the Brain. ForgeAXI searches for
         it twice: with the query the drafter uses for sources (no draft yet), and with the section&apos;s
         mapped requirements. A search succeeds when a result carries that section&apos;s winning text.
         &ldquo;@3&rdquo; and &ldquo;@8&rdquo; are the share of cases found in the top 3 and top 8 (about

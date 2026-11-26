@@ -40,7 +40,7 @@ export function checkDecision(input: DecisionInput): { ok: true; decision: Evalu
   if (decision !== "no_go") return { ok: true, decision, category: "", reason };
   const category = NO_GO_CATEGORIES.find((c) => c.key === input.category)?.key;
   if (!category) return { ok: false, error: "Choose why it's a NO-GO." };
-  if (reason.length < NO_GO_REASON_MIN) return { ok: false, error: `Say why in your own words (at least ${NO_GO_REASON_MIN} characters): FORGE learns from it.` };
+  if (reason.length < NO_GO_REASON_MIN) return { ok: false, error: `Say why in your own words (at least ${NO_GO_REASON_MIN} characters): ForgeAXI learns from it.` };
   return { ok: true, decision, category, reason };
 }
 

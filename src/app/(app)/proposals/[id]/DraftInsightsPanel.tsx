@@ -250,7 +250,7 @@ export async function DraftInsightsPanel({
         {data.editDecisions.aiDecisions > 0 ? (
           <div className="flex items-center justify-between gap-2 rounded-md border border-indigo/20 bg-indigo/[0.03] px-3 py-2">
             <span className="font-body text-[12px] text-muted">
-              FORGE AI suggestions accepted
+              ForgeAXI suggestions accepted
             </span>
             <div className="flex items-center gap-2">
               {fractionBadge(data.editDecisions.aiAcceptRate)}

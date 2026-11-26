@@ -57,8 +57,8 @@ export async function samHealth(): Promise<SamHealth> {
       last = null;
     }
     const message = turn.ok
-      ? "Live check skipped: FORGE couldn't reach its own database."
-      : "A live check is running on another FORGE server; try again in a minute.";
+      ? "Live check skipped: ForgeAXI couldn't reach its own database."
+      : "A live check is running on another ForgeAXI server; try again in a minute.";
     const { key: lastKey, ...stored } = last ?? {};
     const body: SamHealth = last && lastKey === key ? (stored as SamHealth) : { keyConfigured: true, apiReachable: null, message };
     memo = { at: Date.now(), key, body };

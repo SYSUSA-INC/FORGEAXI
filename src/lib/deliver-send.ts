@@ -38,7 +38,7 @@ import { claimUpload, finishClaim, releaseClaim } from "@/lib/uploads";
  * by hand. Design: docs/design/BL-NAV-LIFECYCLE_PHASE6_DELIVER.md §2.4.
  */
 
-const NOT_SET_UP = "Sending from FORGE is not set up. Send the file yourself and use Record submission.";
+const NOT_SET_UP = "Sending from ForgeAXI is not set up. Send the file yourself and use Record submission.";
 const TOO_LARGE = "The files are over 35 MB together, which most mail systems refuse. Send them yourself and use Record submission.";
 
 /**

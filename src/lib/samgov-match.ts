@@ -410,14 +410,14 @@ export function searchSummary(c: KeywordSearchCounts, i: { keyword: string | nul
   // BL-STAB-10b — why a notice can still be unchecked: posted after FORGE's nightly copy.
   const through = i.copyThrough ? new Date(`${i.copyThrough}T00:00:00Z`).toLocaleDateString("en-GB", { day: "numeric", month: "short", timeZone: "UTC" }) : "";
   const fresh = c.uncheckedNew ?? 0;
-  const copy = `FORGE's nightly copy of SAM.gov, which runs through ${through}`;
+  const copy = `ForgeAXI's nightly copy of SAM.gov, which runs through ${through}`;
   const since = through && fresh > 0 ? (fresh >= c.unchecked ? `: posted after ${copy}` : ` — ${n(fresh)} of them posted after ${copy}`) : "";
   const plural = (v: number, one: string, many = `${one}s`) => `${n(v)} ${v === 1 ? one : many}`;
   const scope = `${i.codes.length ? `NAICS ${i.codes.join(", ")}` : "all NAICS codes"}, posted in the last ${i.days} days`;
   const extra = [
     c.otherTypes > 0 ? `${plural(c.otherTypes, "notice")} of other types left out` : "",
     c.folded > 0 ? `${plural(c.folded, "earlier notice")} of the same solicitations folded in` : "",
-    c.truncated ? `SAM.gov sends at most 1,000 notices per request; FORGE read ${n(c.received)} of ${n(c.samTotal)}: narrow the search or the window to see the rest` : "",
+    c.truncated ? `SAM.gov sends at most 1,000 notices per request; ForgeAXI read ${n(c.received)} of ${n(c.samTotal)}: narrow the search or the window to see the rest` : "",
   ].filter(Boolean);
   const tail = extra.length ? ` · ${extra.join(" · ")}` : "";
   if (!i.keyword) return `${plural(c.matched, "notice")} for ${scope}${tail}.`;

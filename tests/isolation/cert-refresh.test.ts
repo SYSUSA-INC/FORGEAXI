@@ -46,7 +46,7 @@ describe("BL-STAB-7c — cert refresh and health on the shared key", () => {
     expect(calls).toHaveLength(1);
     expect(calls[0]!.searchParams.get("api_key")).toBe(KEY);
     const [first, ...rest] = result.pulled;
-    expect(first!.error).toMatch(/^SAM\.gov rejected FORGE's shared key SAMGOV_API_KEY\. .*\(SAM\.gov API_KEY_INVALID, HTTP 401\)$/);
+    expect(first!.error).toMatch(/^SAM\.gov rejected ForgeAXI's shared key SAMGOV_API_KEY\. .*\(SAM\.gov API_KEY_INVALID, HTTP 401\)$/);
     expect(first!.error).not.toMatch(/[<>]/);
     expect(rest.length).toBeGreaterThan(0);
     for (const r of rest) expect(r.error).toBe(`Not pulled: SAM.gov stopped this run earlier — ${first!.error}`);

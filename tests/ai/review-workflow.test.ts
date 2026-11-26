@@ -112,7 +112,7 @@ describe("review workflow logic", () => {
       { id: "c5", sectionId: "gone", body: "Orphaned section comment.", resolved: false, authorName: "Bo", createdAt: "2026-10-03T10:04:00Z" },
     ]);
     expect(groups.map((g) => [g.sectionId, g.title, g.open.length, g.resolved.length, g.authors])).toEqual([
-      ["s1", "Technical Approach", 1, 1, ["FORGE AI", "Bo"]],
+      ["s1", "Technical Approach", 1, 1, ["ForgeAXI", "Bo"]],
       ["s3", "Past Performance", 1, 0, ["Ana"]],
       [null, "General", 2, 0, ["Ana", "Bo"]],
     ]);
@@ -145,8 +145,8 @@ describe("review workflow logic", () => {
       "- Bo: pending",
       "",
       "## §1 Technical Approach",
-      "1 open · 1 resolved · FORGE AI, Bo",
-      "- [ ] Where is the incumbent? — FORGE AI",
+      "1 open · 1 resolved · ForgeAXI, Bo",
+      "- [ ] Where is the incumbent? — ForgeAXI",
       "- [x] Already fixed. — Bo",
       "",
       "## §3 Past Performance",
@@ -209,7 +209,7 @@ describe("review workflow logic — Slice 2 follow-ups", () => {
     expect(s.strengths).toEqual(["Strong past performance story — keep it."]);
     expect(s.nextSteps).toEqual(["Checklist still open: Claims carry proof", "Finish the checklist (5/14 ticks).", "1 reviewer still to submit a verdict."]);
     expect(s.fallback).toBe(true);
-    expect(summaryMarkdown(s).split("\n").slice(0, 4)).toEqual([`**${s.headline}**`, "", "## Themes", "- **§1 Technical Approach needs the most work** — 2 open comments from FORGE AI, Ana. (Technical Approach)"]);
+    expect(summaryMarkdown(s).split("\n").slice(0, 4)).toEqual([`**${s.headline}**`, "", "## Themes", "- **§1 Technical Approach needs the most work** — 2 open comments from ForgeAXI, Ana. (Technical Approach)"]);
     expect(summaryMarkdown(s)).toContain("- [ ] §1 Technical Approach: Where is the incumbent?");
   });
 

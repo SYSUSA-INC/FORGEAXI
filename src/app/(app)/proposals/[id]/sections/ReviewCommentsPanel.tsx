@@ -76,7 +76,7 @@ export function ReviewCommentsPanel({
                   </Link>
                 ) : null}
                 {c.authorName === null ? (
-                  <span className="rounded border border-violet/40 bg-violet/10 px-1.5 py-0.5 text-text">FORGE AI</span>
+                  <span className="rounded border border-violet/40 bg-violet/10 px-1.5 py-0.5 text-text">ForgeAXI</span>
                 ) : (
                   <span>{c.authorName}</span>
                 )}

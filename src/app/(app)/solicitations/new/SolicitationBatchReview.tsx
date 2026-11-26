@@ -15,7 +15,7 @@ import { classifyUploadedFileAction, fileSolicitationBatchAction } from "../batc
 type Read = { uploadId: string } & ({ status: "reading" } | { status: "read"; file: ClassifiedUpload } | { status: "failed"; error: string });
 type Outcome = { solicitationId: string | null; filed: string[]; failed: Record<string, string>; error: string | null };
 
-const NO_ANSWER = "FORGE didn't answer (it may have timed out).";
+const NO_ANSWER = "ForgeAXI didn't answer (it may have timed out).";
 const EVIDENCE_FROM: Record<LabelEvidence["from"], string> = { name: "File name", text: "In the text", batch: "In this batch" };
 const STATE_TEXT: Partial<Record<ReviewFileState, string>> = { reading: "Reading…", file_failed: "Not filed" };
 
@@ -157,7 +157,7 @@ export function SolicitationBatchReview({ initialFiles, maxBytes, then, onStartO
     >
       <div className="flex flex-col gap-3">
         <p className="font-body text-[12px] text-muted">
-          FORGE read each file and suggests what it is, with the lines it went by. Change any label that is wrong. One file is the base solicitation; amendments are filed under it in number order, and the rest
+          ForgeAXI read each file and suggests what it is, with the lines it went by. Change any label that is wrong. One file is the base solicitation; amendments are filed under it in number order, and the rest
           become its documents.
         </p>
 

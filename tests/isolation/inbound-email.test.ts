@@ -63,7 +63,7 @@ function stubGraph(inbox: Msg[], opts: { failAttachment?: string } = {}) {
   return { marked, calls };
 }
 
-describe("BL-SCOUT-INBOX — reading FORGE's Exchange mailbox", () => {
+describe("BL-SCOUT-INBOX — reading ForgeAXI's Exchange mailbox", () => {
   let fx: TwoTenantFixture;
   let address = "";
   beforeEach(async () => {
@@ -127,9 +127,9 @@ describe("BL-SCOUT-INBOX — reading FORGE's Exchange mailbox", () => {
     expect(await pollInboundMailbox()).toMatchObject({ configured: false, read: 0 });
   });
 
-  it("says so when Microsoft refuses FORGE's app", async () => {
+  it("says so when Microsoft refuses ForgeAXI's app", async () => {
     vi.stubGlobal("fetch", vi.fn(async () => new Response(JSON.stringify({ error: "invalid_client", error_description: "AADSTS7000215: Invalid client secret provided." }), { status: 401 })));
     const s = await pollInboundMailbox();
-    expect(s.error).toContain("Microsoft sign-in refused FORGE's app: invalid_client (AADSTS7000215: Invalid client secret provided.)");
+    expect(s.error).toContain("Microsoft sign-in refused ForgeAXI's app: invalid_client (AADSTS7000215: Invalid client secret provided.)");
   });
 });

@@ -102,14 +102,14 @@ export function SendPanel({ view }: { view: DeliverView }) {
   }
 
   return (
-    <Panel title="Send from FORGE" eyebrow={view.dueDate ? `Due ${view.dueDate}` : "Submit by email"}>
+    <Panel title="Send from ForgeAXI" eyebrow={view.dueDate ? `Due ${view.dueDate}` : "Submit by email"}>
       <p className="font-body text-[13px] leading-[1.5] text-muted">
-        FORGE emails the files to the contracting officer from this opportunity&apos;s own address, so the reply comes back here. It is sent once, a copy of each file is kept, and the proposal and the opportunity are marked as submitted.
+        ForgeAXI emails the files to the contracting officer from this opportunity&apos;s own address, so the reply comes back here. It is sent once, a copy of each file is kept, and the proposal and the opportunity are marked as submitted.
       </p>
       {!view.canSubmit ? (
         <p className="mt-3 font-body text-[13px] text-muted">Only an org admin, the proposal manager or the capture manager can send a submission.</p>
       ) : !send.configured ? (
-        <p className="mt-3 font-body text-[13px] text-muted">Sending from FORGE is not set up on this site. Send the file yourself and use Record submission below.</p>
+        <p className="mt-3 font-body text-[13px] text-muted">Sending from ForgeAXI is not set up on this site. Send the file yourself and use Record submission below.</p>
       ) : view.renders.length === 0 ? (
         <div className="mt-3">
           <p className="font-body text-[13px] text-muted">There is no rendered file yet. Render the PDF or the Word file in the Export panel on the proposal&apos;s page first.</p>
@@ -206,7 +206,7 @@ export function SendPanel({ view }: { view: DeliverView }) {
               <p className={`font-mono text-[11px] ${size === "ok" ? "text-muted" : size === "warn" ? "text-brass" : "text-red"}`}>
                 Total {mb(total)}
                 {size === "warn" ? ". Above 20 MB: many agency mail systems refuse large messages. Check the RFP’s limit." : ""}
-                {size === "refuse" ? ". Above 35 MB FORGE does not send: send the files yourself and use Record submission." : ""}
+                {size === "refuse" ? ". Above 35 MB ForgeAXI does not send: send the files yourself and use Record submission." : ""}
               </p>
             </fieldset>
             {needsOverride ? (

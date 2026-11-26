@@ -92,7 +92,7 @@ function stubSam(rows = ROWS, live = LIVE): URL[] {
 }
 const asked = (calls: URL[]) => calls.map((u) => u.searchParams.get("noticeid")).sort();
 
-describe("BL-STAB-10b — searches read FORGE's copy of SAM.gov descriptions first", () => {
+describe("BL-STAB-10b — searches read ForgeAXI's copy of SAM.gov descriptions first", () => {
   let fx: TwoTenantFixture;
   const clear = async () => {
     await db.delete(samNotices);
@@ -266,7 +266,7 @@ describe("BL-STAB-10b — searches read FORGE's copy of SAM.gov descriptions fir
     calls = stubSam();
     r = await loadSamGovOpportunitiesAction({ naicsCodes: ["541519"], keyword: "ServiceNow" });
     if (!r.ok) throw new Error(r.error);
-    expect(r.warning).toMatch(/^FORGE's copy of SAM\.gov descriptions is from \d{4}-\d{2}-\d{2}, so newer notices are read live, 30 per search\.$/);
+    expect(r.warning).toMatch(/^ForgeAXI's copy of SAM\.gov descriptions is from \d{4}-\d{2}-\d{2}, so newer notices are read live, 30 per search\.$/);
     expect(asked(calls)).toEqual([id(4), id(5), id(11)]);
 
     // A search with no keyword shows stored previews and reads nothing.

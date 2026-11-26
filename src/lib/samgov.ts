@@ -54,7 +54,7 @@ function reportSharedKeyRejected(endpoint: SamEndpoint, status: number | undefin
   sharedKeyReportedAt = now;
   log.error("[samgov]", "shared key rejected", {
     endpoint,
-    error: new Error(`SAM.gov rejected FORGE's shared key SAMGOV_API_KEY (HTTP ${status ?? "?"}${code ? ` ${code}` : ""}) on ${endpoint}`),
+    error: new Error(`SAM.gov rejected ForgeAXI's shared key SAMGOV_API_KEY (HTTP ${status ?? "?"}${code ? ` ${code}` : ""}) on ${endpoint}`),
   });
 }
 

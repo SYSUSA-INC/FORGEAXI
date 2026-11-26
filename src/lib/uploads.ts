@@ -171,7 +171,7 @@ export async function createUploadIntent(i: {
       ok: false,
       code: "storage_unconfigured",
       error:
-        "File storage isn't set up on this site, so files can't be uploaded yet. A FORGE platform admin connects Cloudflare R2 (four settings on Vercel) and checks it on Admin → Jobs → File storage.",
+        "File storage isn't set up on this site, so files can't be uploaded yet. A ForgeAXI platform admin connects Cloudflare R2 (four settings on Vercel) and checks it on Admin → Jobs → File storage.",
     };
   }
   const check = validateUploadRequest({ purpose: i.purpose, fileName: i.fileName, size: i.size, env: process.env });

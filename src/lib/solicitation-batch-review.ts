@@ -94,7 +94,7 @@ export function basisText(row: Pick<ReviewRow, "suggested" | "changed" | "label"
   if (!s) return "";
   const pct = `${Math.round(Math.min(1, Math.max(0, s.confidence)) * 100)}%`;
   const source = s.basis === "ai" ? "AI check" : "Rule-based";
-  if (row.changed) return `Chosen by you · FORGE read it as ${FILE_LABEL_NAMES[s.label]} (${source.toLowerCase()}, ${pct})`;
+  if (row.changed) return `Chosen by you · ForgeAXI read it as ${FILE_LABEL_NAMES[s.label]} (${source.toLowerCase()}, ${pct})`;
   return `${source} · ${pct} confidence`;
 }
 

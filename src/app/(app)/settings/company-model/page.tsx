@@ -58,7 +58,7 @@ export default async function CompanyModelPage() {
       <PageHeader
         eyebrow="Settings"
         title="Company model"
-        subtitle="FORGE's own account of what the company does, built from the profile, the Knowledge base, decided bids and confirmed questionnaires. An admin approves every version; the scout, the questionnaire and the drafter read the approved one."
+        subtitle="ForgeAXI's own account of what the company does, built from the profile, the Knowledge base, decided bids and confirmed questionnaires. An admin approves every version; the scout, the questionnaire and the drafter read the approved one."
       />
       <CompanyModelPanel model={view} canEdit={canEdit} evidenceLabels={evidenceLabels} basis={basis} searchKeywords={org?.searchKeywords ?? []} />
     </>

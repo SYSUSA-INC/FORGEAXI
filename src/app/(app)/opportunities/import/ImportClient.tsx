@@ -414,7 +414,7 @@ export function ImportClient({ defaultNaics, autoSearch }: { defaultNaics: strin
             <details className="mt-4 border-t border-layer/10 py-3">
               <summary className="cursor-pointer font-mono text-[11px] uppercase tracking-widest text-muted">Not checked for {searchInfo.scope.keyword} ({unchecked.length})</summary>
               <div className="mt-2 flex flex-wrap items-center gap-3">
-                <p className="font-body text-[12px] text-muted">FORGE hasn&rsquo;t read these descriptions yet, so it can&rsquo;t tell whether they mention it. They aren&rsquo;t counted as matches or picked by Select all.</p>
+                <p className="font-body text-[12px] text-muted">ForgeAXI hasn&rsquo;t read these descriptions yet, so it can&rsquo;t tell whether they mention it. They aren&rsquo;t counted as matches or picked by Select all.</p>
                 <button type="button" className="aur-btn aur-btn-ghost disabled:opacity-60" disabled={checking} onClick={checkMore}>
                   {checking ? "Checking…" : `Check ${Math.min(10, unchecked.length)} more (${Math.min(10, unchecked.length)} SAM.gov requests)`}
                 </button>

@@ -42,8 +42,8 @@ export function UploadSolicitationForm({ maxBytes, then = "solicitation", opport
           filed.current += 1;
           setNotice(
             filed.current === 1
-              ? "Filed on this opportunity. FORGE is reading it now; it shows above."
-              : `Filed ${filed.current} documents on this opportunity. FORGE is reading them now; they show above.`,
+              ? "Filed on this opportunity. ForgeAXI is reading it now; it shows above."
+              : `Filed ${filed.current} documents on this opportunity. ForgeAXI is reading them now; they show above.`,
           );
           router.refresh();
           return;
@@ -140,7 +140,7 @@ export function UploadSolicitationForm({ maxBytes, then = "solicitation", opport
 
         <div className="font-mono text-[10px] uppercase tracking-label text-subtle">
           {many ? "Each file goes" : "The file goes"} straight to secure storage, then text extraction and the AI parse run in the background.
-          {many ? "" : " Several files at once: FORGE labels each one (solicitation, amendment, Q&A, attachment, pricing sheet, form) and you confirm before anything is filed."}
+          {many ? "" : " Several files at once: ForgeAXI labels each one (solicitation, amendment, Q&A, attachment, pricing sheet, form) and you confirm before anything is filed."}
         </div>
       </div>
     </Panel>

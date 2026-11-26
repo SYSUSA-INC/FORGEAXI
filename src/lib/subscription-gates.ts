@@ -663,7 +663,7 @@ export async function enforceStorageQuota(
         0,
         0,
         null,
-        "This workspace has no plan assigned, so files can't be stored yet. A FORGE platform admin assigns one under Admin → Organizations.",
+        "This workspace has no plan assigned, so files can't be stored yet. A ForgeAXI platform admin assigns one under Admin → Organizations.",
       );
     }
     const limitGb = tier.effectiveQuotas.storageGb;

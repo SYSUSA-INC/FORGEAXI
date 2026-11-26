@@ -167,7 +167,7 @@ export function PartnerSearch(props: { opportunityId: string; naics: string }) {
   return (
     <Panel title="Find partners" eyebrow="SAM.gov · certification registry · USAspending · your Companies">
       <p className="mb-3 font-body text-[13px] leading-[1.5] text-muted">
-        Firms under NAICS {props.naics || "(not set)"}: contract awards in the last {PARTNER_SEARCH_YEARS} years (and at this agency), current SBA certifications, active SAM.gov registrations, and your own Companies, joined by UEI. FORGE AI ranks the best 10 and says why, using only what the search found and the gaps in your capability matrix.
+        Firms under NAICS {props.naics || "(not set)"}: contract awards in the last {PARTNER_SEARCH_YEARS} years (and at this agency), current SBA certifications, active SAM.gov registrations, and your own Companies, joined by UEI. ForgeAXI ranks the best 10 and says why, using only what the search found and the gaps in your capability matrix.
       </p>
       <div className="flex flex-wrap items-end gap-2">
         <label className="w-28">
@@ -186,7 +186,7 @@ export function PartnerSearch(props: { opportunityId: string; naics: string }) {
           </select>
         </label>
         <button type="button" className="aur-btn aur-btn-primary" disabled={pending || !props.naics} onClick={() => run("ai", false)}>
-          {running === "ai" ? "FORGE AI is ranking…" : "Rank the best 10 with FORGE AI"}
+          {running === "ai" ? "ForgeAXI is ranking…" : "Rank the best 10 with ForgeAXI"}
         </button>
         <button type="button" className="aur-btn" disabled={pending || !props.naics} onClick={() => run("plain", false)}>
           {running === "plain" ? "Searching…" : "Search only"}
@@ -208,7 +208,7 @@ export function PartnerSearch(props: { opportunityId: string; naics: string }) {
           </p>
           {ranked ? (
             <>
-              <p className="mb-1 font-mono text-[11px] uppercase tracking-label text-cobalt">FORGE AI's best {ranked.length}, in order. Advice: you choose.</p>
+              <p className="mb-1 font-mono text-[11px] uppercase tracking-label text-cobalt">ForgeAXI's best {ranked.length}, in order. Advice: you choose.</p>
               {dropped > 0 ? (
                 <p className="mb-1 font-body text-[12px] text-brass">
                   {dropped} pick{dropped === 1 ? "" : "s"} left out: the reason didn't rest on a fact the search returned.

@@ -26,7 +26,7 @@ export default async function SamgovKeysPage() {
       <PageHeader
         eyebrow="Platform admin"
         title="Company SAM.gov keys"
-        subtitle="Companies that use their own SAM.gov API key instead of FORGE's shared key. Keys are stored encrypted and never shown — not here, not to the company."
+        subtitle="Companies that use their own SAM.gov API key instead of ForgeAXI's shared key. Keys are stored encrypted and never shown — not here, not to the company."
         meta={[
           { label: "Companies", value: String(rows.length) },
           { label: "On an older key", value: String(old.length), accent: old.length ? "gold" : undefined },
@@ -56,7 +56,7 @@ export default async function SamgovKeysPage() {
       </Panel>
       <Panel title="Keys" eyebrow={`${rows.length} compan${rows.length === 1 ? "y" : "ies"}`}>
         {rows.length === 0 ? (
-          <p className="font-body text-[13px] text-muted">No company has saved its own SAM.gov key; every company uses FORGE&apos;s shared key.</p>
+          <p className="font-body text-[13px] text-muted">No company has saved its own SAM.gov key; every company uses ForgeAXI&apos;s shared key.</p>
         ) : (
           <div className="overflow-x-auto">
             <table className="aur-table">

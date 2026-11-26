@@ -95,7 +95,7 @@ export default async function PricingPage() {
     <div className="mx-auto max-w-6xl px-4 py-12 md:py-20">
       <div className="text-center">
         <div className="font-mono text-[10px] uppercase tracking-label text-teal">
-          FORGE pricing
+          ForgeAXI pricing
         </div>
         <h1 className="mt-3 font-display text-3xl font-semibold tracking-tight text-text md:text-4xl">
           One platform for the proposal lifecycle.

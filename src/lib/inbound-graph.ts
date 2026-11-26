@@ -38,7 +38,7 @@ async function graphToken(cfg: GraphConfig): Promise<string> {
     signal: AbortSignal.timeout(TIMEOUT_MS),
   });
   const body = (await res.json().catch(() => ({}))) as { access_token?: string; expires_in?: number; error?: string; error_description?: string };
-  if (!res.ok || !body.access_token) throw new GraphError(`Microsoft sign-in refused FORGE's app: ${body.error ?? res.status}${body.error_description ? ` (${body.error_description.split("\r\n")[0]})` : ""}`);
+  if (!res.ok || !body.access_token) throw new GraphError(`Microsoft sign-in refused ForgeAXI's app: ${body.error ?? res.status}${body.error_description ? ` (${body.error_description.split("\r\n")[0]})` : ""}`);
   cachedToken = { value: body.access_token, until: Date.now() + Math.max(60, (body.expires_in ?? 3600) - 60) * 1000 };
   return body.access_token;
 }

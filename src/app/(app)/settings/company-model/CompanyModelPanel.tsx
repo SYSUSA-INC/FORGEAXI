@@ -91,7 +91,7 @@ export function CompanyModelPanel({
         title={draft ? "Draft" : "Approved model"}
         eyebrow={
           draft
-            ? `${model?.draftEdited ? "Edited" : "Drafted by FORGE"}${model?.draftGeneratedAt ? ` · ${new Date(model.draftGeneratedAt).toLocaleDateString()}` : ""} · ${changes} of 8 sections differ from the approved model`
+            ? `${model?.draftEdited ? "Edited" : "Drafted by ForgeAXI"}${model?.draftGeneratedAt ? ` · ${new Date(model.draftGeneratedAt).toLocaleDateString()}` : ""} · ${changes} of 8 sections differ from the approved model`
             : approved
               ? `Version ${model?.approvedVersion}${model?.approvedAt ? ` · approved ${new Date(model.approvedAt).toLocaleDateString()}` : ""}`
               : "No model yet"
@@ -133,7 +133,7 @@ export function CompanyModelPanel({
       >
         <p className="mb-3 font-body text-[13px] leading-[1.5] text-muted">
           {draft
-            ? "FORGE wrote this from the evidence it has; a \"proven\" capability keeps the evidence it cited. Correct anything, then Approve: nothing reads the model until an admin approves it."
+            ? "ForgeAXI wrote this from the evidence it has; a \"proven\" capability keeps the evidence it cited. Correct anything, then Approve: nothing reads the model until an admin approves it."
             : `A build reads ${basisLine}. ${canEdit ? "Admins approve each version." : "An admin builds and approves the model."}`}
         </p>
         {model?.staleReasons.length ? (
@@ -148,7 +148,7 @@ export function CompanyModelPanel({
           <ModelView body={approved} evidenceLabels={evidenceLabels} />
         ) : (
           <p className="font-body text-[13px] text-muted">
-            {canEdit ? "Click Build the model to have FORGE draft it from the evidence." : "No approved model yet."}
+            {canEdit ? "Click Build the model to have ForgeAXI draft it from the evidence." : "No approved model yet."}
           </p>
         )}
       </Panel>

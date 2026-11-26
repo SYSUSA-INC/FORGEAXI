@@ -248,7 +248,7 @@ export default async function ReviewDetailPage({
               resolved: c.resolved,
               createdAt: c.createdAt.toISOString(),
               // BL-AIP-6 — pre-review comments carry no user; label them.
-              authorName: c.authorName ?? (c.userId ? null : "FORGE AI"),
+              authorName: c.authorName ?? (c.userId ? null : "ForgeAXI"),
               authorEmail: c.authorEmail,
               carriedFrom: c.carriedFromCommentId ? carriedColor.get(c.carriedFromCommentId) ?? "an earlier round" : null,
             }))}
