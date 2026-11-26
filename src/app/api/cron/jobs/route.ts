@@ -11,7 +11,7 @@ export const maxDuration = 300;
 /**
  * BL-AIP-4c — Vercel Cron handler for durable background jobs.
  *
- * Wired in vercel.json at "/api/cron/jobs", every five minutes.
+ * Wired in vercel.json at "/api/cron/jobs", every 15 minutes (five until 2026-11).
  *
  * Re-queues `running` rows whose instance died (stuck past the window,
  * failed once their attempts are spent) and runs due `queued` rows —

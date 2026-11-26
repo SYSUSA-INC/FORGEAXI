@@ -18,7 +18,7 @@
     },
     {
       "path": "/api/cron/proposal-scan",
-      "schedule": "*/5 * * * *"
+      "schedule": "*/15 * * * *"
     },
     {
       "path": "/api/cron/solicitation-key-dates",
@@ -34,7 +34,7 @@
     },
     {
       "path": "/api/cron/jobs",
-      "schedule": "*/5 * * * *"
+      "schedule": "*/15 * * * *"
     },
     {
       "path": "/api/cron/sam-notices",
@@ -46,7 +46,7 @@
     },
     {
       "path": "/api/cron/inbound-mail",
-      "schedule": "*/2 * * * *"
+      "schedule": "*/15 * * * *"
     },
     {
       "path": "/api/cron/amendment-watch",

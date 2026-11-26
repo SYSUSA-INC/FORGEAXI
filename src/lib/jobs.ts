@@ -11,7 +11,7 @@
  *              the same resource), then start it at once in the
  *              background exactly as before — the user waits for
  *              nothing extra.
- *   cron     → runJobsCron() every five minutes: rows still `running`
+ *   cron     → runJobsCron() every fifteen minutes: rows still `running`
  *              past the stuck window are presumed dead and re-queued
  *              (or failed once their attempts are spent); due `queued`
  *              rows are claimed and run from the stored file bytes.

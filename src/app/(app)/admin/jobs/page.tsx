@@ -16,7 +16,7 @@ export const dynamic = "force-dynamic";
  * BL-AIP-4c — superadmin view of the durable background-job table.
  *
  * Every solicitation parse, companion-document parse and proposal
- * harvest is a row here; the jobs cron (every five minutes) recovers
+ * harvest is a row here; the jobs cron (every fifteen minutes) recovers
  * rows whose instance died and runs due retries. Cross-tenant by
  * design (platform ops). Filter via `?filter=open | failed | done | all`.
  */
@@ -92,7 +92,7 @@ export default async function BackgroundJobsPage({
       <PageHeader
         eyebrow="Platform admin · Background jobs"
         title="Background jobs"
-        subtitle="Durable records of every solicitation parse, companion-document parse and proposal harvest. The jobs cron runs every five minutes: rows still running after fifteen minutes are presumed dead and retried from the stored file bytes, up to three attempts."
+        subtitle="Durable records of every solicitation parse, companion-document parse and proposal harvest. The jobs cron runs every fifteen minutes: rows still running after fifteen minutes are presumed dead and retried from the stored file bytes, up to three attempts."
         actions={
           <>
             <RunJobsNowButton />
