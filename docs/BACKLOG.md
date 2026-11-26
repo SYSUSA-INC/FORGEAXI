@@ -22,7 +22,7 @@ Effort key:
 
 ## State of the backlog
 
-**As of 2026-11-26, `main` at `cb10c7f`, through PR #519, plus the scheduled-jobs change (PR for `claude/cron-cadence`).** Checked
+**As of 2026-11-26, `main` at `cb10c7f`, through PR #519, plus the scheduled-jobs change (PR #520).** Checked
 against the merged pull requests and the code, not against the entries'
 own wording. If the date or the sha here is old, check `git log` before
 trusting a status below, and correct this section in the same PR.
@@ -135,7 +135,7 @@ until someone says it is done.
 - **Migrations:** sync 0151 to 0181 on `/admin/migrations`, in order.
 - **Neon's free plan (owner, 2026-11-26):** the owner deleted the
   snapshot branches and moved the project to the free plan, which
-  suspends the database when its monthly compute runs out. PR for `claude/cron-cadence`
+  suspends the database when its monthly compute runs out. PR #520
   makes the frequent jobs fire together every 15 minutes so the
   database can sleep; watch the usage meter on Neon's Billing page for
   the first weeks, and move to the paid minimum before real customers
