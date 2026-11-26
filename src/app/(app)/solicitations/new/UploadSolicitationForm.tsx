@@ -7,11 +7,16 @@ import { UploadQueue } from "@/components/uploads/UploadQueue";
 import { useUploadQueue } from "@/components/uploads/useUploadQueue";
 import { acceptFor, formatLimit } from "@/lib/upload-policy";
 import { createSolicitationFromUploadAction } from "../actions";
+import { SolicitationBatchReview } from "./SolicitationBatchReview";
 
 /**
  * BL-STAB-2c — the file goes from the browser straight to storage (no
  * request-size cap), the server checks it, and it is filed as a new
  * solicitation whose parse then runs in the background.
+ *
+ * BL-STAB-3b — several files at once (not on an opportunity) open the
+ * batch review instead: each is labelled, the person confirms, and the
+ * set is filed as one solicitation with its amendments and documents.
  */
 export function UploadSolicitationForm({ maxBytes, then = "solicitation", opportunityId }: { maxBytes: number; /** BL-NAV-LIFECYCLE 1a — "create": go on to Identify → Create with the document; BL-SCOUT-FILES — "opportunity": file it on `opportunityId` and stay. */ then?: "solicitation" | "create" | "opportunity"; opportunityId?: string }) {
   const router = useRouter();
@@ -19,6 +24,7 @@ export function UploadSolicitationForm({ maxBytes, then = "solicitation", opport
   const [notice, setNotice] = useState<string | null>(null);
   const filed = useRef(0);
   const inputRef = useRef<HTMLInputElement | null>(null);
+  const [batch, setBatch] = useState<File[] | null>(null);
   // Filing on an opportunity takes several documents at once; creating a
   // solicitation takes the one file that becomes it.
   const many = then === "opportunity";
@@ -62,16 +68,21 @@ export function UploadSolicitationForm({ maxBytes, then = "solicitation", opport
       setNotice("One upload at a time here: wait for this one to finish.");
       return;
     }
-    setNotice(
-      picked.length > 1
-        ? `Uploading "${file.name}" as the solicitation. Several files at once, sorted automatically, is coming next; until then add attachments from the solicitation's page.`
-        : null,
-    );
+    setNotice(null);
     queue.clear();
+    if (picked.length > 1) {
+      // BL-STAB-3b — several files: label each, confirm, then file them together.
+      setBatch(picked);
+      return;
+    }
     queue.add([{ file, meta: undefined }]);
   }
   function browse() {
     if (many || !queue.busy) inputRef.current?.click();
+  }
+
+  if (batch && then !== "opportunity") {
+    return <SolicitationBatchReview initialFiles={batch} maxBytes={maxBytes} then={then} onStartOver={() => setBatch(null)} />;
   }
 
   return (
@@ -97,7 +108,7 @@ export function UploadSolicitationForm({ maxBytes, then = "solicitation", opport
             dragOver ? "border-teal/70 bg-teal/[0.06]" : "border-layer/15 bg-layer/[0.02] hover:border-layer/30"
           }`}
         >
-          <div className="font-display text-2xl font-semibold text-text">{queue.busy ? "Uploading…" : many ? "Drop files here" : "Drop a file here"}</div>
+          <div className="font-display text-2xl font-semibold text-text">{queue.busy ? "Uploading…" : many ? "Drop files here" : "Drop one file or several here"}</div>
           <div className="mt-1 font-mono text-[10px] uppercase tracking-label text-muted">or click to browse</div>
           <button
             type="button"
@@ -108,12 +119,12 @@ export function UploadSolicitationForm({ maxBytes, then = "solicitation", opport
             }}
             className="aur-btn aur-btn-primary mt-4 disabled:opacity-50"
           >
-            {many ? "Select files" : "Select file"}
+            Select files
           </button>
           <input
             ref={inputRef}
             type="file"
-            multiple={many}
+            multiple
             accept={acceptFor("document")}
             className="sr-only"
             onChange={(e) => {
@@ -129,6 +140,7 @@ export function UploadSolicitationForm({ maxBytes, then = "solicitation", opport
 
         <div className="font-mono text-[10px] uppercase tracking-label text-subtle">
           {many ? "Each file goes" : "The file goes"} straight to secure storage, then text extraction and the AI parse run in the background.
+          {many ? "" : " Several files at once: FORGE labels each one (solicitation, amendment, Q&A, attachment, pricing sheet, form) and you confirm before anything is filed."}
         </div>
       </div>
     </Panel>

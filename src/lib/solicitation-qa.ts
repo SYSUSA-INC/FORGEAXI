@@ -52,6 +52,8 @@ export type SolicitationQaView = {
   id: string;
   source: SolicitationQaSource;
   sourceRef: string;
+  /** Read from a file someone uploaded (a Q&A companion document), not from SAM.gov. */
+  uploaded: boolean;
   ordinal: number;
   question: string;
   answer: string;
@@ -76,6 +78,7 @@ export async function listSolicitationQa(input: {
       id: solicitationQa.id,
       source: solicitationQa.source,
       sourceRef: solicitationQa.sourceRef,
+      sourceDocumentId: solicitationQa.sourceDocumentId,
       ordinal: solicitationQa.ordinal,
       question: solicitationQa.question,
       answer: solicitationQa.answer,
@@ -93,8 +96,9 @@ export async function listSolicitationQa(input: {
       ),
     )
     .orderBy(desc(solicitationQa.postedAt), asc(solicitationQa.sourceRef), asc(solicitationQa.ordinal));
-  return rows.map((r) => ({
+  return rows.map(({ sourceDocumentId, ...r }) => ({
     ...r,
+    uploaded: sourceDocumentId !== null,
     affectedRefs: r.affectedRefs ?? [],
     postedAt: r.postedAt ? r.postedAt.toISOString() : null,
     createdAt: r.createdAt.toISOString(),
