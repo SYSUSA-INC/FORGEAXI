@@ -22,7 +22,7 @@ Effort key:
 
 ## State of the backlog
 
-**As of 2026-11-26, `main` at `499cbe1`, through PR #518, plus the Neon snapshot fix (PR for `claude/neon-snapshot-leak`).** Checked
+**As of 2026-11-26, `main` at `499cbe1`, through PR #518, plus the Neon snapshot fix (PR #519).** Checked
 against the merged pull requests and the code, not against the entries'
 own wording. If the date or the sha here is old, check `git log` before
 trusting a status below, and correct this section in the same PR.
@@ -135,7 +135,7 @@ until someone says it is done.
 - **Migrations:** sync 0151 to 0181 on `/admin/migrations`, in order.
 - **Neon (found 2026-11-26):** the project held 823 branches, all
   `auto-migrate-…` snapshots left by the product's own start-up code
-  (fixed in PR for `claude/neon-snapshot-leak`). Delete them on the Neon console's Branches
+  (fixed in PR #519). Delete them on the Neon console's Branches
   page (**Clean up branches**; keep `main`). Also for the bill: compute
   is fixed at 1 CU and never sleeps (set autoscaling from 0.25 with
   scale to zero), and pull-request previews share the production
@@ -9554,7 +9554,7 @@ incident class is now mechanically impossible from the UI.
 ---
 
 ### BL-QC-auto-migrate — Auto-apply migrations on deploy with rollback gates — **shipped**
-**Priority:** P0  ·  **Effort:** M  ·  **Depends on:** BL-QC  ·  **Status:** ✅ shipped; the snapshot leak fixed in PR for `claude/neon-snapshot-leak`
+**Priority:** P0  ·  **Effort:** M  ·  **Depends on:** BL-QC  ·  **Status:** ✅ shipped; the snapshot leak fixed in PR #519
 
 **The snapshot leak (found 2026-11-26, from the owner's Neon bill of
 more than $500).** The pre-migration snapshot was named by the time of
