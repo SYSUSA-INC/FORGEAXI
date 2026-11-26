@@ -22,7 +22,7 @@ Effort key:
 
 ## State of the backlog
 
-**As of 2026-11-26, `main` at `27784d2`, through PR #516, plus BL-BRAND-FORGEAXI's standard (PR #517) and its look (PR for `claude/brand-forgeaxi`).** Checked
+**As of 2026-11-26, `main` at `293d62f`, through PR #517, plus BL-BRAND-FORGEAXI's look (PR for `claude/brand-forgeaxi`).** Checked
 against the merged pull requests and the code, not against the entries'
 own wording. If the date or the sha here is old, check `git log` before
 trusting a status below, and correct this section in the same PR.
