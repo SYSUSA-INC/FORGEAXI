@@ -32,7 +32,7 @@ export function AddGoldDocForm() {
             ? await createGoldDocFromNoticeAction(noticeId)
             : await createGoldDocFromTextAction({ title, text, noticeId: noticeId || undefined });
       } catch {
-        setError("FORGE didn't answer. Check the gold set before adding it again.");
+        setError("ForgeAXI didn't answer. Check the gold set before adding it again.");
         return;
       }
       if (!res.ok) {
@@ -63,7 +63,7 @@ export function AddGoldDocForm() {
       </label>
       {mode === "notice" ? (
         <p className="font-body text-[13px] leading-[1.5] text-muted">
-          FORGE downloads the notice and up to 15 attachments (25 MB each) from SAM.gov and extracts their text. Scanned
+          ForgeAXI downloads the notice and up to 15 attachments (25 MB each) from SAM.gov and extracts their text. Scanned
           attachments come back empty and are flagged so you can paste their text on the document page. Takes up to a few minutes.
         </p>
       ) : (

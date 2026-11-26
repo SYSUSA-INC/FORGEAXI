@@ -132,7 +132,7 @@ export function buildOpenApiDocument(input: OpenApiInput) {
   return {
     openapi: "3.1.0",
     info: {
-      title: "FORGE API",
+      title: "ForgeAXI API",
       version: API_DOC_VERSION,
       description:
         "Read-only access to one workspace's pipeline and proposals. Create a token under Settings → API access " +

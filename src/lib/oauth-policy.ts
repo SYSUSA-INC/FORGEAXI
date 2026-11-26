@@ -78,8 +78,8 @@ export function oauthErrorParam(code: Exclude<OAuthDecision, { ok: true }>["code
 
 export const OAUTH_ERROR_MESSAGES: Record<string, string> = {
   oauth_disabled: "This account is disabled. Contact your administrator.",
-  oauth_tenant: "Your Microsoft organization is not set up for FORGE. Ask your administrator to allow it.",
+  oauth_tenant: "Your Microsoft organization is not set up for ForgeAXI. Ask your administrator to allow it.",
   oauth_unverified_email: "Your sign-in provider has not verified this email address. Verify it there, then try again.",
-  oauth_not_linked: "This email already has a FORGE account. Sign in with your password instead.",
-  oauth_invite_only: "FORGE is invitation-only. Ask your organization's administrator to invite you.",
+  oauth_not_linked: "This email already has a ForgeAXI account. Sign in with your password instead.",
+  oauth_invite_only: "ForgeAXI is invitation-only. Ask your organization's administrator to invite you.",
 };

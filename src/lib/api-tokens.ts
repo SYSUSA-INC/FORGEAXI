@@ -64,7 +64,7 @@ export type ApiTokenListRow = {
   revokedBy: string | null;
 };
 
-export const PLATFORM_REVOKER_LABEL = "FORGE support";
+export const PLATFORM_REVOKER_LABEL = "ForgeAXI support";
 
 export async function listApiTokens(organizationId: string): Promise<ApiTokenListRow[]> {
   const rows = await db

@@ -31,7 +31,7 @@ export function hashRecoveryToken(token: string): string {
 export async function issueRecoveryLink(input: { userId: string; origin: string }): Promise<{ ok: true; sentTo: string } | { ok: false; error: string }> {
   const [u] = await db.select({ email: users.email, emailVerified: users.emailVerified, disabledAt: users.disabledAt }).from(users).where(eq(users.id, input.userId)).limit(1);
   if (!u?.email || !u.emailVerified || u.disabledAt) return { ok: false, error: "A recovery link can't be sent for this account. Ask an administrator to reset your two-step sign-in." };
-  if (!emailConfigured()) return { ok: false, error: "FORGE can't send email on this deployment yet. Use a recovery code, or ask an administrator to reset your two-step sign-in." };
+  if (!emailConfigured()) return { ok: false, error: "ForgeAXI can't send email on this deployment yet. Use a recovery code, or ask an administrator to reset your two-step sign-in." };
   const limit = await enforceRateLimit({ key: `mfa-recovery-link:${input.userId}`, limit: RECOVERY_LINKS_PER_DAY, windowSeconds: 86_400, failClosed: true });
   if (!limit.ok) return { ok: false, error: `You have asked for ${RECOVERY_LINKS_PER_DAY} recovery links today. Use the latest one, a recovery code, or ask an administrator.` };
   const token = randomBytes(32).toString("base64url");

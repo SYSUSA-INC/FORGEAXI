@@ -119,7 +119,7 @@ export function DeliverClient({ view }: { view: DeliverView }) {
 
       <Panel title="Record submission" eyebrow="Sent another way">
         <p className="font-body text-[13px] leading-[1.5] text-muted">
-          Download the final file, send it yourself (your own email, or the agency&apos;s portal), then record it here. FORGE keeps a copy of the file that was sent and marks the proposal and the opportunity as submitted.
+          Download the final file, send it yourself (your own email, or the agency&apos;s portal), then record it here. ForgeAXI keeps a copy of the file that was sent and marks the proposal and the opportunity as submitted.
         </p>
         {!view.canSubmit ? (
           <p className="mt-3 font-body text-[13px] text-muted">Only an org admin, the proposal manager or the capture manager can record a submission.</p>
@@ -210,7 +210,7 @@ export function DeliverClient({ view }: { view: DeliverView }) {
                 <span className="font-body text-[13px] text-text">
                   {SUBMISSION_METHOD_LABELS[s.method]} · {s.sentAt ? when(s.sentAt) : (SUBMISSION_STATUS_LABELS[s.status] ?? s.status)} · {s.sentBy}
                 </span>
-                {s.status === "failed" ? <span role="alert" className="font-body text-[13px] text-red">Not sent: {s.error || "the mail service gave no reason"}. Nothing left FORGE; send it again above.</span> : null}
+                {s.status === "failed" ? <span role="alert" className="font-body text-[13px] text-red">Not sent: {s.error || "the mail service gave no reason"}. Nothing left ForgeAXI; send it again above.</span> : null}
                 {s.subject ? <span className="font-body text-[13px] text-text">{s.subject}</span> : null}
                 {s.recipients.length > 0 ? <span className="font-mono text-[11px] text-muted">To {s.recipients.join(", ")}{s.cc.length > 0 ? ` · Cc ${s.cc.join(", ")}` : ""}</span> : null}
                 {s.note ? <span className="font-body text-[13px] text-muted">{s.note}</span> : null}

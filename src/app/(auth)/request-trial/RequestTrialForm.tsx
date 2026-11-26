@@ -56,7 +56,7 @@ export function RequestTrialForm() {
   if (sent) {
     return (
       <div className="mt-6 rounded-md border border-emerald/40 bg-emerald/10 px-4 py-3 text-sm text-text">
-        Thanks — we&apos;ve got your request. Someone from FORGE will review it, usually within a business day. If it&apos;s approved you&apos;ll get an email
+        Thanks — we&apos;ve got your request. Someone from ForgeAXI will review it, usually within a business day. If it&apos;s approved you&apos;ll get an email
         inviting you to your own workspace with a 14-day trial.
       </div>
     );

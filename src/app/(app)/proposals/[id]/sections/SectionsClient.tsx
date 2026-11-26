@@ -558,7 +558,7 @@ function SectionRow({
     replaceDoc(res.doc, projectToPlain(res.doc), countDocWords(res.doc));
     setReviewSignal((v) => v + 1);
     setNotice(
-      `FORGE AI suggested ${res.changes} change${res.changes === 1 ? "" : "s"} (+${res.insertedWords} / −${res.deletedWords} words). Accept or reject them in Track changes, then save.`,
+      `ForgeAXI suggested ${res.changes} change${res.changes === 1 ? "" : "s"} (+${res.insertedWords} / −${res.deletedWords} words). Accept or reject them in Track changes, then save.`,
     );
   }
   function insertTracked(text: string) {
@@ -566,7 +566,7 @@ function SectionRow({
     if (res.changes === 0) return;
     replaceDoc(res.doc, projectToPlain(res.doc), countDocWords(res.doc));
     setReviewSignal((v) => v + 1);
-    setNotice("Inserted as a tracked suggestion by FORGE AI. Accept it in Track changes, then save.");
+    setNotice("Inserted as a tracked suggestion by ForgeAXI. Accept it in Track changes, then save.");
   }
   // BL-FB-GEN-GRAPHICS — a diagram lands as an image node at the end of
   // the section (images are not tracked changes; the author moves it).

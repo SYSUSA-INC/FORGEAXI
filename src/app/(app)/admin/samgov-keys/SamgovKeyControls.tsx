@@ -34,7 +34,7 @@ export function ReencryptButton({ pending, disabled }: { pending: number; disabl
                   : { ok: false, text: r.error },
               );
             } catch {
-              setNote({ ok: false, text: "FORGE didn't answer. Try again in a minute." });
+              setNote({ ok: false, text: "ForgeAXI didn't answer. Try again in a minute." });
             }
             router.refresh();
           })
@@ -74,13 +74,13 @@ export function RemoveKeyButton({ organizationId, organizationName, last4, setAt
             setOpen(false);
             router.refresh();
           } catch {
-            setError("FORGE didn't answer. Try again in a minute.");
+            setError("ForgeAXI didn't answer. Try again in a minute.");
           }
         });
       }}
     >
       <label className="font-body text-[11px] text-muted" htmlFor={`reason-${organizationId}`}>
-        Remove {organizationName}&apos;s key ••••{last4}? It falls back to FORGE&apos;s shared key. Reason (the company sees it):
+        Remove {organizationName}&apos;s key ••••{last4}? It falls back to ForgeAXI&apos;s shared key. Reason (the company sees it):
       </label>
       <input id={`reason-${organizationId}`} className="aur-input w-64 text-[11px]" value={reason} onChange={(e) => setReason(e.target.value)} maxLength={300} disabled={busy} />
       <span className="flex gap-2">

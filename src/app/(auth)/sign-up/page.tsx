@@ -197,12 +197,12 @@ export default async function SignUpPage({
                 Invitation required
               </h1>
               <p className="mt-2 text-sm text-muted">
-                FORGE is currently invite-only. If your organization is on the
+                ForgeAXI is currently invite-only. If your organization is on the
                 platform, ask an admin to send you an invite — the link they
                 send will land you on this page with everything filled in.
               </p>
               <p className="mt-4 text-sm text-muted">
-                Evaluating FORGE for your organization? Request a 14-day
+                Evaluating ForgeAXI for your organization? Request a 14-day
                 trial with your company email and we&apos;ll set up a
                 workspace for you.
               </p>

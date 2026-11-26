@@ -32,7 +32,7 @@ export default async function SignInPage({
           <div className="font-mono text-[10px] uppercase tracking-label text-muted">Proposal Lifecycle Platform</div>
 
           <h1 className="mt-8 font-display text-2xl font-semibold tracking-tight text-text">
-            Sign in to Forge
+            Sign in to ForgeAXI
           </h1>
           <p className="mt-2 text-sm text-muted">
             Use your email and password.

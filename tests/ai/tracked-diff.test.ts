@@ -68,7 +68,7 @@ describe("BL-AIP-6 — applyAsTrackedChanges", () => {
     "Transition risk is mitigated by a 30-day overlap with the incumbent.",
   ].join("\n\n");
 
-  it("keeps untouched blocks verbatim and expresses edits as FORGE AI marks", () => {
+  it("keeps untouched blocks verbatim and expresses edits as ForgeAXI marks", () => {
     const res = applyAsTrackedChanges({ doc, proposedText: proposed, idFactory: ids(), now: 1 });
     const out = res.doc.content!;
     // Heading and table are unchanged objects.
@@ -88,7 +88,7 @@ describe("BL-AIP-6 — applyAsTrackedChanges", () => {
     const anyMark = para.content!.flatMap((n) => n.marks ?? []).find((m) => m.type === "tcInsert");
     expect(anyMark?.attrs).toMatchObject({
       "data-tc-author-id": FORGE_AI_AUTHOR.id,
-      "data-tc-author-name": "FORGE AI",
+      "data-tc-author-name": "ForgeAXI",
       "data-tc-ts": "1",
     });
 

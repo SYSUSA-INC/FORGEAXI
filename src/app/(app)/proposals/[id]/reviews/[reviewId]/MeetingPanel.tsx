@@ -92,7 +92,7 @@ export function MeetingPanel({
             </button>
           </div>
           <p className="font-body text-[12px] leading-relaxed text-muted">
-            FORGE does not create the meeting: paste the link from your own calendar. The invite is a one-hour calendar event (.ics) with the link and each reviewer&apos;s sections,
+            ForgeAXI does not create the meeting: paste the link from your own calendar. The invite is a one-hour calendar event (.ics) with the link and each reviewer&apos;s sections,
             and a reminder with the link goes the day before. Send again after moving the time and the reviewer&apos;s calendar updates.
           </p>
         </div>

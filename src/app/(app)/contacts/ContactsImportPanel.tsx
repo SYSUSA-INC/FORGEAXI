@@ -94,7 +94,7 @@ export function ContactsImportPanel({ onDone }: { onDone: (notice: string) => vo
           offset += part.length;
         }
       } catch {
-        return setError("FORGE didn't answer while checking for people you already have. Try Preview again.");
+        return setError("ForgeAXI didn't answer while checking for people you already have. Try Preview again.");
       }
       setPreview({
         format: parsed.format,
@@ -130,7 +130,7 @@ export function ContactsImportPanel({ onDone }: { onDone: (notice: string) => vo
             run.skipped += res.skipped;
           } else failure = res.error;
         } catch {
-          failure = "FORGE didn't answer, so the last part may already be saved.";
+          failure = "ForgeAXI didn't answer, so the last part may already be saved.";
         }
         if (failure) {
           setSending({ ...run, next: i });

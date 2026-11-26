@@ -141,7 +141,7 @@ export function AmendmentsPanel({
           <p className="font-body text-[12px] text-muted">
             Upload one or more amendments (e.g. Amendment 0001 from SAM.gov).
             Each number is read from its file name where it says one; check
-            or type it before uploading. FORGE parses each amendment, then
+            or type it before uploading. ForgeAXI parses each amendment, then
             runs a diff so you can see exactly what changed: requirements
             added / removed / modified, due date slips, page-limit edits.
           </p>

@@ -182,7 +182,7 @@ function PrepareAheadPanel(p: AiControlPanelProps) {
     setNote(null);
     startTransition(async () => {
       const res = await setPrepareAheadAction({ enabled });
-      setNote(res.ok ? (enabled ? "On. FORGE prepares overnight; a person accepts each piece." : "Off. FORGE proposes next actions but prepares nothing.") : res.error);
+      setNote(res.ok ? (enabled ? "On. ForgeAXI prepares overnight; a person accepts each piece." : "Off. ForgeAXI proposes next actions but prepares nothing.") : res.error);
       if (res.ok) router.refresh();
       else setOn(!enabled);
     });
@@ -192,7 +192,7 @@ function PrepareAheadPanel(p: AiControlPanelProps) {
       <label className="flex items-start gap-3 font-body text-[13px] leading-[1.5] text-text">
         <input type="checkbox" className="mt-1" checked={on} disabled={!p.isAdmin || pending} onChange={(e) => toggle(e.target.checked)} />
         <span>
-          Let FORGE do the preparable next actions overnight: build a proposal&apos;s outline from Section L, build the capability questionnaire and suggest its answers, map the compliance matrix, draft the sections nobody has started as FORGE AI tracked insertions, and run the health scan. Everything prepared waits for a person to accept, confirm, map or reject it; nothing prepared changes a decision, a stage, a status or a submission. At most six section drafts per night, within the AI budget.
+          Let ForgeAXI do the preparable next actions overnight: build a proposal&apos;s outline from Section L, build the capability questionnaire and suggest its answers, map the compliance matrix, draft the sections nobody has started as ForgeAXI tracked insertions, and run the health scan. Everything prepared waits for a person to accept, confirm, map or reject it; nothing prepared changes a decision, a stage, a status or a submission. At most six section drafts per night, within the AI budget.
         </span>
       </label>
       {note ? <p className="mt-2 font-mono text-[11px] text-text">{note}</p> : null}

@@ -83,7 +83,7 @@ export async function OpportunityDocsAndAIPanel({
       <Panel title="Documents & AI review" eyebrow="Linked solicitations">
         <p className="font-body text-[13px] leading-relaxed text-muted">
           {fetch && !fetch.error && (fetch.status === "queued" || fetch.status === "running")
-            ? "No documents yet: FORGE is downloading this notice's attachments from SAM.gov (below)."
+            ? "No documents yet: ForgeAXI is downloading this notice's attachments from SAM.gov (below)."
             : "No documents on this opportunity yet. Add the solicitation's files below (or, for a SAM.gov notice, Check SAM.gov now) for AI document review, capability matrix scoring and clarification questions."}
         </p>
         {samWatch}

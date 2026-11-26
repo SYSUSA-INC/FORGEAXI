@@ -54,7 +54,7 @@ export default async function ConfirmEmailPage({ searchParams }: { searchParams:
             <>
               <h1 className="font-display text-2xl font-semibold tracking-tight text-text">Email address changed</h1>
               <p className="mt-2 text-sm text-muted">
-                Your FORGE account now signs in as <span className="text-text">{email}</span>. Every open session was signed out; sign in again with the new address and your usual password and second step.
+                Your ForgeAXI account now signs in as <span className="text-text">{email}</span>. Every open session was signed out; sign in again with the new address and your usual password and second step.
               </p>
               <Link href="/sign-in" className="aur-btn aur-btn-primary mt-6 flex w-full items-center justify-center py-3 text-sm">
                 Sign in

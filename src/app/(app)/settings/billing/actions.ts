@@ -439,7 +439,7 @@ export async function changeAddonQuantityAction(input: {
   if (quantity === null) return { ok: false, error: `Quantity: a whole number from ${ADDON_LIMITS.quantity.min} to ${ADDON_LIMITS.quantity.max}.` };
   const grant = await getTenantGrant({ organizationId, tenantAddonId: input.tenantAddonId });
   if (!grant || grant.status !== "active") return { ok: false, error: "That add-on is no longer active." };
-  if (grant.source !== "stripe") return { ok: false, error: "This add-on was granted by FORGE — contact us to change it." };
+  if (grant.source !== "stripe") return { ok: false, error: "This add-on was granted by ForgeAXI — contact us to change it." };
   if (!addonStacks(grant.kind)) return { ok: false, error: "A feature unlock has no quantity." };
   if (quantity === grant.quantity) return { ok: true };
 
@@ -484,7 +484,7 @@ export async function removeAddonAction(
   const grant = await getTenantGrant({ organizationId, tenantAddonId });
   if (!grant || grant.status !== "active") return { ok: false, error: "That add-on is no longer active." };
   if (grant.source !== "stripe" || !grant.stripeSubscriptionId) {
-    return { ok: false, error: "This add-on was granted by FORGE — contact us to remove it." };
+    return { ok: false, error: "This add-on was granted by ForgeAXI — contact us to remove it." };
   }
   const [subRow] = await db
     .select({ stripeSubscriptionId: tenantSubscriptions.stripeSubscriptionId })
@@ -700,7 +700,7 @@ export async function createSearchPackCheckoutAction(input: { packSlug: string }
           price_data: {
             currency: pack.currency,
             unit_amount: pack.priceCents,
-            product_data: { name: `FORGE ${pack.name}`, description: "Prepaid web searches for proposal research. Used after your plan's monthly searches; no expiry." },
+            product_data: { name: `ForgeAXI ${pack.name}`, description: "Prepaid web searches for proposal research. Used after your plan's monthly searches; no expiry." },
           },
         },
       ],

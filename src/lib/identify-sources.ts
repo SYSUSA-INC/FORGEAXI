@@ -20,7 +20,7 @@ export type IdentifySource = {
 
 export const IDENTIFY_SOURCES: readonly IdentifySource[] = [
   { key: "sam", label: "SAM.gov", hint: "Search SAM.gov live for something specific: any window up to 90 days, words a notice must mention, GSA vehicles and notice types.", live: true },
-  { key: "ebuy", label: "GSA eBuy", hint: "eBuy has no public API: paste an RFQ and FORGE reads its fields.", live: true },
+  { key: "ebuy", label: "GSA eBuy", hint: "eBuy has no public API: paste an RFQ and ForgeAXI reads its fields.", live: true },
   { key: "gsa", label: "GSA email", hint: "Paste a forwarded GSA notification; drop its attachments alongside.", live: true },
   { key: "portals", label: "Enterprise portals", hint: "State procurement portals and primes' supplier portals mail your bid email address directly; every email lands in the Bid inbox.", live: true },
   { key: "gwacs", label: "GWACs", hint: "Task orders under the contract vehicles you hold (OASIS+, Alliant, SEWP and others): on the backlog; tell us which ones you hold.", live: false },

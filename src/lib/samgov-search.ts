@@ -142,7 +142,7 @@ export async function findSamOpportunities(
     [
       r.failure ? `SAM.gov didn't answer for ${i.naicsCodes.length ? "NAICS " : "the title search for "}${r.failedCodes.map((c) => q.labels[c] ?? c).join(", ")}: ${r.failure.error}` : "",
       notSent.length ? `With no NAICS codes, SAM.gov is asked about the first 5 keywords only; not searched: ${notSent.map((t) => q.labels[t] ?? t).join(", ")}.` : "",
-      stale ? `FORGE's copy of SAM.gov descriptions is from ${day(store.fileOf)}, so newer notices ${budget > 0 ? `are read live, ${budget} per search` : "can't be checked"}.` : "",
+      stale ? `ForgeAXI's copy of SAM.gov descriptions is from ${day(store.fileOf)}, so newer notices ${budget > 0 ? `are read live, ${budget} per search` : "can't be checked"}.` : "",
     ]
       .filter(Boolean)
       .join(" ") || null;

@@ -46,7 +46,7 @@ export default async function IntegrationsPage() {
       <PageHeader
         eyebrow="Settings"
         title="Integrations"
-        subtitle="Your company's SAM.gov API key is set here. The other services run on credentials managed by the FORGE team."
+        subtitle="Your company's SAM.gov API key is set here. The other services run on credentials managed by the ForgeAXI team."
         actions={
           <Link href="/settings" className="aur-link">
             ← Settings

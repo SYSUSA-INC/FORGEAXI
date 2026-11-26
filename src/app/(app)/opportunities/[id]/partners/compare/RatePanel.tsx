@@ -23,17 +23,17 @@ export function RatePanel({ opportunityId, partnerCount }: { opportunityId: stri
 
   return (
     <Panel
-      title="FORGE AI's rating"
+      title="ForgeAXI's rating"
       eyebrow={result?.ok ? `${result.rated.length} rated · ${result.gaps} gaps` : "Advice only: you choose"}
       actions={
         <button type="button" onClick={rate} disabled={pending} className="aur-btn aur-btn-primary disabled:opacity-50">
-          {pending ? "Rating…" : result ? "Rate again" : `Rate the ${partnerCount === 1 ? "partner" : `${partnerCount} partners`} with FORGE AI`}
+          {pending ? "Rating…" : result ? "Rate again" : `Rate the ${partnerCount === 1 ? "partner" : `${partnerCount} partners`} with ForgeAXI`}
         </button>
       }
     >
       {!result ? (
         <p className="font-body text-[13px] leading-[1.5] text-muted">
-          FORGE scores each partner on the gaps it closes (required and standing questions weigh in full, expected half, desirable a quarter), the evidence it gave on those answers and its certifications, then FORGE AI explains each score in a sentence that rests on the partner&apos;s own answers. The order is the score&apos;s. It counts as one AI request.
+          ForgeAXI scores each partner on the gaps it closes (required and standing questions weigh in full, expected half, desirable a quarter), the evidence it gave on those answers and its certifications, then ForgeAXI explains each score in a sentence that rests on the partner&apos;s own answers. The order is the score&apos;s. It counts as one AI request.
         </p>
       ) : !result.ok ? (
         <p className="font-body text-[13px] text-red">{result.error}</p>
@@ -41,7 +41,7 @@ export function RatePanel({ opportunityId, partnerCount }: { opportunityId: stri
         <>
           {result.dropped > 0 ? (
             <p className="mb-2 font-body text-[12px] text-brass">
-              {result.dropped === 1 ? "One reason" : `${result.dropped} reasons`} FORGE AI gave didn&apos;t rest on the partner&apos;s answers and {result.dropped === 1 ? "was" : "were"} left out; the score stands.
+              {result.dropped === 1 ? "One reason" : `${result.dropped} reasons`} ForgeAXI gave didn&apos;t rest on the partner&apos;s answers and {result.dropped === 1 ? "was" : "were"} left out; the score stands.
             </p>
           ) : null}
           <ol className="divide-y divide-layer/10">
@@ -68,7 +68,7 @@ export function RatePanel({ opportunityId, partnerCount }: { opportunityId: stri
                       </ul>
                     </div>
                   ) : (
-                    <p className="mt-1 font-body text-[12px] text-muted">No grounded reason from FORGE AI for this partner; the score above stands on the answers.</p>
+                    <p className="mt-1 font-body text-[12px] text-muted">No grounded reason from ForgeAXI for this partner; the score above stands on the answers.</p>
                   )}
                 </div>
                 <div className="shrink-0 text-right">

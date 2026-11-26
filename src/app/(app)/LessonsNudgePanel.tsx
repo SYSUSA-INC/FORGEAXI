@@ -27,7 +27,7 @@ export async function LessonsNudgePanel({ canConfirm }: { canConfirm: boolean })
         }
       >
         <p className="font-body text-[13px] leading-[1.5] text-muted">
-          FORGE drafted {stats.proposed} lesson{stats.proposed === 1 ? "" : "s"} from decided bids that nobody has confirmed yet. Nothing reads a lesson until a Capture or Admin user confirms it; the drafter, the evaluation tab and the pursuit brief then apply it to the next bid.
+          ForgeAXI drafted {stats.proposed} lesson{stats.proposed === 1 ? "" : "s"} from decided bids that nobody has confirmed yet. Nothing reads a lesson until a Capture or Admin user confirms it; the drafter, the evaluation tab and the pursuit brief then apply it to the next bid.
         </p>
       </Panel>
     </section>

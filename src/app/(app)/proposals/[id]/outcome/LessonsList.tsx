@@ -92,7 +92,7 @@ export function LessonsList({
       const res = await draftLessonsAction({ proposalId });
       if (!res.ok) setError(res.error);
       else {
-        setNotice(res.drafted === 0 ? "Nothing new to add: every lesson FORGE found is already recorded." : `${res.drafted} lesson${res.drafted === 1 ? "" : "s"} proposed. Confirm, edit or retire each; nothing reads a proposed lesson.`);
+        setNotice(res.drafted === 0 ? "Nothing new to add: every lesson ForgeAXI found is already recorded." : `${res.drafted} lesson${res.drafted === 1 ? "" : "s"} proposed. Confirm, edit or retire each; nothing reads a proposed lesson.`);
         router.refresh();
       }
     });
@@ -104,14 +104,14 @@ export function LessonsList({
       eyebrow={`${counts.proposed} proposed · ${counts.confirmed} confirmed${counts.retired ? ` · ${counts.retired} retired` : ""}${loop.applied ? ` · ${loop.applied} applied · ${loop.closed} closed the loop` : ""}`}
       actions={
         proposalId && canConfirm ? (
-          <button type="button" className="aur-btn aur-btn-primary" disabled={pending} onClick={draft} title="FORGE reads the outcome, the debrief, the winner analysis, open review comments and the loss patterns.">
+          <button type="button" className="aur-btn aur-btn-primary" disabled={pending} onClick={draft} title="ForgeAXI reads the outcome, the debrief, the winner analysis, open review comments and the loss patterns.">
             {pending ? "Working…" : "Draft lessons"}
           </button>
         ) : null
       }
     >
       <p className="mb-3 font-body text-[13px] leading-[1.5] text-muted">
-        One sentence each, in the imperative, with what it applies to. FORGE proposes them when an outcome is recorded or a debrief is held; a Capture or Admin user confirms, edits or retires each. Only confirmed lessons reach the drafter, the evaluation tab and the pursuit brief.
+        One sentence each, in the imperative, with what it applies to. ForgeAXI proposes them when an outcome is recorded or a debrief is held; a Capture or Admin user confirms, edits or retires each. Only confirmed lessons reach the drafter, the evaluation tab and the pursuit brief.
       </p>
       {error ? <p className="mb-3 font-body text-[13px] text-rose">{error}</p> : null}
       {notice ? <p className="mb-3 font-body text-[13px] text-green">{notice}</p> : null}

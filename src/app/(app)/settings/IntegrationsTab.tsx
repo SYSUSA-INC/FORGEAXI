@@ -31,8 +31,8 @@ export function IntegrationsTab({
         eyebrow={`${liveCount} of ${integrations.length} configured`}
       >
         <p className="font-body text-[13px] leading-relaxed text-muted">
-          Status of the other external services FORGE talks to. These
-          run on platform-level credentials managed by the FORGE team —
+          Status of the other external services ForgeAXI talks to. These
+          run on platform-level credentials managed by the ForgeAXI team —
           features degrade to stub mode when a provider isn&apos;t
           configured, and the UI shows a banner so you always know
           what&apos;s live versus mocked. SAM.gov uses your company&apos;s

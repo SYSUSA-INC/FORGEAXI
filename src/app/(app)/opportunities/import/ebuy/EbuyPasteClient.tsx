@@ -56,7 +56,7 @@ export function EbuyPasteClient() {
       try {
         res = await parseEbuyTextAction(rawText);
       } catch {
-        setError("FORGE didn't answer. Try Extract again.");
+        setError("ForgeAXI didn't answer. Try Extract again.");
         return;
       }
       if (!res.ok) {
@@ -82,7 +82,7 @@ export function EbuyPasteClient() {
         });
       } catch {
         // It may have been created before the answer was lost: look before trying again.
-        setError("FORGE didn't answer. Check Opportunities for this one before creating it again.");
+        setError("ForgeAXI didn't answer. Check Opportunities for this one before creating it again.");
         return;
       }
       if (!res.ok) {

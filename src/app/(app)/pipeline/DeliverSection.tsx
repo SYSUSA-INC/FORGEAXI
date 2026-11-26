@@ -51,7 +51,7 @@ export async function DeliverSection({ rows }: { rows: StageListRow[] }) {
       </Panel>
       <Panel title="Delivered" eyebrow={count(rows.length)}>
         {rows.length === 0 ? (
-          <p className="font-body text-[13px] leading-[1.5] text-muted">Nothing has been submitted yet. Send from FORGE or Record submission on an opportunity&apos;s Deliver tab brings it here.</p>
+          <p className="font-body text-[13px] leading-[1.5] text-muted">Nothing has been submitted yet. Send from ForgeAXI or Record submission on an opportunity&apos;s Deliver tab brings it here.</p>
         ) : (
           <ul className="flex flex-col divide-y divide-layer/10">
             {rows.map((r) => {

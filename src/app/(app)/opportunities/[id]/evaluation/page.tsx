@@ -105,7 +105,7 @@ export default async function OpportunityEvaluationPage({
               {coverage?.partnerNeeded ? " · partner needed" : ""}
             </p>
           ) : (
-            <p className="font-body text-[13px] leading-[1.5] text-muted">FORGE drafts the questions from the solicitation&apos;s requirements; you answer each Yes, Partial with a percentage, or No.</p>
+            <p className="font-body text-[13px] leading-[1.5] text-muted">ForgeAXI drafts the questions from the solicitation&apos;s requirements; you answer each Yes, Partial with a percentage, or No.</p>
           )}
         </Panel>
       </div>

@@ -78,7 +78,7 @@ describe("BL-STAB-7b — a company's own SAM.gov key", () => {
   it("saves a recognised key for its company only, encrypted, and uses it there alone", async () => {
     const calls = stubFetch(200);
     const res = await setCompanySamKey({ organizationId: fx.orgA.organizationId, rawKey: ` ${KEY_A} `, actor: actorA() });
-    expect(res).toEqual({ ok: true, message: "Saved. SAM.gov accepted the key (••••AAAA); FORGE uses it for your company from now on." });
+    expect(res).toEqual({ ok: true, message: "Saved. SAM.gov accepted the key (••••AAAA); ForgeAXI uses it for your company from now on." });
     expect(calls).toHaveLength(1);
     expect(calls[0]!.searchParams.get("api_key")).toBe(KEY_A);
 

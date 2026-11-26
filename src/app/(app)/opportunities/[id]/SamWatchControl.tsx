@@ -29,11 +29,11 @@ export function SamWatchControl({ opportunityId, checkedAt, fetch = null }: { op
   return (
     <div className="mt-4 flex flex-wrap items-center justify-between gap-3 border-t border-layer/10 pt-3">
       <p className="max-w-2xl font-body text-[12px] leading-[1.5] text-muted">
-        FORGE checks SAM.gov every day for amendments and new documents of this solicitation, files them here and tells the team.{" "}
+        ForgeAXI checks SAM.gov every day for amendments and new documents of this solicitation, files them here and tells the team.{" "}
         {fetching ? <span className="text-text">Downloading this notice&apos;s attachments from SAM.gov… they appear above as they arrive.</span> : when ? `Last checked ${when}.` : "Not checked yet."}
         {fetch?.status === "failed" || retrying ? (
           <span className="ml-1 text-red">
-            The attachments couldn&apos;t be downloaded{fetch?.error ? `: ${fetch.error}` : ""}. {retrying ? "FORGE tries again shortly; " : ""}Check SAM.gov now tries again.
+            The attachments couldn&apos;t be downloaded{fetch?.error ? `: ${fetch.error}` : ""}. {retrying ? "ForgeAXI tries again shortly; " : ""}Check SAM.gov now tries again.
           </span>
         ) : null}
         {result ? <span className={`ml-1 ${result.ok ? "text-text" : "text-red"}`}>{result.text}</span> : null}

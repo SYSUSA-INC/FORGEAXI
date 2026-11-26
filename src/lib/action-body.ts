@@ -33,7 +33,7 @@ export function encodedBytes(value: unknown): number {
  */
 export function pasteRefusal(text: string, maxChars: number, advice: string): string | null {
   if (text.length > maxChars) {
-    return `This is ${text.length.toLocaleString("en-US")} characters; FORGE reads up to ${maxChars.toLocaleString("en-US")} at a time. ${advice}`;
+    return `This is ${text.length.toLocaleString("en-US")} characters; ForgeAXI reads up to ${maxChars.toLocaleString("en-US")} at a time. ${advice}`;
   }
   if (encodedBytes(text) > TEXT_ACTION_MAX_BYTES) return `This text is too large to send at once. ${advice}`;
   return null;

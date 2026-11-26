@@ -103,7 +103,7 @@ describe("BL-FB-SOL-QA — contracting-officer Q&A", () => {
     expect(long.length).toBeGreaterThan(200_000);
     expect(await addManualQaAction(solicitationA, long)).toEqual({
       ok: false,
-      error: `This is ${long.length.toLocaleString("en-US")} characters; FORGE reads up to 200,000 at a time. Paste the questions and answers in parts.`,
+      error: `This is ${long.length.toLocaleString("en-US")} characters; ForgeAXI reads up to 200,000 at a time. Paste the questions and answers in parts.`,
     });
 
     // No notice ID: polling is refused before SAM.gov is called.

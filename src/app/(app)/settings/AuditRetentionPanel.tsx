@@ -42,7 +42,7 @@ export function AuditRetentionPanel({
   return (
     <Panel title="Audit log retention" className={className}>
       <p className="mb-3 text-sm opacity-80">
-        The audit log records every action your team takes in FORGE. A
+        The audit log records every action your team takes in ForgeAXI. A
         nightly job prunes rows older than your retention window.
         Defaults to 365 days; set {AUDIT_RETENTION_MIN_DAYS}–
         {AUDIT_RETENTION_MAX_DAYS} days based on your compliance needs.

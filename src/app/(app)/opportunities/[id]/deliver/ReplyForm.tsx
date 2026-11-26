@@ -88,7 +88,7 @@ export function ReplyForm({ opportunityId, emailId, to, subject: original, sende
         <button type="button" className="font-mono text-[11px] text-cobalt underline-offset-2 hover:underline" disabled={uploading || extras.length >= SEND_MAX_FILES} onClick={() => fileInput.current?.click()}>
           {uploading ? "Uploading…" : "Attach a file"}
         </button>
-        {size === "refuse" ? <span className="ml-2 font-mono text-[11px] text-red">Above 35 MB FORGE does not send.</span> : null}
+        {size === "refuse" ? <span className="ml-2 font-mono text-[11px] text-red">Above 35 MB ForgeAXI does not send.</span> : null}
       </div>
       <div className="flex flex-wrap gap-2">
         <button type="button" className="aur-btn aur-btn-primary" disabled={!ready || pending} onClick={send}>

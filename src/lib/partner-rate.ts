@@ -73,7 +73,7 @@ export async function ratePartners(input: { organizationId: string; opportunityI
     if (res.stubbed) return fail("AI provider is in stub mode. Configure a provider to rate partners.");
     if (!res.data) {
       log.warn("[partner-rate]", "structured parse failed", { parseError: res.parseError, viaTool: res.viaTool });
-      return fail("FORGE AI returned an unexpected format. Try again.");
+      return fail("ForgeAXI returned an unexpected format. Try again.");
     }
     const { rated, dropped } = validateRating(res.data, scored);
     await recordRead({
@@ -84,10 +84,10 @@ export async function ratePartners(input: { organizationId: string; opportunityI
       resourceId: opportunityId,
       metadata: { gaps, partners: scored.length, reasons: rated.filter((r) => r.reason).length, dropped, order: scored.map((s) => s.id) },
     });
-    if (!rated.some((r) => r.reason)) return fail("FORGE AI's reasons didn't rest on the partners' answers, so none were kept. Try again.");
+    if (!rated.some((r) => r.reason)) return fail("ForgeAXI's reasons didn't rest on the partners' answers, so none were kept. Try again.");
     return { ok: true, rated, gaps, dropped };
   } catch (err) {
     log.error("[partner-rate]", "failed", { opportunityId, error: err });
-    return fail(err instanceof Error ? err.message : "FORGE AI couldn't rate the partners.");
+    return fail(err instanceof Error ? err.message : "ForgeAXI couldn't rate the partners.");
   }
 }

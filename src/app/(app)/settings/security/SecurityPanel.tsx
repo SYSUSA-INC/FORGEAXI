@@ -138,7 +138,7 @@ export function SecurityPanel({ email, factors, recoveryCodesLeft, available, co
 
   const hasPasskey = factors.some((f) => f.kind === "passkey");
   const codesText = codes ? codes.join("\n") : "";
-  const codesHref = codes ? `data:text/plain;charset=utf-8,${encodeURIComponent(`FORGE recovery codes for ${email}\nEach code works once.\n\n${codesText}\n`)}` : "";
+  const codesHref = codes ? `data:text/plain;charset=utf-8,${encodeURIComponent(`ForgeAXI recovery codes for ${email}\nEach code works once.\n\n${codesText}\n`)}` : "";
 
   return (
     <div className="grid grid-cols-1 gap-4 xl:grid-cols-[2fr_1fr]">

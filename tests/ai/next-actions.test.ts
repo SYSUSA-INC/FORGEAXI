@@ -219,12 +219,12 @@ describe("rankOrgActions and the taken rate (5b)", () => {
 });
 
 describe("preparedSummary (5c)", () => {
-  it("names what FORGE did overnight, in the person's terms", () => {
+  it("names what ForgeAXI did overnight, in the person's terms", () => {
     expect(PREPARABLE_KINDS).toEqual(["build_outline", "build_questionnaire", "map_compliance", "draft_sections", "run_health_scan"]);
-    expect(preparedSummary({ kind: "outline", at: "2026-11-01T02:00:00Z", sections: 7 })).toBe("FORGE built the outline overnight (7 sections); review it.");
-    expect(preparedSummary({ kind: "questionnaire", at: "x", questions: 12, suggested: 1 })).toBe("FORGE built the questionnaire overnight (12 questions, 1 suggested answer); confirm the answers.");
-    expect(preparedSummary({ kind: "compliance", at: "x", applied: 9 })).toBe("FORGE mapped 9 requirements overnight; check the matrix.");
-    expect(preparedSummary({ kind: "drafts", at: "x", sections: 3, sectionIds: ["a", "b", "c"], truncated: 1 })).toBe("FORGE drafted 3 sections overnight as tracked insertions; accept or reject them in the editor (1 cut off at the output limit).");
+    expect(preparedSummary({ kind: "outline", at: "2026-11-01T02:00:00Z", sections: 7 })).toBe("ForgeAXI built the outline overnight (7 sections); review it.");
+    expect(preparedSummary({ kind: "questionnaire", at: "x", questions: 12, suggested: 1 })).toBe("ForgeAXI built the questionnaire overnight (12 questions, 1 suggested answer); confirm the answers.");
+    expect(preparedSummary({ kind: "compliance", at: "x", applied: 9 })).toBe("ForgeAXI mapped 9 requirements overnight; check the matrix.");
+    expect(preparedSummary({ kind: "drafts", at: "x", sections: 3, sectionIds: ["a", "b", "c"], truncated: 1 })).toBe("ForgeAXI drafted 3 sections overnight as tracked insertions; accept or reject them in the editor (1 cut off at the output limit).");
     expect(preparedSummary({ kind: "scan", at: "x" })).toContain("queued the health scan");
     expect(preparedSummary(null)).toBeNull();
   });

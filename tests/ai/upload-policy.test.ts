@@ -70,14 +70,14 @@ describe("formats and limits", () => {
 });
 
 describe("read budgets and pickers", () => {
-  it("cap what FORGE reads automatically per format, scaled by environment but never for images", () => {
+  it("cap what ForgeAXI reads automatically per format, scaled by environment but never for images", () => {
     const MiB = 1024 * 1024;
     expect(parseBudgetBytes("pdf")).toBe(150 * MiB);
     expect(parseBudgetBytes("xlsx")).toBe(40 * MiB);
     expect(parseBudgetBytes("pdf", { UPLOAD_PARSE_SCALE: "2" })).toBe(300 * MiB);
     expect(parseBudgetBytes("pdf", { UPLOAD_PARSE_SCALE: "100" })).toBe(600 * MiB);
     expect(parseBudgetBytes("image", { UPLOAD_PARSE_SCALE: "4" })).toBe(5 * MiB);
-    expect(tooLargeToReadMessage(412 * MiB, 150 * MiB)).toMatch(/^Stored \(412 MB\)\. FORGE reads files of this type up to 150 MB automatically/);
+    expect(tooLargeToReadMessage(412 * MiB, 150 * MiB)).toMatch(/^Stored \(412 MB\)\. ForgeAXI reads files of this type up to 150 MB automatically/);
   });
 
   it("offer only what each purpose accepts", () => {
@@ -163,8 +163,8 @@ describe("BL-STAB-2c follow-ups and BL-STAB-4", () => {
   it("says how large a file is beside its read budget without contradicting itself, with advice that fits images", async () => {
     const { tooLargeToReadMessage } = await import("@/lib/upload-policy");
     const MiB = 1024 * 1024;
-    expect(tooLargeToReadMessage(150.3 * MiB, 150 * MiB, "pdf")).toMatch(/^Stored \(150\.3 MB\)\. FORGE reads files of this type up to 150\.0 MB automatically; split it/);
-    expect(tooLargeToReadMessage(412 * MiB, 150 * MiB, "pdf")).toMatch(/^Stored \(412 MB\)\. FORGE reads files of this type up to 150 MB/);
+    expect(tooLargeToReadMessage(150.3 * MiB, 150 * MiB, "pdf")).toMatch(/^Stored \(150\.3 MB\)\. ForgeAXI reads files of this type up to 150\.0 MB automatically; split it/);
+    expect(tooLargeToReadMessage(412 * MiB, 150 * MiB, "pdf")).toMatch(/^Stored \(412 MB\)\. ForgeAXI reads files of this type up to 150 MB/);
     expect(tooLargeToReadMessage(9 * MiB, 5 * MiB, "image")).toMatch(/save it smaller/);
   });
 

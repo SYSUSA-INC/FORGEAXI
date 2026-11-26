@@ -93,7 +93,7 @@ export function PlanRecordPanel({ opportunityId, view, members }: { opportunityI
         </section>
 
         <section className="grid gap-2 border-t border-layer/10 pt-4">
-          <h3 className="font-mono text-[10px] uppercase tracking-widest text-muted">Bid budget · an estimate only, FORGE does not log time</h3>
+          <h3 className="font-mono text-[10px] uppercase tracking-widest text-muted">Bid budget · an estimate only, ForgeAXI does not log time</h3>
           <div className="flex flex-wrap items-end gap-3">
             <label className="grid gap-1 font-mono text-[10px] uppercase tracking-widest text-muted">
               Hours

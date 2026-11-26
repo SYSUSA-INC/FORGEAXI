@@ -229,7 +229,7 @@ describe("BL-STAB-7d — company keys in the background jobs", () => {
     const sharedKey = { failed: null as string | null };
     await runScoutForOrganization({ organizationId: fx.orgA.organizationId, trigger: "cron", sharedKey });
     expect(calls).toHaveLength(1);
-    expect(sharedKey.failed).toMatch(/^SAM\.gov rejected FORGE's shared SAM\.gov key\./);
+    expect(sharedKey.failed).toMatch(/^SAM\.gov rejected ForgeAXI's shared SAM\.gov key\./);
 
     const b = await runScoutForOrganization({ organizationId: fx.orgB.organizationId, trigger: "cron", sharedKey });
     expect(calls).toHaveLength(1);

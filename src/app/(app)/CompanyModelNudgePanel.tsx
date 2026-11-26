@@ -45,7 +45,7 @@ export async function CompanyModelNudgePanel({ isOrgAdmin }: { isOrgAdmin: boole
         <p className="font-body text-[13px] leading-[1.5] text-muted">
           {approved
             ? `Since version ${row!.approvedVersion} was approved: ${reasons.join("; ")}. Rebuild from the evidence and approve the revision so the scout, the questionnaire and the drafter read the current company.`
-            : "FORGE's account of what the company does is what the scout, the questionnaire and the drafter will read. Build it from the evidence and approve it."}
+            : "ForgeAXI's account of what the company does is what the scout, the questionnaire and the drafter will read. Build it from the evidence and approve it."}
         </p>
       </Panel>
     </section>

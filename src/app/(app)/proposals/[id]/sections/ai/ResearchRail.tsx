@@ -279,7 +279,7 @@ export function ResearchRail({
                         type="button"
                         onClick={() => onInsertTracked(h.content.trim())}
                         className="aur-btn aur-btn-ghost"
-                        title="Append this passage as a tracked suggestion by FORGE AI"
+                        title="Append this passage as a tracked suggestion by ForgeAXI"
                       >
                         Insert as suggestion
                       </button>

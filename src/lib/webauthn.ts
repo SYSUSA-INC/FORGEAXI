@@ -11,7 +11,7 @@
  */
 import { appBaseUrl } from "@/lib/app-url";
 
-export const WEBAUTHN_RP_NAME = "FORGE";
+export const WEBAUTHN_RP_NAME = "ForgeAXI";
 /** A registration or sign-in challenge is good for this long. */
 export const WEBAUTHN_CHALLENGE_MS = 5 * 60 * 1000;
 

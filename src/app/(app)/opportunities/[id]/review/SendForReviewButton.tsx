@@ -184,7 +184,7 @@ function SendForReviewModal({
               />
             </div>
             <div className="mb-3 rounded border border-layer/10 bg-layer/[0.02] px-3 py-2 font-mono text-[10px] text-muted">
-              External reviewers get a magic link that works without a FORGE
+              External reviewers get a magic link that works without a ForgeAXI
               login. Link expires in 14 days.
             </div>
           </>

@@ -103,7 +103,7 @@ export function GettingStartedClient({ state }: { state: OnboardingState }) {
     <section className="mb-6">
       <Panel
         title="Getting started"
-        eyebrow="Set up FORGE from your SAM.gov registration"
+        eyebrow="Set up ForgeAXI from your SAM.gov registration"
         accent="violet"
         actions={
           <span className="hidden font-mono text-[10px] uppercase tracking-label text-subtle md:inline">
@@ -146,7 +146,7 @@ export function GettingStartedClient({ state }: { state: OnboardingState }) {
             ) : (
               <div className="mt-2 space-y-2">
                 <p className="font-body text-[13px] leading-relaxed text-muted">
-                  Enter your Unique Entity ID and FORGE fills in the company profile — name, address, NAICS codes and set-asides — from SAM.gov.
+                  Enter your Unique Entity ID and ForgeAXI fills in the company profile — name, address, NAICS codes and set-asides — from SAM.gov.
                 </p>
                 <div className="flex gap-2">
                   <input
@@ -274,7 +274,7 @@ export function GettingStartedClient({ state }: { state: OnboardingState }) {
 
                 <div className="flex flex-wrap items-center gap-3 pt-1">
                   <button type="button" onClick={apply} disabled={busy !== null} className="aur-btn aur-btn-primary disabled:opacity-50">
-                    {busy === "apply" ? (runScout ? "Saving and running the scout…" : "Saving…") : "Save to FORGE"}
+                    {busy === "apply" ? (runScout ? "Saving and running the scout…" : "Saving…") : "Save to ForgeAXI"}
                   </button>
                   <label className="flex items-center gap-2 font-mono text-[11px] text-muted">
                     <input

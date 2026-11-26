@@ -191,7 +191,7 @@ export function consolidateComments(sections: readonly SectionRef[], comments: r
       groups.set(key, g);
     }
     (c.resolved ? g.resolved : g.open).push(c);
-    const author = c.authorName ?? "FORGE AI";
+    const author = c.authorName ?? "ForgeAXI";
     if (!g.authors.includes(author)) g.authors.push(author);
   }
   return Array.from(groups.values()).sort((a, b) => a.ordering - b.ordering);
@@ -226,8 +226,8 @@ export function consolidatedReport(input: {
   for (const g of input.groups) {
     const num = g.sectionId ? input.sectionNumbers?.get(g.sectionId) : undefined;
     lines.push("", `## ${num !== undefined ? `§${num} ` : ""}${g.title}`, `${g.open.length} open · ${g.resolved.length} resolved · ${g.authors.join(", ")}`);
-    for (const c of g.open) lines.push(`- [ ] ${c.body.replace(/\s+/g, " ").trim()} — ${c.authorName ?? "FORGE AI"}`);
-    for (const c of g.resolved) lines.push(`- [x] ${c.body.replace(/\s+/g, " ").trim()} — ${c.authorName ?? "FORGE AI"}`);
+    for (const c of g.open) lines.push(`- [ ] ${c.body.replace(/\s+/g, " ").trim()} — ${c.authorName ?? "ForgeAXI"}`);
+    for (const c of g.resolved) lines.push(`- [x] ${c.body.replace(/\s+/g, " ").trim()} — ${c.authorName ?? "ForgeAXI"}`);
   }
   return lines.join("\n");
 }

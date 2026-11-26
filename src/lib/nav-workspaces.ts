@@ -136,7 +136,7 @@ const WORK_NAV: WorkspaceNavGroup[] = [
     children: [
       { href: "/companies", label: "Company Search" },
       { href: "/companies/new", label: "Add company" },
-      { href: "/intelligence", label: "FORGE Brain" },
+      { href: "/intelligence", label: "ForgeAXI Brain" },
       { href: "/intelligence/losses", label: "Loss intelligence" },
       { href: "/intelligence/lessons", label: "Lessons" },
       { href: "/intelligence/awards", label: "Awards & recompetes" },

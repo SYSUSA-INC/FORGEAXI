@@ -191,7 +191,7 @@ export function cleanReplyRead(read: ReplyRead): { type: ReplyType; summary: str
  */
 export const REPLY_NEXT_STEPS: Partial<Record<ReplyType, { text: string; outcome?: true }>> = {
   question: { text: "Read the full message and answer it. If it names a date, that is the deadline for the answer." },
-  amendment: { text: "File the attachment as a document so FORGE reads the change, then check the due date and the compliance matrix." },
+  amendment: { text: "File the attachment as a document so ForgeAXI reads the change, then check the due date and the compliance matrix." },
   evaluation_notice: { text: "Read the full message for what the evaluators ask and by when." },
   award: { text: "If this is right, record the outcome on the opportunity.", outcome: true },
   unsuccessful: { text: "If this is right, record the outcome on the opportunity and ask for a debrief.", outcome: true },

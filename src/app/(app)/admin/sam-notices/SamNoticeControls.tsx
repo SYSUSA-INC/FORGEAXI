@@ -23,7 +23,7 @@ export function SamNoticeControls({ switches }: { switches: { load: boolean; rea
       try {
         setNote(await fn());
       } catch {
-        setNote({ ok: false, text: "FORGE didn't answer in time. Check the runs below in a minute." });
+        setNote({ ok: false, text: "ForgeAXI didn't answer in time. Check the runs below in a minute." });
       }
       router.refresh();
     });

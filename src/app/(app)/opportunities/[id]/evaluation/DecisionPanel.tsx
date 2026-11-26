@@ -67,7 +67,7 @@ export function DecisionPanel({ opportunityId, history, partners, readiness, nai
               ? "Moves it to Capture (Qualified); with no partner to find, it goes on to Plan."
               : choice === "partner"
                 ? "Moves it to Capture (Qualified), marked as needing a partner."
-                : "Closes it as No bid and stops the SAM.gov amendment watch. Say why: FORGE learns from it."}
+                : "Closes it as No bid and stops the SAM.gov amendment watch. Say why: ForgeAXI learns from it."}
           </p>
           {choice === "no_go" ? (
             <label className="block">

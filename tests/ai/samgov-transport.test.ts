@@ -48,7 +48,7 @@ describe("BL-STAB-7a — SAM.gov transport", () => {
       ok: false,
       cls: "key_invalid",
       status: 401,
-      error: "SAM.gov rejected FORGE's shared SAM.gov key. This has been logged for FORGE support. To keep working now, a company admin can set your company's own key under Settings → Integrations. (SAM.gov API_KEY_INVALID, HTTP 401)",
+      error: "SAM.gov rejected ForgeAXI's shared SAM.gov key. This has been logged for ForgeAXI support. To keep working now, a company admin can set your company's own key under Settings → Integrations. (SAM.gov API_KEY_INVALID, HTTP 401)",
     });
     expect(calls).toHaveLength(1);
     expect(new URL(calls[0]!.url).hostname).toBe("api.sam.gov");
@@ -192,7 +192,7 @@ describe("BL-STAB-7a — SAM.gov transport", () => {
       throw new TypeError(`Failed to parse URL from https://api.sam.gov/x?api_key=${KEY}`);
     }));
     const r = await fetchSamNotice(cred, "N1");
-    expect(r).toMatchObject({ ok: false, cls: "network", error: "FORGE couldn't reach SAM.gov. Try again in a few minutes." });
+    expect(r).toMatchObject({ ok: false, cls: "network", error: "ForgeAXI couldn't reach SAM.gov. Try again in a few minutes." });
     if (!r.ok) {
       expect(r.error).not.toContain(KEY);
       expect(r.error).not.toContain("api_key");
@@ -254,7 +254,7 @@ describe("BL-STAB-10b — how many requests the key has left", () => {
     for (const secret of [KEY, "api_key", "org-quota-1"]) expect(logged).not.toContain(secret);
   });
 
-  it("ignores replies not to FORGE's key: an attachment link with SAM.gov's own placeholder, or a redirect", async () => {
+  it("ignores replies not to ForgeAXI's key: an attachment link with SAM.gov's own placeholder, or a redirect", async () => {
     const info = vi.spyOn(log, "info");
     const warn = vi.spyOn(log, "warn");
     stubFetch(() => new Response(new Uint8Array([1]), { status: 200, headers: limits(1) }));

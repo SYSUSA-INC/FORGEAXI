@@ -54,7 +54,7 @@ export async function POST(req: Request) {
         {
           ok: false,
           field: "email",
-          error: `Your organization (${outcome.organizationName}) is already on FORGE. Ask its admin to invite you.`,
+          error: `Your organization (${outcome.organizationName}) is already on ForgeAXI. Ask its admin to invite you.`,
         },
         { status: 409 },
       );

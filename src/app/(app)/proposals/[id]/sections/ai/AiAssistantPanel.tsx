@@ -694,7 +694,7 @@ export function AiAssistantPanel({
         up = await checkArrivedUpload(up.arrivedUploadId);
         if (!up.ok && up.arrivedUploadId) {
           void cancelUploadAction(up.arrivedUploadId).catch(() => undefined);
-          setChatError("The file reached storage, but FORGE couldn't check it. Attach it again.");
+          setChatError("The file reached storage, but ForgeAXI couldn't check it. Attach it again.");
           return;
         }
       }
@@ -708,8 +708,8 @@ export function AiAssistantPanel({
         // Cancelling now would do nothing to a file a read still holds; it lands on its own.
         setChatError(
           res === "pending"
-            ? "FORGE is still reading this file. It will be in the list when you reload the page; don't attach it again."
-            : "FORGE didn't answer while attaching the file. Reload the page to see whether it attached before attaching it again.",
+            ? "ForgeAXI is still reading this file. It will be in the list when you reload the page; don't attach it again."
+            : "ForgeAXI didn't answer while attaching the file. Reload the page to see whether it attached before attaching it again.",
         );
         return;
       }
@@ -722,7 +722,7 @@ export function AiAssistantPanel({
       const attachment = res.attachment;
       setAttachments((list) => (list.some((a) => a.id === attachment.id) ? list : [...list, attachment]));
     } catch {
-      setChatError("Could not reach FORGE to upload the file. Check your connection and try again.");
+      setChatError("Could not reach ForgeAXI to upload the file. Check your connection and try again.");
     } finally {
       if (attachAbortRef.current === ac) attachAbortRef.current = null;
       setAttachBusy(false);
@@ -1185,7 +1185,7 @@ export function AiAssistantPanel({
                     type="button"
                     onClick={applyTracked}
                     className="aur-btn aur-btn-primary"
-                    title="Show the AI's edits as tracked changes by FORGE AI; accept or reject each one in the editor"
+                    title="Show the AI's edits as tracked changes by ForgeAXI; accept or reject each one in the editor"
                   >
                     Apply as tracked changes
                   </button>
@@ -1294,7 +1294,7 @@ export function AiAssistantPanel({
                           type="button"
                           onClick={() => applyChatSuggestion(msg.content)}
                           className="font-mono text-[10px] uppercase tracking-wider text-teal hover:text-teal/80"
-                          title={canApplyTracked ? "Apply as tracked changes by FORGE AI" : "Replace the section with this text"}
+                          title={canApplyTracked ? "Apply as tracked changes by ForgeAXI" : "Replace the section with this text"}
                         >
                           {canApplyTracked ? "Apply as tracked changes ↑" : "Apply to section ↑"}
                         </button>

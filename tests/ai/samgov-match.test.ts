@@ -150,7 +150,7 @@ describe("BL-STAB-10 — keywords", () => {
     expect(matchNotice(row("ServiceNow renewal"), both, { text: "Licenses…", partial: true })).toEqual({ status: "unchecked" });
   });
 
-  it("BL-STAB-10b — FORGE's copy: escaped text, paragraphs run together, and earlier notices of a solicitation", () => {
+  it("BL-STAB-10b — ForgeAXI's copy: escaped text, paragraphs run together, and earlier notices of a solicitation", () => {
     const q = parseKeyword("ServiceNow");
     // The copy's text is HTML-escaped when read: a literal "<" is text, not a tag.
     expect(matchNotice(row("Help desk"), q, { text: "Response time &lt;4 hours. Migrate to ServiceNow. Uptime &gt;99.9% &amp; more." })).toMatchObject({ status: "match" });
@@ -245,12 +245,12 @@ describe("BL-STAB-10 — the owner's search (NAICS 541519 + ServiceNow)", () => 
       "2 notices mention any of “Servicenow”, “ITSM” or “Enterprise Service Management” · out of 412 notices SAM.gov has for NAICS 541519, posted in the last 30 days (230 don't mention it, 20 have no description, 4 not checked yet) · 120 notices of other types left out · 37 earlier notices of the same solicitations folded in.",
     );
     expect(searchSummary({ ...counts, matched: 1, samTotal: 2412, received: 1000, truncated: true }, { keyword: null, codes: [], days: 7 })).toBe(
-      "1 notice for all NAICS codes, posted in the last 7 days · 120 notices of other types left out · 37 earlier notices of the same solicitations folded in · SAM.gov sends at most 1,000 notices per request; FORGE read 1,000 of 2,412: narrow the search or the window to see the rest.",
+      "1 notice for all NAICS codes, posted in the last 7 days · 120 notices of other types left out · 37 earlier notices of the same solicitations folded in · SAM.gov sends at most 1,000 notices per request; ForgeAXI read 1,000 of 2,412: narrow the search or the window to see the rest.",
     );
     // BL-STAB-10b — unchecked notices posted since the nightly file FORGE reads say so.
     const plain = { ...counts, otherTypes: 0, folded: 0, notMentioned: 0, noDescription: 0 };
-    expect(searchSummary({ ...plain, uncheckedNew: 4 }, { keyword: "“ITSM”", codes: [], days: 30, copyThrough: "2026-10-09" })).toMatch(/\(4 not checked yet: posted after FORGE's nightly copy of SAM\.gov, which runs through 9 Oct\)\.$/);
-    expect(searchSummary({ ...plain, uncheckedNew: 3 }, { keyword: "“ITSM”", codes: [], days: 30, copyThrough: "2026-10-09" })).toMatch(/\(4 not checked yet — 3 of them posted after FORGE's nightly copy of SAM\.gov, which runs through 9 Oct\)\.$/);
+    expect(searchSummary({ ...plain, uncheckedNew: 4 }, { keyword: "“ITSM”", codes: [], days: 30, copyThrough: "2026-10-09" })).toMatch(/\(4 not checked yet: posted after ForgeAXI's nightly copy of SAM\.gov, which runs through 9 Oct\)\.$/);
+    expect(searchSummary({ ...plain, uncheckedNew: 3 }, { keyword: "“ITSM”", codes: [], days: 30, copyThrough: "2026-10-09" })).toMatch(/\(4 not checked yet — 3 of them posted after ForgeAXI's nightly copy of SAM\.gov, which runs through 9 Oct\)\.$/);
     expect(searchSummary({ ...plain, uncheckedNew: 4 }, { keyword: "“ITSM”", codes: [], days: 30, copyThrough: null })).toMatch(/\(4 not checked yet\)\.$/);
   });
 });

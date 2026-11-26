@@ -25,7 +25,7 @@ import { claimUpload, finishClaim, releaseClaim } from "@/lib/uploads";
  * may submit. Design: docs/design/BL-NAV-LIFECYCLE_PHASE6_DELIVER.md §2.5.
  */
 
-const NOT_SET_UP = "Sending from FORGE is not set up. Answer from your own mail.";
+const NOT_SET_UP = "Sending from ForgeAXI is not set up. Answer from your own mail.";
 
 export type SendReplyInput = {
   organizationId: string;
@@ -57,7 +57,7 @@ export async function queueReplySend(input: SendReplyInput): Promise<SendReplyRe
   if (!email) return { ok: false, error: "This message is no longer available." };
   const proposal = await proposalOf(organizationId, opportunityId);
   if (!proposal) return { ok: false, error: "This opportunity has no proposal." };
-  if (!canSubmit(user, proposal)) return { ok: false, error: "Only an org admin, the proposal manager or the capture manager can answer from FORGE." };
+  if (!canSubmit(user, proposal)) return { ok: false, error: "Only an org admin, the proposal manager or the capture manager can answer from ForgeAXI." };
   if (!canAnswer(email.replyType)) return { ok: false, error: "This is a mail system's notice that a message was not delivered. There is no one to answer." };
 
   // The answer goes to whoever wrote the message; the address is the stored one, never typed.

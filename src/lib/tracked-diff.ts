@@ -35,7 +35,7 @@ export type TrackedAuthor = { id: string; name: string; color: string };
 /** The author every AI-originated tracked change carries. */
 export const FORGE_AI_AUTHOR: TrackedAuthor = {
   id: "forge-ai",
-  name: "FORGE AI",
+  name: "ForgeAXI",
   color: THEME.indigo,
 };
 

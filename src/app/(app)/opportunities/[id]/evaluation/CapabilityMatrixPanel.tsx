@@ -169,7 +169,7 @@ export function CapabilityMatrixPanel({
               className="aur-btn"
               disabled={pending}
               onClick={suggest}
-              title="FORGE pre-fills the unanswered questions from the solicitation's scored matrix, earlier questionnaires, past performance and the knowledge base. You confirm each one."
+              title="ForgeAXI pre-fills the unanswered questions from the solicitation's scored matrix, earlier questionnaires, past performance and the knowledge base. You confirm each one."
             >
               {pending ? "Working…" : "Suggest answers"}
             </button>
@@ -181,7 +181,7 @@ export function CapabilityMatrixPanel({
             onClick={build}
             title={
               hasRequirements
-                ? "FORGE drafts the questions from the parsed solicitation's requirements."
+                ? "ForgeAXI drafts the questions from the parsed solicitation's requirements."
                 : "Parse a solicitation on this opportunity first."
             }
           >
@@ -191,12 +191,12 @@ export function CapabilityMatrixPanel({
       }
     >
       <p className="mb-3 font-body text-[13px] leading-[1.5] text-muted">
-        FORGE drafts the questions from the solicitation&apos;s requirements and Section M, plus the standing
+        ForgeAXI drafts the questions from the solicitation&apos;s requirements and Section M, plus the standing
         questions every bid gets. Review them, drop or reword any, and answer each one honestly: <strong className="font-medium text-text">Yes</strong> (tick
         proven when past performance shows it), <strong className="font-medium text-text">Partial</strong> with how much you cover, or{" "}
         <strong className="font-medium text-text">No</strong> (tick when a partner could cover it). The answers are what the coverage score, the
         partner decision and PWin read. <strong className="font-medium text-text">Suggest answers</strong> pre-fills
-        what FORGE can show evidence for; a suggestion counts only once you confirm it.
+        what ForgeAXI can show evidence for; a suggestion counts only once you confirm it.
       </p>
       {stale ? (
         <p className="mb-3 font-body text-[13px] text-brass">

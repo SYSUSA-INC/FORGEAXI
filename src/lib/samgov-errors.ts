@@ -210,32 +210,32 @@ export function samErrorMessage(i: {
   switch (i.cls) {
     case "missing_key":
       msg = operator
-        ? "FORGE's shared SAM.gov key SAMGOV_API_KEY is not set. Add it in Vercel → Settings → Environment Variables and redeploy."
+        ? "ForgeAXI's shared SAM.gov key SAMGOV_API_KEY is not set. Add it in Vercel → Settings → Environment Variables and redeploy."
         : "SAM.gov isn't connected for your company. A company admin can add your SAM.gov API key under Settings → Integrations.";
       break;
     case "key_unreadable":
-      msg = "Your company's SAM.gov key can't be read on this FORGE server. A company admin can see why under Settings → Integrations.";
+      msg = "Your company's SAM.gov key can't be read on this ForgeAXI server. A company admin can see why under Settings → Integrations.";
       break;
     case "key_invalid":
       msg = operator
-        ? `SAM.gov rejected FORGE's shared key SAMGOV_API_KEY. Generate a new key on SAM.gov, set SAMGOV_API_KEY in Vercel → Settings → Environment Variables (Production and staging) and redeploy.${tail}`
+        ? `SAM.gov rejected ForgeAXI's shared key SAMGOV_API_KEY. Generate a new key on SAM.gov, set SAMGOV_API_KEY in Vercel → Settings → Environment Variables (Production and staging) and redeploy.${tail}`
         : company
           ? `SAM.gov rejected your company's SAM.gov API key: it is invalid, expired or not yet active. A company admin can generate a new key on SAM.gov and replace it under Settings → Integrations.${tail}`
-          : `SAM.gov rejected FORGE's shared SAM.gov key. This has been logged for FORGE support. To keep working now, a company admin can set your company's own key under Settings → Integrations.${tail}`;
+          : `SAM.gov rejected ForgeAXI's shared SAM.gov key. This has been logged for ForgeAXI support. To keep working now, a company admin can set your company's own key under Settings → Integrations.${tail}`;
       break;
     case "key_forbidden":
       msg = operator
-        ? `SAM.gov refused this request for FORGE's shared key SAMGOV_API_KEY: the key isn't allowed to use this SAM.gov service. Check its access on SAM.gov or replace it.${tail}`
+        ? `SAM.gov refused this request for ForgeAXI's shared key SAMGOV_API_KEY: the key isn't allowed to use this SAM.gov service. Check its access on SAM.gov or replace it.${tail}`
         : company
           ? `SAM.gov recognised your company's API key but refused this request: the key isn't allowed to use this SAM.gov service. Check the key's access on SAM.gov, or replace it under Settings → Integrations.${tail}`
-          : `SAM.gov refused this request for FORGE's shared SAM.gov key. This has been logged for FORGE support; try again later, or have a company admin set your company's own key under Settings → Integrations.${tail}`;
+          : `SAM.gov refused this request for ForgeAXI's shared SAM.gov key. This has been logged for ForgeAXI support; try again later, or have a company admin set your company's own key under Settings → Integrations.${tail}`;
       break;
     case "rate_limited":
       msg = operator
         ? `SAMGOV_API_KEY has reached SAM.gov's request limit. Every company without its own key and the gold set share it; wait for SAM.gov's daily reset.${tail}`
         : company
           ? `Your company's SAM.gov API key has reached SAM.gov's request limit. ${retryHint(i.retryAfterSec)}; SAM.gov resets the limit daily.${tail}`
-          : `FORGE's shared SAM.gov key has reached SAM.gov's request limit. ${retryHint(i.retryAfterSec)}, or have a company admin set your company's own key under Settings → Integrations.${tail}`;
+          : `ForgeAXI's shared SAM.gov key has reached SAM.gov's request limit. ${retryHint(i.retryAfterSec)}, or have a company admin set your company's own key under Settings → Integrations.${tail}`;
       break;
     case "bad_request":
       msg = i.detail
@@ -257,16 +257,16 @@ export function samErrorMessage(i: {
         : "SAM.gov didn't answer in time. Try again in a few minutes.";
       break;
     case "network":
-      msg = "FORGE couldn't reach SAM.gov. Try again in a few minutes.";
+      msg = "ForgeAXI couldn't reach SAM.gov. Try again in a few minutes.";
       break;
     case "bad_response":
-      msg = "SAM.gov sent a reply FORGE couldn't read. Try again in a few minutes.";
+      msg = "SAM.gov sent a reply ForgeAXI couldn't read. Try again in a few minutes.";
       break;
     case "foreign_host":
       msg = "Skipped an attachment link that isn't on sam.gov.";
       break;
     case "restricted":
-      msg = `SAM.gov doesn't let FORGE download this attachment; it may be a controlled file that needs a SAM.gov sign-in${suffix(null, i.status)}.`;
+      msg = `SAM.gov doesn't let ForgeAXI download this attachment; it may be a controlled file that needs a SAM.gov sign-in${suffix(null, i.status)}.`;
       break;
   }
   return plain(msg, MAX_MESSAGE);

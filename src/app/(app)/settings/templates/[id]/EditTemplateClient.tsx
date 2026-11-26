@@ -818,7 +818,7 @@ function DocxPanel({
           <div className="mt-2 grid grid-cols-1 gap-2 md:grid-cols-2">
             <div>
               <div className="font-mono text-[10px] uppercase tracking-widest text-emerald-300">
-                FORGE will fill ({recognized.length})
+                ForgeAXI will fill ({recognized.length})
               </div>
               <div className="mt-1 flex flex-wrap gap-1">
                 {recognized.length === 0 ? (
@@ -851,7 +851,7 @@ function DocxPanel({
                     <code
                       key={v}
                       className="rounded bg-amber-500/10 px-1.5 py-0.5 font-mono text-[10px] text-amber-200"
-                      title="Not a known FORGE variable — leave a placeholder note in the doc, or rename to a known key."
+                      title="Not a known ForgeAXI variable — leave a placeholder note in the doc, or rename to a known key."
                     >
                       {v}
                     </code>

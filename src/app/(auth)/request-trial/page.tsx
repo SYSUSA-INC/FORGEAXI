@@ -19,7 +19,7 @@ export default async function RequestTrialPage() {
     <div className="grid min-h-[calc(100vh-3.5rem)] place-items-center px-4 py-12">
       <div className="aur-card w-full max-w-md overflow-hidden">
         <div className="px-8 py-10">
-          <h1 className="font-display text-2xl font-semibold tracking-tight text-text">Try FORGE for {TRIAL_DAYS} days</h1>
+          <h1 className="font-display text-2xl font-semibold tracking-tight text-text">Try ForgeAXI for {TRIAL_DAYS} days</h1>
           <p className="mt-2 text-sm text-muted">
             Tell us who you are. We review every request and, once approved, email you an invitation to your own workspace. When the trial ends your
             work stays and editing carries on; AI features pause until you choose a plan.

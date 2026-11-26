@@ -30,7 +30,7 @@ export default async function LessonsPage() {
       <PageHeader
         eyebrow="Platform Intelligence"
         title="Lessons"
-        subtitle="What every decided bid taught the company: drafted by FORGE from the outcome, the debrief, the winner analysis and the reviews, confirmed by a person, and read back by the next bid."
+        subtitle="What every decided bid taught the company: drafted by ForgeAXI from the outcome, the debrief, the winner analysis and the reviews, confirmed by a person, and read back by the next bid."
       />
       <LessonsList lessons={lessons} canConfirm={canConfirm} showBid title="All lessons" />
     </>

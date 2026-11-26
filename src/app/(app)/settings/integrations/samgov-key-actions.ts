@@ -37,6 +37,6 @@ export async function removeCompanySamKeyAction(): Promise<SamKeyActionResult> {
   if (!res.ok) return res;
   return {
     ok: true,
-    message: res.removed ? "Removed. FORGE's shared SAM.gov key is used for your company when one is available." : "There was no company key to remove.",
+    message: res.removed ? "Removed. ForgeAXI's shared SAM.gov key is used for your company when one is available." : "There was no company key to remove.",
   };
 }

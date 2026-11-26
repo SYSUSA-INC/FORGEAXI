@@ -100,7 +100,7 @@ export function ApiTokensClient({ tokens, canCreate }: { tokens: ApiTokenListRow
       {fresh ? (
         <div className="mt-3 rounded-md border border-emerald/40 bg-emerald/10 px-3 py-3">
           <div className="font-mono text-[11px] text-emerald">
-            &quot;{fresh.name}&quot; created. Copy it now — FORGE stores only a fingerprint and can&apos;t show it again.
+            &quot;{fresh.name}&quot; created. Copy it now — ForgeAXI stores only a fingerprint and can&apos;t show it again.
           </div>
           <div className="mt-2 flex flex-wrap items-center gap-2">
             <code className="break-all rounded bg-layer/[0.05] px-2 py-1 font-mono text-[12px] text-text">{fresh.token}</code>

@@ -29,7 +29,7 @@ export async function SearchPacksSection({
   return (
     <Panel title="Web search packs" eyebrow="Prepaid" className="mt-4">
       <p className="mb-3 font-body text-[13px] leading-[1.5] text-muted">
-        Pack searches held: <span className="text-text">{balance.toLocaleString("en-US")}</span>. FORGE uses your plan&apos;s monthly web searches
+        Pack searches held: <span className="text-text">{balance.toLocaleString("en-US")}</span>. ForgeAXI uses your plan&apos;s monthly web searches
         first and a pack only when those are gone. Pack searches do not expire, and research pauses when both are at zero: there is no
         automatic top-up and no overage charge.
       </p>

@@ -67,7 +67,7 @@ export function saveOutcome(
 
 export function savedMessage(status: "ok" | "rate_limited", last4: string): string {
   return status === "ok"
-    ? `Saved. SAM.gov accepted the key (${maskLast4(last4)}); FORGE uses it for your company from now on.`
+    ? `Saved. SAM.gov accepted the key (${maskLast4(last4)}); ForgeAXI uses it for your company from now on.`
     : `Saved (${maskLast4(last4)}), but SAM.gov says this key's request limit is used up for now. It will work again when SAM.gov's daily limit resets.`;
 }
 
@@ -80,13 +80,13 @@ export function refusedMessage(cls: SamErrorClass, previousLast4: string | null)
 
 export function saveFailedMessage(keptLast4: string | null): string {
   const keep = keptLast4 ? ` Your current key (${maskLast4(keptLast4)}) is still in use.` : "";
-  return `SAM.gov accepted the key, but FORGE couldn't save it just now, so nothing was saved. Try again in a few minutes.${keep}`;
+  return `SAM.gov accepted the key, but ForgeAXI couldn't save it just now, so nothing was saved. Try again in a few minutes.${keep}`;
 }
 
 export const KEYRING_UNAVAILABLE_MESSAGE =
-  "Company SAM.gov keys can't be saved on this FORGE server yet. FORGE support has to enable key encryption first.";
+  "Company SAM.gov keys can't be saved on this ForgeAXI server yet. ForgeAXI support has to enable key encryption first.";
 export const DATABASE_PENDING_MESSAGE =
-  "Company SAM.gov keys aren't available until FORGE's database is updated. Ask FORGE support.";
+  "Company SAM.gov keys aren't available until ForgeAXI's database is updated. Ask ForgeAXI support.";
 
 export function tooManyTestsMessage(who: "company" | "user", retryAfterSec: number): string {
   const minutes = Math.max(1, Math.ceil(retryAfterSec / 60));
@@ -107,7 +107,7 @@ export function samKeyNotice(
     return {
       tone: "rose",
       text: v.company
-        ? "Your company's SAM.gov key can't be read on this FORGE server and there is no shared key, so SAM.gov searches (Import and the scout's) and the daily Q&A check are off; the scout still checks your watchlist. FORGE support can restore it."
+        ? "Your company's SAM.gov key can't be read on this ForgeAXI server and there is no shared key, so SAM.gov searches (Import and the scout's) and the daily Q&A check are off; the scout still checks your watchlist. ForgeAXI support can restore it."
         : "SAM.gov isn't connected for your company, so SAM.gov searches (Import and the scout's) and the daily Q&A check are off; the scout still checks your watchlist. A company admin can add your SAM.gov API key under Settings → Integrations.",
     };
   }

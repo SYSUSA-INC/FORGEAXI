@@ -71,7 +71,7 @@ function day(d: Date): string {
 
 /** The refusal every gate gives once a trial has ended. */
 export function trialExpiredMessage(endedAt: Date): string {
-  return `Your FORGE trial ended on ${day(endedAt)}. Editing carries on as usual; AI features are paused until a plan is chosen under Settings → Billing.`;
+  return `Your ForgeAXI trial ended on ${day(endedAt)}. Editing carries on as usual; AI features are paused until a plan is chosen under Settings → Billing.`;
 }
 
 /** The banner line for a workspace on trial, or null when there is nothing to say. */
@@ -80,7 +80,7 @@ export function trialBannerText(state: TrialState): { tone: "info" | "warn" | "e
   if (state.kind === "expired") {
     return { tone: "ended", text: `Your trial ended on ${day(state.endedAt)}. Editing carries on; AI features are paused until a plan is chosen.` };
   }
-  if (!state.endsAt || state.daysLeft === null) return { tone: "info", text: "You're on a FORGE trial." };
+  if (!state.endsAt || state.daysLeft === null) return { tone: "info", text: "You're on a ForgeAXI trial." };
   const left = state.daysLeft === 1 ? "1 day" : `${state.daysLeft} days`;
   return { tone: state.daysLeft <= 3 ? "warn" : "info", text: `Trial: ${left} left (ends ${day(state.endsAt)}).` };
 }

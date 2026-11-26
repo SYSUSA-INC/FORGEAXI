@@ -33,8 +33,8 @@ let seq = 0;
 function thrownMessage(err: unknown): string {
   const raw = err instanceof Error ? err.message : "";
   return /fetch|network|load failed/i.test(raw)
-    ? "The connection to FORGE dropped. Check your network, then Retry."
-    : "FORGE didn't answer (it may have timed out). Retry; your file is kept if it already arrived.";
+    ? "The connection to ForgeAXI dropped. Check your network, then Retry."
+    : "ForgeAXI didn't answer (it may have timed out). Retry; your file is kept if it already arrived.";
 }
 
 /**
